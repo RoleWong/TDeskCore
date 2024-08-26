@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'TDeskCore'
-  spec.version      = '1.0.0'
+  spec.version      = '1.0.1'
   spec.platform     = :ios
   spec.ios.deployment_target = '9.0'
   spec.license      = { :type => 'Proprietary',
@@ -16,12 +16,17 @@ Pod::Spec.new do |spec|
   spec.dependency 'SDWebImage'
   
   spec.requires_arc = true
-  spec.default_subspec = 'ImSDK_Plus'
+#  spec.default_subspec = 'ImSDK_Plus'
+
+  spec.source_files = '*.{h,m,mm,c}'
+  spec.dependency 'TXIMSDK_Plus_iOS'
+  spec.dependency 'Masonry'
   
-  spec.subspec 'ImSDK_Plus' do |plus|
-      plus.dependency 'TXIMSDK_Plus_iOS'
-      plus.dependency 'TDeskCore/Base'
-  end
+#  spec.subspec 'ImSDK_Plus' do |plus|
+#      plus.dependency 'TXIMSDK_Plus_iOS'
+#      plus.dependency 'TDeskCore/Base'
+#  end
+  spec.resource = ['Resources/*.bundle']
   
   spec.subspec 'Base' do |base|
       base.source_files = '*.{h,m,mm,c}'
