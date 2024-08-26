@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'TDeskCore'
-  spec.version      = '1.0.1'
+  spec.version      = '1.0.2'
   spec.platform     = :ios
   spec.ios.deployment_target = '9.0'
   spec.license      = { :type => 'Proprietary',
@@ -28,13 +28,14 @@ Pod::Spec.new do |spec|
 #  end
   spec.resource = ['Resources/*.bundle']
   
-  spec.subspec 'Base' do |base|
-      base.source_files = '*.{h,m,mm,c}'
-      base.resource = ['Resources/*.bundle']
-  end
+#  spec.subspec 'Base' do |base|
+#      base.source_files = '*.{h,m,mm,c}'
+#      base.resource = ['Resources/*.bundle']
+#  end
   
   spec.resource_bundle = {
     "#{spec.module_name}_Privacy" => 'Resources/PrivacyInfo.xcprivacy'
   }
   
 end
+
