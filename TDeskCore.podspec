@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
         LICENSE
        }
   spec.homepage     = 'https://cloud.tencent.com/document/product/269/3794'
-  spec.source = { :git => 'https://git.woa.com/lynxzhang/tui-components.git', :tag => spec.version}
+  spec.source = { :git => 'https://github.com/RoleWong/TDeskCore.git', :tag => spec.version}
   spec.documentation_url = 'https://cloud.tencent.com/document/product/269/9147'
   spec.authors      = 'tencent video cloud'
   spec.summary      = 'TUICore'
