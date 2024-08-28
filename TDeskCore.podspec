@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'TDeskCore'
-  spec.version      = '1.0.3'
+  spec.version      = '1.1.0'
   spec.platform     = :ios
   spec.ios.deployment_target = '9.0'
   spec.license      = { :type => 'Proprietary',
@@ -19,7 +19,7 @@ Pod::Spec.new do |spec|
 #  spec.default_subspec = 'ImSDK_Plus'
 
   spec.source_files = '*.{h,m,mm,c}'
-  spec.dependency 'TXIMSDK_Plus_iOS'
+  spec.dependency 'TXIMSDK_Plus_iOS_XCFramework'
 #  spec.dependency 'Masonry'
   
 #  spec.subspec 'ImSDK_Plus' do |plus|
@@ -37,10 +37,6 @@ Pod::Spec.new do |spec|
     "#{spec.module_name}_Privacy" => 'Resources/PrivacyInfo.xcprivacy'
   }
   
-  spec.pod_target_xcconfig = {
-      'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
-    }
-  spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   
 end
 
