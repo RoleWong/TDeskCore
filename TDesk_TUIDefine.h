@@ -713,12 +713,14 @@ static inline NSBundle *getTDeskGetLocalizable(NSString *bundleName) {
 
 #pragma mark - TUICore_TUIChat_Notify
 #define TUICore_TUIChatNotify @"TUICore_TUIChatNotify"
+#define TUICore_TDeskNotify @"TUICore_TDeskNotify"
 #define TUICore_TUIChatNotify_SendMessageSubKey @"TUICore_TUIChatNotify_SendMessageSubKey"
 #define TUICore_TUIChatNotify_SendMessageSubKey_Code @"TUICore_TUIChatNotify_SendMessageSubKey_Code"
 #define TUICore_TUIChatNotify_SendMessageSubKey_Desc @"TUICore_TUIChatNotify_SendMessageSubKey_Desc"
 #define TUICore_TUIChatNotify_SendMessageSubKey_Message @"TUICore_TUIChatNotify_SendMessageSubKey_Message"
 #define TUICore_TUIChatNotify_KeyboardWillHideSubKey @"TUICore_TUIChatNotify_KeyboardWillHideSubKey"
 #define TUICore_TUIChatNotify_ChatVC_ViewDidLoadSubKey @"TUICore_TUIChatNotify_ChatVC_ViewDidLoadSubKey"
+#define TUICore_TDeskNotify_ChatVC_ViewDidLoadSubKey @"TUICore_TDeskNotify_ChatVC_ViewDidLoadSubKey"
 #define TUICore_TUIChatNotify_ChatVC_ViewDidLoadSubKey_UserID @"TUICore_TUIChatNotify_ChatVC_ViewDidLoadSubKey_UserID"
 // The notification of displaying the message cell data
 #define TUICore_TUIChatNotify_MessageDisplayedSubKey @"TUICore_TUIChatNotify_MessageDisplayedSubKey"
