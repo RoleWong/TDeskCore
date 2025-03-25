@@ -17,36 +17,36 @@
 }
 
 + (void)registerService:(NSString *)serviceName object:(id<TDeskServiceProtocol>)object {
-    [TUIServiceManager.shareInstance registerService:serviceName service:object];
+    [TDeskServiceManager.shareInstance registerService:serviceName service:object];
 }
 
 + (void)unregisterService:(NSString *)serviceName {
-    [TUIServiceManager.shareInstance unregisterService:serviceName];
+    [TDeskServiceManager.shareInstance unregisterService:serviceName];
 }
 
 + (id<TDeskServiceProtocol>)getService:(NSString *)serviceName {
-    return [TUIServiceManager.shareInstance getService:serviceName];
+    return [TDeskServiceManager.shareInstance getService:serviceName];
 }
 
 + (id)callService:(NSString *)serviceName method:(NSString *)method param:(nullable NSDictionary *)param {
-    return [TUIServiceManager.shareInstance callService:serviceName method:method param:param resultCallback:nil];
+    return [TDeskServiceManager.shareInstance callService:serviceName method:method param:param resultCallback:nil];
 }
 
 + (id)callService:(NSString *)serviceName
             method:(NSString *)method
              param:(nullable NSDictionary *)param
     resultCallback:(nullable TUICallServiceResultCallback)resultCallback {
-    return [TUIServiceManager.shareInstance callService:serviceName method:method param:param resultCallback:resultCallback];
+    return [TDeskServiceManager.shareInstance callService:serviceName method:method param:param resultCallback:resultCallback];
 }
 
-+ (void)registerEvent:(NSString *)key subKey:(NSString *)subKey object:(id<TUINotificationProtocol>)object {
++ (void)registerEvent:(NSString *)key subKey:(NSString *)subKey object:(id<TDeskNotificationProtocol>)object {
     [TUIEventManager.shareInstance registerEvent:key subKey:subKey object:object];
 }
 
-+ (void)unRegisterEventByObject:(id<TUINotificationProtocol>)object {
++ (void)unRegisterEventByObject:(id<TDeskNotificationProtocol>)object {
     [TUIEventManager.shareInstance unRegisterEvent:object];
 }
-+ (void)unRegisterEvent:(nullable NSString *)key subKey:(nullable NSString *)subKey object:(nullable id<TUINotificationProtocol>)object {
++ (void)unRegisterEvent:(nullable NSString *)key subKey:(nullable NSString *)subKey object:(nullable id<TDeskNotificationProtocol>)object {
     [TUIEventManager.shareInstance unRegisterEvent:key subKey:subKey object:object];
 }
 
@@ -54,45 +54,45 @@
     [TUIEventManager.shareInstance notifyEvent:key subKey:subKey object:anObject param:param];
 }
 
-+ (void)registerExtension:(NSString *)extensionID object:(id<TUIExtensionProtocol>)object {
-    [TUIExtensionManager.shareInstance registerExtension:extensionID extension:object];
++ (void)registerExtension:(NSString *)extensionID object:(id<TDeskExtensionProtocol>)object {
+    [TDeskExtensionManager.shareInstance registerExtension:extensionID extension:object];
 }
 
-+ (void)unRegisterExtension:(NSString *)extensionID object:(id<TUIExtensionProtocol>)object {
-    [TUIExtensionManager.shareInstance unRegisterExtension:extensionID extension:object];
++ (void)unRegisterExtension:(NSString *)extensionID object:(id<TDeskExtensionProtocol>)object {
+    [TDeskExtensionManager.shareInstance unRegisterExtension:extensionID extension:object];
 }
 
 + (NSDictionary *)getExtensionInfo:(NSString *)extensionID param:(nullable NSDictionary *)param {
-    return [TUIExtensionManager.shareInstance getExtensionInfo:extensionID param:param];
+    return [TDeskExtensionManager.shareInstance getExtensionInfo:extensionID param:param];
 }
 
-+ (NSArray<TUIExtensionInfo *> *)getExtensionList:(NSString *)extensionID param:(nullable NSDictionary *)param {
-    return [TUIExtensionManager.shareInstance getExtensionList:extensionID param:param];
++ (NSArray<TDeskExtensionInfo *> *)getExtensionList:(NSString *)extensionID param:(nullable NSDictionary *)param {
+    return [TDeskExtensionManager.shareInstance getExtensionList:extensionID param:param];
 }
 
 + (BOOL)raiseExtension:(NSString *)extensionID parentView:(UIView *)parentView param:(nullable NSDictionary *)param {
-    return [TUIExtensionManager.shareInstance raiseExtension:extensionID parentView:parentView param:param];
+    return [TDeskExtensionManager.shareInstance raiseExtension:extensionID parentView:parentView param:param];
 }
 
-+ (void)registerObjectFactory:(NSString *)factoryName objectFactory:(id<TUIObjectProtocol>)objectFactory {
-    [TUIObjectFactoryManager.shareInstance registerObjectFactory:factoryName objectFactory:objectFactory];
++ (void)registerObjectFactory:(NSString *)factoryName objectFactory:(id<TDeskObjectProtocol>)objectFactory {
+    [TDeskObjectFactoryManager.shareInstance registerObjectFactory:factoryName objectFactory:objectFactory];
 }
 
 + (void)unRegisterObjectFactory:(NSString *)factoryName {
-    [TUIObjectFactoryManager.shareInstance unRegisterObjectFactory:factoryName];
+    [TDeskObjectFactoryManager.shareInstance unRegisterObjectFactory:factoryName];
 }
 
 + (id)createObject:(NSString *)factoryName key:(NSString *)key param:(NSDictionary *)param {
-    return [TUIObjectFactoryManager.shareInstance createObject:factoryName method:key param:param];
+    return [TDeskObjectFactoryManager.shareInstance createObject:factoryName method:key param:param];
 }
 
 @end
 
-#pragma mark - TUIRoute
+#pragma mark - TDeskRoute
 
 static const void *navigateValueCallback = @"navigateValueCallback";
 
-@implementation NSObject (TUIRoute)
+@implementation NSObject (TDeskRoute)
 
 - (void)setNavigateValueCallback:(TUIValueResultCallback)callback {
     objc_setAssociatedObject(self, navigateValueCallback, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
@@ -104,11 +104,11 @@ static const void *navigateValueCallback = @"navigateValueCallback";
 
 @end
 
-@implementation UIViewController (TUIRoute)
+@implementation UIViewController (TDeskRoute)
 
-- (void)pushViewController:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TUIValueResultCallback)callback {
+- (void)pushViewControllerForTDesk:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TUIValueResultCallback)callback {
     NSAssert([self isKindOfClass:UINavigationController.class], @"self must be a navigation controller");
-    UIViewController *vc = [TUIObjectFactoryManager.shareInstance createObject:viewControllerKey param:param];
+    UIViewController *vc = [TDeskObjectFactoryManager.shareInstance createObject:viewControllerKey param:param];
     if ([vc isKindOfClass:UIViewController.class]) {
         vc.navigateValueCallback = callback;
         [(UINavigationController *)self pushViewController:vc animated:YES];
@@ -117,15 +117,15 @@ static const void *navigateValueCallback = @"navigateValueCallback";
     }
 }
 
-- (void)presentViewController:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TUIValueResultCallback)callback {
-    [self presentViewController:viewControllerKey param:param embbedIn:nil forResult:callback];
+- (void)presentViewControllerForTDesk:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TUIValueResultCallback)callback {
+    [self presentViewControllerForTDesk:viewControllerKey param:param embbedIn:nil forResult:callback];
 }
 
-- (void)presentViewController:(NSString *)viewControllerKey
+- (void)presentViewControllerForTDesk:(NSString *)viewControllerKey
                         param:(nullable NSDictionary *)param
                      embbedIn:(nullable UINavigationController *)navigationVC
                     forResult:(nullable TUIValueResultCallback)callback {
-    UIViewController *vc = [TUIObjectFactoryManager.shareInstance createObject:viewControllerKey param:param];
+    UIViewController *vc = [TDeskObjectFactoryManager.shareInstance createObject:viewControllerKey param:param];
     if ([vc isKindOfClass:UIViewController.class]) {
         vc.navigateValueCallback = callback;
         if (navigationVC) {
@@ -152,13 +152,13 @@ static const void *navigateValueCallback = @"navigateValueCallback";
 
 #pragma mark - TUIService
 
-@interface TUIServiceManager ()
+@interface TDeskServiceManager ()
 
 @property(nonatomic, strong) NSMapTable<NSString *, id<TDeskServiceProtocol>> *serviceMap;
 
 @end
 
-@implementation TUIServiceManager
+@implementation TDeskServiceManager
 
 + (instancetype)shareInstance {
     static id instance = nil;
@@ -252,7 +252,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
     return instance;
 }
 
-- (void)registerEvent:(NSString *)key subKey:(NSString *)subKey object:(id<TUINotificationProtocol>)object {
+- (void)registerEvent:(NSString *)key subKey:(NSString *)subKey object:(id<TDeskNotificationProtocol>)object {
     NSAssert(key.length > 0, @"invalid key");
     NSAssert(object != nil, @"invalid object");
 
@@ -269,11 +269,11 @@ static const void *navigateValueCallback = @"navigateValueCallback";
     }
 }
 
-- (void)unRegisterEvent:(id<TUINotificationProtocol>)object {
+- (void)unRegisterEvent:(id<TDeskNotificationProtocol>)object {
     [self unRegisterEvent:nil subKey:nil object:object];
 }
 
-- (void)unRegisterEvent:(nullable NSString *)key subKey:(nullable NSString *)subKey object:(nullable id<TUINotificationProtocol>)object {
+- (void)unRegisterEvent:(nullable NSString *)key subKey:(nullable NSString *)subKey object:(nullable id<TDeskNotificationProtocol>)object {
     @synchronized(self.eventList) {
         NSMutableArray *removeEventList = [NSMutableArray array];
         for (NSDictionary *event in self.eventList) {
@@ -311,7 +311,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
             NSString *pSubKey = [event objectForKey:@"subKey"];
 
             if ([pkey isEqualToString:key] && [pSubKey isEqualToString:subKey]) {
-                id<TUINotificationProtocol> pObject = [event objectForKey:@"object"];
+                id<TDeskNotificationProtocol> pObject = [event objectForKey:@"object"];
                 if (pObject) {
                     [pObject onNotifyEvent:key subKey:subKey object:object param:param];
                 }
@@ -331,17 +331,17 @@ static const void *navigateValueCallback = @"navigateValueCallback";
 
 #pragma mark - TUIExtension
 
-@implementation TUIExtensionInfo
+@implementation TDeskExtensionInfo
 
 @end
 
-@interface TUIExtensionManager ()
+@interface TDeskExtensionManager ()
 
-@property(nonatomic, strong) NSMutableDictionary<NSString *, NSHashTable<id<TUIExtensionProtocol>> *> *extensionMap;
+@property(nonatomic, strong) NSMutableDictionary<NSString *, NSHashTable<id<TDeskExtensionProtocol>> *> *extensionMap;
 
 @end
 
-@implementation TUIExtensionManager
+@implementation TDeskExtensionManager
 
 + (instancetype)shareInstance {
     static id instance = nil;
@@ -354,7 +354,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
     return instance;
 }
 
-- (void)registerExtension:(NSString *)extensionID extension:(id<TUIExtensionProtocol>)extension {
+- (void)registerExtension:(NSString *)extensionID extension:(id<TDeskExtensionProtocol>)extension {
     NSAssert(extensionID.length > 0, @"invalid extension id");
     NSAssert(extension != nil, @"invalid extension");
 
@@ -370,7 +370,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
     }
 }
 
-- (void)unRegisterExtension:(NSString *)extensionID extension:(id<TUIExtensionProtocol>)extension {
+- (void)unRegisterExtension:(NSString *)extensionID extension:(id<TDeskExtensionProtocol>)extension {
     NSAssert(extensionID.length > 0, @"invalid extension id");
     NSAssert(extension != nil, @"invalid extension");
 
@@ -386,7 +386,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
     }
 }
 
-- (NSArray<TUIExtensionInfo *> *)getExtensionList:(NSString *)extensionID param:(nullable NSDictionary *)param {
+- (NSArray<TDeskExtensionInfo *> *)getExtensionList:(NSString *)extensionID param:(nullable NSDictionary *)param {
     NSAssert(extensionID.length > 0, @"invalid extension id");
 
     NSHashTable *list = nil;
@@ -399,9 +399,9 @@ static const void *navigateValueCallback = @"navigateValueCallback";
 
     // get
     NSMutableArray *resultExtensionInfoList = [NSMutableArray array];
-    for (id<TUIExtensionProtocol> observer in list) {
+    for (id<TDeskExtensionProtocol> observer in list) {
         if (observer && [observer respondsToSelector:@selector(onGetExtension:param:)]) {
-            NSArray<TUIExtensionInfo *> *infoList = [observer onGetExtension:extensionID param:param];
+            NSArray<TDeskExtensionInfo *> *infoList = [observer onGetExtension:extensionID param:param];
             if (infoList) {
                 [resultExtensionInfoList addObjectsFromArray:infoList];
             }
@@ -409,7 +409,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
     }
 
     // sort
-    NSArray *result = [resultExtensionInfoList sortedArrayUsingComparator:^NSComparisonResult(TUIExtensionInfo *obj1, TUIExtensionInfo *obj2) {
+    NSArray *result = [resultExtensionInfoList sortedArrayUsingComparator:^NSComparisonResult(TDeskExtensionInfo *obj1, TDeskExtensionInfo *obj2) {
       if (obj1.weight > obj2.weight) {
           return NSOrderedAscending;
       } else {
@@ -433,7 +433,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
     }
 
     BOOL isResponserExist = NO;
-    for (id<TUIExtensionProtocol> observer in list) {
+    for (id<TDeskExtensionProtocol> observer in list) {
         if (observer && [observer respondsToSelector:@selector(onRaiseExtension:parentView:param:)]) {
             isResponserExist = [observer onRaiseExtension:extensionID parentView:parentView param:param];
             if (isResponserExist) {
@@ -455,7 +455,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
         return nil;
     }
 
-    for (id<TUIExtensionProtocol> observer in list) {
+    for (id<TDeskExtensionProtocol> observer in list) {
         if (observer && [observer respondsToSelector:@selector(onGetExtensionInfo:param:)]) {
             NSDictionary *info = [observer onGetExtensionInfo:extensionID param:param];
             if (info) {
@@ -466,7 +466,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
     return nil;
 }
 
-- (NSMutableDictionary<NSString *, NSHashTable<id<TUIExtensionProtocol>> *> *)extensionMap {
+- (NSMutableDictionary<NSString *, NSHashTable<id<TDeskExtensionProtocol>> *> *)extensionMap {
     if (_extensionMap == nil) {
         _extensionMap = [NSMutableDictionary dictionary];
     }
@@ -476,13 +476,13 @@ static const void *navigateValueCallback = @"navigateValueCallback";
 
 #pragma mark - TUIObjectFactory
 
-@interface TUIObjectFactoryManager ()
+@interface TDeskObjectFactoryManager ()
 
-@property(nonatomic, strong) NSMapTable<NSString *, id<TUIObjectProtocol>> *objectFactoryMap;
+@property(nonatomic, strong) NSMapTable<NSString *, id<TDeskObjectProtocol>> *objectFactoryMap;
 
 @end
 
-@implementation TUIObjectFactoryManager : NSObject
+@implementation TDeskObjectFactoryManager : NSObject
 
 + (instancetype)shareInstance {
     static id instance = nil;
@@ -495,7 +495,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
     return instance;
 }
 
-- (void)registerObjectFactory:(NSString *)factoryName objectFactory:(id<TUIObjectProtocol>)objectFactory {
+- (void)registerObjectFactory:(NSString *)factoryName objectFactory:(id<TDeskObjectProtocol>)objectFactory {
     NSAssert(factoryName.length > 0, @"invalid factory name");
     NSAssert(objectFactory != nil, @"invalid object factory");
 
@@ -520,7 +520,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
     NSAssert(factoryName.length > 0, @"invalid factory name");
     NSAssert(method.length > 0, @"invalid method");
 
-    id<TUIObjectProtocol> factory = nil;
+    id<TDeskObjectProtocol> factory = nil;
     @synchronized(self.objectFactoryMap) {
         factory = [self.objectFactoryMap objectForKey:factoryName];
     }
@@ -535,7 +535,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
 - (nullable id)createObject:(NSString *)method param:(NSDictionary *)param {
     NSAssert(method.length > 0, @"invalid method");
 
-    NSArray<id<TUIObjectProtocol>> *list = nil;
+    NSArray<id<TDeskObjectProtocol>> *list = nil;
     @synchronized(self.objectFactoryMap) {
         list = self.objectFactoryMap.objectEnumerator.allObjects;
     }
@@ -543,7 +543,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
         return nil;
     }
 
-    for (id<TUIObjectProtocol> factory in list) {
+    for (id<TDeskObjectProtocol> factory in list) {
         if (factory && [factory respondsToSelector:@selector(onCreateObject:param:)]) {
             id obj = [factory onCreateObject:method param:param];
             if (obj) {
@@ -555,7 +555,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
     return nil;
 }
 
-- (NSMapTable<NSString *, id<TUIObjectProtocol>> *)objectFactoryMap {
+- (NSMapTable<NSString *, id<TDeskObjectProtocol>> *)objectFactoryMap {
     if (_objectFactoryMap == nil) {
         _objectFactoryMap = [NSMapTable strongToWeakObjectsMapTable];
     }

@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @protocol TDeskServiceProtocol;
-@protocol TUIObjectProtocol;
-@protocol TUINotificationProtocol;
-@protocol TUIExtensionProtocol;
-@class TUIExtensionInfo;
+@protocol TDeskObjectProtocol;
+@protocol TDeskNotificationProtocol;
+@protocol TDeskExtensionProtocol;
+@class TDeskExtensionInfo;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -36,46 +36,46 @@ typedef void (^TUICallServiceResultCallback)(NSInteger errorCode, NSString *erro
                      param:(nullable NSDictionary *)param
             resultCallback:(nullable TUICallServiceResultCallback)resultCallback;
 
-+ (void)registerEvent:(NSString *)key subKey:(NSString *)subKey object:(id<TUINotificationProtocol>)object;
-+ (void)unRegisterEventByObject:(id<TUINotificationProtocol>)object;
-+ (void)unRegisterEvent:(nullable NSString *)key subKey:(nullable NSString *)subKey object:(nullable id<TUINotificationProtocol>)object;
++ (void)registerEvent:(NSString *)key subKey:(NSString *)subKey object:(id<TDeskNotificationProtocol>)object;
++ (void)unRegisterEventByObject:(id<TDeskNotificationProtocol>)object;
++ (void)unRegisterEvent:(nullable NSString *)key subKey:(nullable NSString *)subKey object:(nullable id<TDeskNotificationProtocol>)object;
 + (void)notifyEvent:(NSString *)key subKey:(nullable NSString *)subKey object:(nullable id)anObject param:(nullable NSDictionary *)param;
 
-+ (void)registerExtension:(NSString *)extensionID object:(id<TUIExtensionProtocol>)object;
-+ (void)unRegisterExtension:(NSString *)extensionID object:(id<TUIExtensionProtocol>)object;
-+ (NSArray<TUIExtensionInfo *> *)getExtensionList:(NSString *)extensionID param:(nullable NSDictionary *)param;
++ (void)registerExtension:(NSString *)extensionID object:(id<TDeskExtensionProtocol>)object;
++ (void)unRegisterExtension:(NSString *)extensionID object:(id<TDeskExtensionProtocol>)object;
++ (NSArray<TDeskExtensionInfo *> *)getExtensionList:(NSString *)extensionID param:(nullable NSDictionary *)param;
 + (BOOL)raiseExtension:(NSString *)extensionID parentView:(UIView *)parentView param:(nullable NSDictionary *)param;
 // deprecated
 + (nullable NSDictionary *)getExtensionInfo:(NSString *)extensionID
                                       param:(nullable NSDictionary *)param __attribute__((deprecated("use getExtensionList:param: instead")));
 
-+ (void)registerObjectFactory:(NSString *)factoryName objectFactory:(id<TUIObjectProtocol>)objectFactory;
++ (void)registerObjectFactory:(NSString *)factoryName objectFactory:(id<TDeskObjectProtocol>)objectFactory;
 + (void)unRegisterObjectFactory:(NSString *)factoryName;
 + (nullable id)createObject:(NSString *)factoryName key:(NSString *)method param:(nullable NSDictionary *)param;
 
 @end
 
-#pragma mark - TUIRoute
+#pragma mark - TDeskRoute
 /////////////////////////////////////////////////////////////////////////////////
 //
-//             Definition of TUIRoute, APIs
+//             Definition of TDeskRoute, APIs
 //
 /////////////////////////////////////////////////////////////////////////////////
 
 typedef void (^TUIValueResultCallback)(NSDictionary *param);
 
-@interface NSObject (TUIRoute)
+@interface NSObject (TDeskRoute)
 
 @property(nonatomic, copy) TUIValueResultCallback navigateValueCallback;
 
 @end
 
-@interface UIViewController (TUIRoute)
+@interface UIViewController (TDeskRoute)
 
-- (void)pushViewController:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TUIValueResultCallback)callback;
+- (void)pushViewControllerForTDesk:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TUIValueResultCallback)callback;
 
-- (void)presentViewController:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TUIValueResultCallback)callback;
-- (void)presentViewController:(NSString *)viewControllerKey
+- (void)presentViewControllerForTDesk:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TUIValueResultCallback)callback;
+- (void)presentViewControllerForTDesk:(NSString *)viewControllerKey
                         param:(nullable NSDictionary *)param
                      embbedIn:(nullable UINavigationController *)navigationVC
                     forResult:(nullable TUIValueResultCallback)callback;
@@ -97,7 +97,7 @@ typedef void (^TUIValueResultCallback)(NSDictionary *param);
 
 @end
 
-@interface TUIServiceManager : NSObject
+@interface TDeskServiceManager : NSObject
 
 + (instancetype)shareInstance;
 
@@ -120,7 +120,7 @@ typedef void (^TUIValueResultCallback)(NSDictionary *param);
 //
 /////////////////////////////////////////////////////////////////////////////////
 
-@protocol TUINotificationProtocol <NSObject>
+@protocol TDeskNotificationProtocol <NSObject>
 @optional
 - (void)onNotifyEvent:(NSString *)key subKey:(NSString *)subKey object:(nullable id)anObject param:(nullable NSDictionary *)param;
 
@@ -130,9 +130,9 @@ typedef void (^TUIValueResultCallback)(NSDictionary *param);
 
 + (instancetype)shareInstance;
 
-- (void)registerEvent:(NSString *)key subKey:(NSString *)subKey object:(id<TUINotificationProtocol>)object;
-- (void)unRegisterEvent:(id<TUINotificationProtocol>)object;
-- (void)unRegisterEvent:(nullable NSString *)key subKey:(nullable NSString *)subKey object:(nullable id<TUINotificationProtocol>)object;
+- (void)registerEvent:(NSString *)key subKey:(NSString *)subKey object:(id<TDeskNotificationProtocol>)object;
+- (void)unRegisterEvent:(id<TDeskNotificationProtocol>)object;
+- (void)unRegisterEvent:(nullable NSString *)key subKey:(nullable NSString *)subKey object:(nullable id<TDeskNotificationProtocol>)object;
 
 - (void)notifyEvent:(NSString *)key subKey:(nullable NSString *)subKey object:(nullable id)object param:(nullable NSDictionary *)param;
 
@@ -147,7 +147,7 @@ typedef void (^TUIValueResultCallback)(NSDictionary *param);
 
 typedef void (^TUIExtensionClickCallback)(NSDictionary *param);
 
-@interface TUIExtensionInfo : NSObject
+@interface TDeskExtensionInfo : NSObject
 
 @property(nonatomic, assign) NSInteger weight;
 @property(nonatomic, strong, nullable) UIImage *icon;
@@ -157,10 +157,10 @@ typedef void (^TUIExtensionClickCallback)(NSDictionary *param);
 
 @end
 
-@protocol TUIExtensionProtocol <NSObject>
+@protocol TDeskExtensionProtocol <NSObject>
 @optional
 
-- (nullable NSArray<TUIExtensionInfo *> *)onGetExtension:(NSString *)extensionID param:(nullable NSDictionary *)param;
+- (nullable NSArray<TDeskExtensionInfo *> *)onGetExtension:(NSString *)extensionID param:(nullable NSDictionary *)param;
 
 // If there exist responser, return YES
 - (BOOL)onRaiseExtension:(NSString *)extensionID parentView:(UIView *)parentView param:(nullable NSDictionary *)param;
@@ -171,14 +171,14 @@ typedef void (^TUIExtensionClickCallback)(NSDictionary *param);
 
 @end
 
-@interface TUIExtensionManager : NSObject
+@interface TDeskExtensionManager : NSObject
 
 + (instancetype)shareInstance;
 
-- (void)registerExtension:(NSString *)extensionID extension:(id<TUIExtensionProtocol>)extension;
-- (void)unRegisterExtension:(NSString *)extensionID extension:(id<TUIExtensionProtocol>)extension;
+- (void)registerExtension:(NSString *)extensionID extension:(id<TDeskExtensionProtocol>)extension;
+- (void)unRegisterExtension:(NSString *)extensionID extension:(id<TDeskExtensionProtocol>)extension;
 
-- (NSArray<TUIExtensionInfo *> *)getExtensionList:(NSString *)extensionID param:(nullable NSDictionary *)param;
+- (NSArray<TDeskExtensionInfo *> *)getExtensionList:(NSString *)extensionID param:(nullable NSDictionary *)param;
 
 - (BOOL)raiseExtension:(NSString *)extensionID parentView:(UIView *)parentView param:(nullable NSDictionary *)param;
 
@@ -195,17 +195,17 @@ typedef void (^TUIExtensionClickCallback)(NSDictionary *param);
 //
 /////////////////////////////////////////////////////////////////////////////////
 
-@protocol TUIObjectProtocol <NSObject>
+@protocol TDeskObjectProtocol <NSObject>
 @optional
 - (nullable id)onCreateObject:(NSString *)method param:(nullable NSDictionary *)param;
 
 @end
 
-@interface TUIObjectFactoryManager : NSObject
+@interface TDeskObjectFactoryManager : NSObject
 
 + (instancetype)shareInstance;
 
-- (void)registerObjectFactory:(NSString *)factoryName objectFactory:(id<TUIObjectProtocol>)objectFactory;
+- (void)registerObjectFactory:(NSString *)factoryName objectFactory:(id<TDeskObjectProtocol>)objectFactory;
 - (void)unRegisterObjectFactory:(NSString *)factoryName;
 
 - (nullable id)createObject:(NSString *)factoryName method:(NSString *)method param:(nullable NSDictionary *)param;
