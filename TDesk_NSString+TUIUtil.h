@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-char tui_pinyinFirstLetter(unsigned short hanzi);
+char tdesk_pinyinFirstLetter(unsigned short hanzi);
 
 @interface NSString (TUIUtil)
 
@@ -77,8 +77,8 @@ char tui_pinyinFirstLetter(unsigned short hanzi);
 /**
  * Determines whether a string contains the given string, ignoring case
  */
-- (BOOL)tui_containsString:(NSString *)str;
-- (BOOL)tui_containsString:(NSString *)str Options:(NSStringCompareOptions)compareOptions;
+- (BOOL)tdesk_containsString:(NSString *)str;
+- (BOOL)tdesk_containsString:(NSString *)str Options:(NSStringCompareOptions)compareOptions;
 
 /**
  * Determines whether a string equals with the given string, ignoring case

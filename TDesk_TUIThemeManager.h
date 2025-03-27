@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 #define TUIDynamicColor(colorKey, themeModule, defaultHex) [TDeskTheme dynamicColor:colorKey module:themeModule defaultColor:defaultHex]
 #define TUIDemoDynamicColor(colorKey, defaultHex) TUIDynamicColor(colorKey, TUIThemeModuleDemo, defaultHex)
 #define TUICoreDynamicColor(colorKey, defaultHex) TUIDynamicColor(colorKey, TUIThemeModuleCore, defaultHex)
-#define TUIChatDynamicColor(colorKey, defaultHex) TUIDynamicColor(colorKey, TUIThemeModuleChat, defaultHex)
+#define TDeskChatDynamicColor(colorKey, defaultHex) TUIDynamicColor(colorKey, TUIThemeModuleChat, defaultHex)
 #define TUIConversationDynamicColor(colorKey, defaultHex) TUIDynamicColor(colorKey, TUIThemeModuleConversation, defaultHex)
 #define TUIConversationGroupDynamicColor(colorKey, defaultHex) TUIDynamicColor(colorKey, TUIThemeModuleConversationGroup, defaultHex)
 #define TUIContactDynamicColor(colorKey, defaultHex) TUIDynamicColor(colorKey, TUIThemeModuleContact, defaultHex)

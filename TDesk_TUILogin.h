@@ -12,27 +12,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^TFail)(int code, NSString * __nullable msg);
 typedef void (^TSucc)(void);
-typedef NS_ENUM(NSInteger, TUILogLevel) {
+typedef NS_ENUM(NSInteger, TDeskLogLevel) {
     /**
      * < Do not output any SDK logs
      */
-    TUI_LOG_NONE = 0,
+    TDesk_LOG_NONE = 0,
     /**
      * < Output logs at the DEBUG, INFO, WARNING, and ERROR levels
      */
-    TUI_LOG_DEBUG = 3,
+    TDesk_LOG_DEBUG = 3,
     /**
      * < Output logs at the INFO, WARNING, and ERROR levels
      */
-    TUI_LOG_INFO = 4,
+    TDesk_LOG_INFO = 4,
     /**
      * < Output logs at the WARNING and ERROR levels
      */
-    TUI_LOG_WARN = 5,
+    TDesk_LOG_WARN = 5,
     /**
      * < Output logs at the ERROR level
      */
-    TUI_LOG_ERROR = 6,
+    TDesk_LOG_ERROR = 6,
 };
 
 /**
@@ -76,7 +76,7 @@ FOUNDATION_EXTERN NSString *const TUILogoutSuccessNotification;
  */
 FOUNDATION_EXTERN NSString *const TUILogoutFailNotification;
 
-@protocol TUILoginListener <NSObject>
+@protocol TDeskLoginListener <NSObject>
 
 /**
  * Callback that the SDK is connecting to the server
@@ -109,7 +109,7 @@ FOUNDATION_EXTERN NSString *const TUILogoutFailNotification;
 
 @interface TDeskLoginConfig : NSObject
 
-@property(nonatomic, assign) TUILogLevel logLevel;
+@property(nonatomic, assign) TDeskLogLevel logLevel;
 
 @property(nonatomic, copy, nullable) void (^onLog)(NSInteger logLevel, NSString * __nullable logContent);
 
@@ -142,8 +142,8 @@ FOUNDATION_EXTERN NSString *const TUILogoutFailNotification;
 + (void)logout:(__nullable TSucc)succ
           fail:(__nullable TFail)fail;
 
-+ (void)addLoginListener:(id<TUILoginListener>)listener;
-+ (void)removeLoginListener:(id<TUILoginListener>)listener;
++ (void)addLoginListener:(id<TDeskLoginListener>)listener;
++ (void)removeLoginListener:(id<TDeskLoginListener>)listener;
 
 + (int)getSdkAppID;
 + (BOOL)isUserLogined;

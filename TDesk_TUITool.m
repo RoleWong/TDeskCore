@@ -36,96 +36,96 @@ static NSMutableDictionary * gIMErrorMsgMap = nil;
     /////////////////////////////////////////////////////////////////////////////////
 
     //General error code
-    [map setObject:TUIKitLocalizableString(TUIKitErrorInProcess) forKey:@(ERR_IN_PROGESS)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorInvalidParameters) forKey:@(ERR_INVALID_PARAMETERS)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorIOOperateFaild) forKey:@(ERR_IO_OPERATION_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorInvalidJson) forKey:@(ERR_INVALID_JSON)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorOutOfMemory) forKey:@(ERR_OUT_OF_MEMORY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorParseResponseFaild) forKey:@(ERR_PARSE_RESPONSE_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSerializeReqFaild) forKey:@(ERR_SERIALIZE_REQ_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNotInit) forKey:@(ERR_SDK_NOT_INITIALIZED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorLoadMsgFailed) forKey:@(ERR_LOADMSG_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorDatabaseOperateFailed) forKey:@(ERR_DATABASE_OPERATE_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorCrossThread) forKey:@(ERR_SDK_COMM_CROSS_THREAD)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorTinyIdEmpty) forKey:@(ERR_SDK_COMM_TINYID_EMPTY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorInvalidIdentifier) forKey:@(ERR_SDK_COMM_INVALID_IDENTIFIER)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorFileNotFound) forKey:@(ERR_SDK_COMM_FILE_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorFileTooLarge) forKey:@(ERR_SDK_COMM_FILE_TOO_LARGE)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorEmptyFile) forKey:@(ERR_SDK_COMM_FILE_SIZE_EMPTY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorFileOpenFailed) forKey:@(ERR_SDK_COMM_FILE_OPEN_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorUnsupporInterface) forKey:@(ERR_SDK_INTERFACE_NOT_SUPPORT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorInProcess) forKey:@(ERR_IN_PROGESS)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorInvalidParameters) forKey:@(ERR_INVALID_PARAMETERS)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorIOOperateFaild) forKey:@(ERR_IO_OPERATION_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorInvalidJson) forKey:@(ERR_INVALID_JSON)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorOutOfMemory) forKey:@(ERR_OUT_OF_MEMORY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorParseResponseFaild) forKey:@(ERR_PARSE_RESPONSE_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSerializeReqFaild) forKey:@(ERR_SERIALIZE_REQ_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNotInit) forKey:@(ERR_SDK_NOT_INITIALIZED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorLoadMsgFailed) forKey:@(ERR_LOADMSG_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorDatabaseOperateFailed) forKey:@(ERR_DATABASE_OPERATE_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorCrossThread) forKey:@(ERR_SDK_COMM_CROSS_THREAD)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorTinyIdEmpty) forKey:@(ERR_SDK_COMM_TINYID_EMPTY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorInvalidIdentifier) forKey:@(ERR_SDK_COMM_INVALID_IDENTIFIER)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorFileNotFound) forKey:@(ERR_SDK_COMM_FILE_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorFileTooLarge) forKey:@(ERR_SDK_COMM_FILE_TOO_LARGE)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorEmptyFile) forKey:@(ERR_SDK_COMM_FILE_SIZE_EMPTY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorFileOpenFailed) forKey:@(ERR_SDK_COMM_FILE_OPEN_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorUnsupporInterface) forKey:@(ERR_SDK_INTERFACE_NOT_SUPPORT)];
     
     // Account
-    [map setObject:TUIKitLocalizableString(TUIKitErrorNotLogin) forKey:@(ERR_SDK_NOT_LOGGED_IN)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorNoPreviousLogin) forKey:@(ERR_NO_PREVIOUS_LOGIN)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorUserSigExpired) forKey:@(ERR_USER_SIG_EXPIRED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorLoginKickedOffByOther) forKey:@(ERR_LOGIN_KICKED_OFF_BY_OTHER)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorTLSSDKInit) forKey:@(ERR_SDK_ACCOUNT_TLS_INIT_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorTLSSDKUninit) forKey:@(ERR_SDK_ACCOUNT_TLS_NOT_INITIALIZED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorTLSSDKTRANSPackageFormat) forKey:@(ERR_SDK_ACCOUNT_TLS_TRANSPKG_ERROR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorTLSDecrypt) forKey:@(ERR_SDK_ACCOUNT_TLS_DECRYPT_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorTLSSDKRequest) forKey:@(ERR_SDK_ACCOUNT_TLS_REQUEST_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorTLSSDKRequestTimeout) forKey:@(ERR_SDK_ACCOUNT_TLS_REQUEST_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorNotLogin) forKey:@(ERR_SDK_NOT_LOGGED_IN)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorNoPreviousLogin) forKey:@(ERR_NO_PREVIOUS_LOGIN)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorUserSigExpired) forKey:@(ERR_USER_SIG_EXPIRED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorLoginKickedOffByOther) forKey:@(ERR_LOGIN_KICKED_OFF_BY_OTHER)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorTLSSDKInit) forKey:@(ERR_SDK_ACCOUNT_TLS_INIT_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorTLSSDKUninit) forKey:@(ERR_SDK_ACCOUNT_TLS_NOT_INITIALIZED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorTLSSDKTRANSPackageFormat) forKey:@(ERR_SDK_ACCOUNT_TLS_TRANSPKG_ERROR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorTLSDecrypt) forKey:@(ERR_SDK_ACCOUNT_TLS_DECRYPT_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorTLSSDKRequest) forKey:@(ERR_SDK_ACCOUNT_TLS_REQUEST_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorTLSSDKRequestTimeout) forKey:@(ERR_SDK_ACCOUNT_TLS_REQUEST_TIMEOUT)];
     
     // Message
-    [map setObject:TUIKitLocalizableString(TUIKitErrorInvalidConveration) forKey:@(ERR_INVALID_CONVERSATION)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorFileTransAuthFailed) forKey:@(ERR_FILE_TRANS_AUTH_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorFileTransNoServer) forKey:@(ERR_FILE_TRANS_NO_SERVER)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorFileTransUploadFailed) forKey:@(ERR_FILE_TRANS_UPLOAD_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorFileTransUploadFailedNotImage) forKey:@(ERR_IMAGE_UPLOAD_FAILED_NOTIMAGE)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorFileTransDownloadFailed) forKey:@(ERR_FILE_TRANS_DOWNLOAD_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorHTTPRequestFailed) forKey:@(ERR_HTTP_REQ_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorInvalidMsgElem) forKey:@(ERR_INVALID_MSG_ELEM)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorInvalidSDKObject) forKey:@(ERR_INVALID_SDK_OBJECT)];
-    [map setObject:TUIKitLocalizableString(TUIKitSDKMsgBodySizeLimit) forKey:@(ERR_SDK_MSG_BODY_SIZE_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKMsgKeyReqDifferRsp) forKey:@(ERR_SDK_MSG_KEY_REQ_DIFFER_RSP)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorInvalidConveration) forKey:@(ERR_INVALID_CONVERSATION)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorFileTransAuthFailed) forKey:@(ERR_FILE_TRANS_AUTH_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorFileTransNoServer) forKey:@(ERR_FILE_TRANS_NO_SERVER)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorFileTransUploadFailed) forKey:@(ERR_FILE_TRANS_UPLOAD_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorFileTransUploadFailedNotImage) forKey:@(ERR_IMAGE_UPLOAD_FAILED_NOTIMAGE)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorFileTransDownloadFailed) forKey:@(ERR_FILE_TRANS_DOWNLOAD_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorHTTPRequestFailed) forKey:@(ERR_HTTP_REQ_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorInvalidMsgElem) forKey:@(ERR_INVALID_MSG_ELEM)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorInvalidSDKObject) forKey:@(ERR_INVALID_SDK_OBJECT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitSDKMsgBodySizeLimit) forKey:@(ERR_SDK_MSG_BODY_SIZE_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKMsgKeyReqDifferRsp) forKey:@(ERR_SDK_MSG_KEY_REQ_DIFFER_RSP)];
     
     // Group
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKGroupInvalidID) forKey:@(ERR_SDK_GROUP_INVALID_ID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKGroupInvalidName) forKey:@(ERR_SDK_GROUP_INVALID_NAME)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKGroupInvalidIntroduction) forKey:@(ERR_SDK_GROUP_INVALID_INTRODUCTION)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKGroupInvalidNotification) forKey:@(ERR_SDK_GROUP_INVALID_NOTIFICATION)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKGroupInvalidFaceURL) forKey:@(ERR_SDK_GROUP_INVALID_FACE_URL)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKGroupInvalidNameCard) forKey:@(ERR_SDK_GROUP_INVALID_NAME_CARD)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKGroupMemberCountLimit) forKey:@(ERR_SDK_GROUP_MEMBER_COUNT_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKGroupJoinPrivateGroupDeny) forKey:@(ERR_SDK_GROUP_JOIN_PRIVATE_GROUP_DENY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKGroupInviteSuperDeny) forKey:@(ERR_SDK_GROUP_INVITE_SUPER_DENY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKGroupInviteNoMember) forKey:@(ERR_SDK_GROUP_INVITE_NO_MEMBER)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKGroupInvalidID) forKey:@(ERR_SDK_GROUP_INVALID_ID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKGroupInvalidName) forKey:@(ERR_SDK_GROUP_INVALID_NAME)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKGroupInvalidIntroduction) forKey:@(ERR_SDK_GROUP_INVALID_INTRODUCTION)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKGroupInvalidNotification) forKey:@(ERR_SDK_GROUP_INVALID_NOTIFICATION)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKGroupInvalidFaceURL) forKey:@(ERR_SDK_GROUP_INVALID_FACE_URL)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKGroupInvalidNameCard) forKey:@(ERR_SDK_GROUP_INVALID_NAME_CARD)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKGroupMemberCountLimit) forKey:@(ERR_SDK_GROUP_MEMBER_COUNT_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKGroupJoinPrivateGroupDeny) forKey:@(ERR_SDK_GROUP_JOIN_PRIVATE_GROUP_DENY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKGroupInviteSuperDeny) forKey:@(ERR_SDK_GROUP_INVITE_SUPER_DENY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKGroupInviteNoMember) forKey:@(ERR_SDK_GROUP_INVITE_NO_MEMBER)];
     
     // Relationship
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKFriendShipInvalidProfileKey) forKey:@(ERR_SDK_FRIENDSHIP_INVALID_PROFILE_KEY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKFriendshipInvalidAddRemark) forKey:@(ERR_SDK_FRIENDSHIP_INVALID_ADD_REMARK)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKFriendshipInvalidAddWording) forKey:@(ERR_SDK_FRIENDSHIP_INVALID_ADD_WORDING)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKFriendshipInvalidAddSource) forKey:@(ERR_SDK_FRIENDSHIP_INVALID_ADD_SOURCE)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKFriendshipFriendGroupEmpty) forKey:@(ERR_SDK_FRIENDSHIP_FRIEND_GROUP_EMPTY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKFriendShipInvalidProfileKey) forKey:@(ERR_SDK_FRIENDSHIP_INVALID_PROFILE_KEY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKFriendshipInvalidAddRemark) forKey:@(ERR_SDK_FRIENDSHIP_INVALID_ADD_REMARK)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKFriendshipInvalidAddWording) forKey:@(ERR_SDK_FRIENDSHIP_INVALID_ADD_WORDING)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKFriendshipInvalidAddSource) forKey:@(ERR_SDK_FRIENDSHIP_INVALID_ADD_SOURCE)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKFriendshipFriendGroupEmpty) forKey:@(ERR_SDK_FRIENDSHIP_FRIEND_GROUP_EMPTY)];
     
     // Network
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetEncodeFailed) forKey:@(ERR_SDK_NET_ENCODE_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetDecodeFailed) forKey:@(ERR_SDK_NET_DECODE_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetAuthInvalid) forKey:@(ERR_SDK_NET_AUTH_INVALID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetCompressFailed) forKey:@(ERR_SDK_NET_COMPRESS_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetUncompressFaile) forKey:@(ERR_SDK_NET_UNCOMPRESS_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetFreqLimit) forKey:@(ERR_SDK_NET_FREQ_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKnetReqCountLimit) forKey:@(ERR_SDK_NET_REQ_COUNT_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetDisconnect) forKey:@(ERR_SDK_NET_DISCONNECT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetAllreadyConn) forKey:@(ERR_SDK_NET_ALLREADY_CONN)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetConnTimeout) forKey:@(ERR_SDK_NET_CONN_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetConnRefuse) forKey:@(ERR_SDK_NET_CONN_REFUSE)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetNetUnreach) forKey:@(ERR_SDK_NET_NET_UNREACH)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetSocketNoBuff) forKey:@(ERR_SDK_NET_SOCKET_NO_BUFF)];
-    [map setObject:TUIKitLocalizableString(TUIKitERRORSDKNetResetByPeer) forKey:@(ERR_SDK_NET_RESET_BY_PEER)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetSOcketInvalid) forKey:@(ERR_SDK_NET_SOCKET_INVALID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetHostGetAddressFailed) forKey:@(ERR_SDK_NET_HOST_GETADDRINFO_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetConnectReset) forKey:@(ERR_SDK_NET_CONNECT_RESET)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetWaitInQueueTimeout) forKey:@(ERR_SDK_NET_WAIT_INQUEUE_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetWaitSendTimeout) forKey:@(ERR_SDK_NET_WAIT_SEND_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetWaitAckTimeut) forKey:@(ERR_SDK_NET_WAIT_ACK_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKWaitSendRemainingTimeout) forKey:@(ERR_SDK_NET_WAIT_SEND_REMAINING_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetPKGSizeLimit) 
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetEncodeFailed) forKey:@(ERR_SDK_NET_ENCODE_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetDecodeFailed) forKey:@(ERR_SDK_NET_DECODE_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetAuthInvalid) forKey:@(ERR_SDK_NET_AUTH_INVALID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetCompressFailed) forKey:@(ERR_SDK_NET_COMPRESS_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetUncompressFaile) forKey:@(ERR_SDK_NET_UNCOMPRESS_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetFreqLimit) forKey:@(ERR_SDK_NET_FREQ_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKnetReqCountLimit) forKey:@(ERR_SDK_NET_REQ_COUNT_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetDisconnect) forKey:@(ERR_SDK_NET_DISCONNECT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetAllreadyConn) forKey:@(ERR_SDK_NET_ALLREADY_CONN)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetConnTimeout) forKey:@(ERR_SDK_NET_CONN_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetConnRefuse) forKey:@(ERR_SDK_NET_CONN_REFUSE)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetNetUnreach) forKey:@(ERR_SDK_NET_NET_UNREACH)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetSocketNoBuff) forKey:@(ERR_SDK_NET_SOCKET_NO_BUFF)];
+    [map setObject:TDeskKitLocalizableString(TUIKitERRORSDKNetResetByPeer) forKey:@(ERR_SDK_NET_RESET_BY_PEER)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetSOcketInvalid) forKey:@(ERR_SDK_NET_SOCKET_INVALID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetHostGetAddressFailed) forKey:@(ERR_SDK_NET_HOST_GETADDRINFO_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetConnectReset) forKey:@(ERR_SDK_NET_CONNECT_RESET)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetWaitInQueueTimeout) forKey:@(ERR_SDK_NET_WAIT_INQUEUE_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetWaitSendTimeout) forKey:@(ERR_SDK_NET_WAIT_SEND_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetWaitAckTimeut) forKey:@(ERR_SDK_NET_WAIT_ACK_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKWaitSendRemainingTimeout) forKey:@(ERR_SDK_NET_WAIT_SEND_REMAINING_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetPKGSizeLimit) 
             forKey:@(ERR_SDK_NET_PKG_SIZE_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetWaitSendTimeoutNoNetwork) forKey:@(ERR_SDK_NET_WAIT_SEND_TIMEOUT_NO_NETWORK)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetWaitAckTimeoutNoNetwork) forKey:@(ERR_SDK_NET_WAIT_ACK_TIMEOUT_NO_NETWORK)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKNetRemainingTimeoutNoNetwork) forKey:@(ERR_SDK_NET_SEND_REMAINING_TIMEOUT_NO_NETWORK)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetWaitSendTimeoutNoNetwork) forKey:@(ERR_SDK_NET_WAIT_SEND_TIMEOUT_NO_NETWORK)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetWaitAckTimeoutNoNetwork) forKey:@(ERR_SDK_NET_WAIT_ACK_TIMEOUT_NO_NETWORK)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKNetRemainingTimeoutNoNetwork) forKey:@(ERR_SDK_NET_SEND_REMAINING_TIMEOUT_NO_NETWORK)];
 
     
     /////////////////////////////////////////////////////////////////////////////////
@@ -135,250 +135,250 @@ static NSMutableDictionary * gIMErrorMsgMap = nil;
     /////////////////////////////////////////////////////////////////////////////////
 
     // SSO
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKSVRSSOConnectLimit) forKey:@(ERR_SVR_SSO_CONNECT_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKSVRSSOVCode) forKey:@(ERR_SVR_SSO_VCODE)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOEmpeyKey) forKey:@(ERR_SVR_SSO_EMPTY_KEY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOUinInvalid) forKey:@(ERR_SVR_SSO_UIN_INVALID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOVCodeTimeout) forKey:@(ERR_SVR_SSO_VCODE_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOCookieInvalid) forKey:@(ERR_SVR_SSO_COOKIE_INVALID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSODownTips) forKey:@(ERR_SVR_SSO_DOWN_TIP)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSODisconnect) forKey:@(ERR_SVR_SSO_DISCONNECT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOIdentifierInvalid) forKey:@(ERR_SVR_SSO_IDENTIFIER_INVALID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOClientClose) forKey:@(ERR_SVR_SSO_CLIENT_CLOSE)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOMSFSDKQuit) forKey:@(ERR_SVR_SSO_MSFSDK_QUIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOUnsupport) forKey:@(ERR_SVR_SSO_UNSURPPORT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOPrepaidArrears) forKey:@(ERR_SVR_SSO_PREPAID_ARREARS)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOPacketWrong) forKey:@(ERR_SVR_SSO_PACKET_WRONG)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOAppidBlackList) forKey:@(ERR_SVR_SSO_APPID_BLACK_LIST)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOCmdBlackList) forKey:@(ERR_SVR_SSO_CMD_BLACK_LIST)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOAppidWithoutUsing) forKey:@(ERR_SVR_SSO_APPID_WITHOUT_USING)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOFreqLimit) forKey:@(ERR_SVR_SSO_FREQ_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRSSOOverload) forKey:@(ERR_SVR_SSO_OVERLOAD)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKSVRSSOConnectLimit) forKey:@(ERR_SVR_SSO_CONNECT_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKSVRSSOVCode) forKey:@(ERR_SVR_SSO_VCODE)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOEmpeyKey) forKey:@(ERR_SVR_SSO_EMPTY_KEY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOUinInvalid) forKey:@(ERR_SVR_SSO_UIN_INVALID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOVCodeTimeout) forKey:@(ERR_SVR_SSO_VCODE_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOCookieInvalid) forKey:@(ERR_SVR_SSO_COOKIE_INVALID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSODownTips) forKey:@(ERR_SVR_SSO_DOWN_TIP)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSODisconnect) forKey:@(ERR_SVR_SSO_DISCONNECT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOIdentifierInvalid) forKey:@(ERR_SVR_SSO_IDENTIFIER_INVALID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOClientClose) forKey:@(ERR_SVR_SSO_CLIENT_CLOSE)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOMSFSDKQuit) forKey:@(ERR_SVR_SSO_MSFSDK_QUIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOUnsupport) forKey:@(ERR_SVR_SSO_UNSURPPORT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOPrepaidArrears) forKey:@(ERR_SVR_SSO_PREPAID_ARREARS)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOPacketWrong) forKey:@(ERR_SVR_SSO_PACKET_WRONG)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOAppidBlackList) forKey:@(ERR_SVR_SSO_APPID_BLACK_LIST)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOCmdBlackList) forKey:@(ERR_SVR_SSO_CMD_BLACK_LIST)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOAppidWithoutUsing) forKey:@(ERR_SVR_SSO_APPID_WITHOUT_USING)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOFreqLimit) forKey:@(ERR_SVR_SSO_FREQ_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRSSOOverload) forKey:@(ERR_SVR_SSO_OVERLOAD)];
     
     // Resource
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRResNotFound) forKey:@(ERR_SVR_RES_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRResAccessDeny) forKey:@(ERR_SVR_RES_ACCESS_DENY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRResSizeLimit) forKey:@(ERR_SVR_RES_SIZE_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRResSendCancel) forKey:@(ERR_SVR_RES_SEND_CANCEL)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRResReadFailed) forKey:@(ERR_SVR_RES_READ_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRResTransferTimeout) forKey:@(ERR_SVR_RES_TRANSFER_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRResInvalidParameters) forKey:@(ERR_SVR_RES_INVALID_PARAMETERS)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRResNotFound) forKey:@(ERR_SVR_RES_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRResAccessDeny) forKey:@(ERR_SVR_RES_ACCESS_DENY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRResSizeLimit) forKey:@(ERR_SVR_RES_SIZE_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRResSendCancel) forKey:@(ERR_SVR_RES_SEND_CANCEL)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRResReadFailed) forKey:@(ERR_SVR_RES_READ_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRResTransferTimeout) forKey:@(ERR_SVR_RES_TRANSFER_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRResInvalidParameters) forKey:@(ERR_SVR_RES_INVALID_PARAMETERS)];
     
     // Common
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonInvalidHttpUrl) forKey:@(ERR_SVR_COMM_INVALID_HTTP_URL)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommomReqJsonParseFailed) forKey:@(ERR_SVR_COMM_REQ_JSON_PARSE_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonInvalidAccount) forKey:@(ERR_SVR_COMM_INVALID_ACCOUNT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonInvalidAccount) forKey:@(ERR_SVR_COMM_INVALID_ACCOUNT_EX)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonInvalidSdkappid) forKey:@(ERR_SVR_COMM_INVALID_SDKAPPID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonRestFreqLimit) forKey:@(ERR_SVR_COMM_REST_FREQ_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonRequestTimeout) forKey:@(ERR_SVR_COMM_REQUEST_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonInvalidRes) forKey:@(ERR_SVR_COMM_INVALID_RES)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonIDNotAdmin) forKey:@(ERR_SVR_COMM_ID_NOT_ADMIN)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonSdkappidFreqLimit) forKey:@(ERR_SVR_COMM_SDKAPPID_FREQ_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonSdkappidMiss) forKey:@(ERR_SVR_COMM_SDKAPPID_MISS)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonRspJsonParseFailed) forKey:@(ERR_SVR_COMM_RSP_JSON_PARSE_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonExchangeAccountTimeout) forKey:@(ERR_SVR_COMM_EXCHANGE_ACCOUNT_TIMEUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonInvalidIdFormat) forKey:@(ERR_SVR_COMM_INVALID_ID_FORMAT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonSDkappidForbidden) forKey:@(ERR_SVR_COMM_SDKAPPID_FORBIDDEN)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonReqForbidden) forKey:@(ERR_SVR_COMM_REQ_FORBIDDEN)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonReqFreqLimit) forKey:@(ERR_SVR_COMM_REQ_FREQ_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonReqFreqLimit) forKey:@(ERR_SVR_COMM_REQ_FREQ_LIMIT_EX)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonInvalidService) forKey:@(ERR_SVR_COMM_INVALID_SERVICE)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonSensitiveText) forKey:@(ERR_SVR_COMM_SENSITIVE_TEXT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRCommonBodySizeLimit) forKey:@(ERR_SVR_COMM_BODY_SIZE_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonInvalidHttpUrl) forKey:@(ERR_SVR_COMM_INVALID_HTTP_URL)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommomReqJsonParseFailed) forKey:@(ERR_SVR_COMM_REQ_JSON_PARSE_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonInvalidAccount) forKey:@(ERR_SVR_COMM_INVALID_ACCOUNT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonInvalidAccount) forKey:@(ERR_SVR_COMM_INVALID_ACCOUNT_EX)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonInvalidSdkappid) forKey:@(ERR_SVR_COMM_INVALID_SDKAPPID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonRestFreqLimit) forKey:@(ERR_SVR_COMM_REST_FREQ_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonRequestTimeout) forKey:@(ERR_SVR_COMM_REQUEST_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonInvalidRes) forKey:@(ERR_SVR_COMM_INVALID_RES)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonIDNotAdmin) forKey:@(ERR_SVR_COMM_ID_NOT_ADMIN)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonSdkappidFreqLimit) forKey:@(ERR_SVR_COMM_SDKAPPID_FREQ_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonSdkappidMiss) forKey:@(ERR_SVR_COMM_SDKAPPID_MISS)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonRspJsonParseFailed) forKey:@(ERR_SVR_COMM_RSP_JSON_PARSE_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonExchangeAccountTimeout) forKey:@(ERR_SVR_COMM_EXCHANGE_ACCOUNT_TIMEUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonInvalidIdFormat) forKey:@(ERR_SVR_COMM_INVALID_ID_FORMAT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonSDkappidForbidden) forKey:@(ERR_SVR_COMM_SDKAPPID_FORBIDDEN)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonReqForbidden) forKey:@(ERR_SVR_COMM_REQ_FORBIDDEN)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonReqFreqLimit) forKey:@(ERR_SVR_COMM_REQ_FREQ_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonReqFreqLimit) forKey:@(ERR_SVR_COMM_REQ_FREQ_LIMIT_EX)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonInvalidService) forKey:@(ERR_SVR_COMM_INVALID_SERVICE)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonSensitiveText) forKey:@(ERR_SVR_COMM_SENSITIVE_TEXT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRCommonBodySizeLimit) forKey:@(ERR_SVR_COMM_BODY_SIZE_LIMIT)];
     
     // Account
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountUserSigExpired) forKey:@(ERR_SVR_ACCOUNT_USERSIG_EXPIRED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountUserSigEmpty) forKey:@(ERR_SVR_ACCOUNT_USERSIG_EMPTY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountUserSigCheckFailed) forKey:@(ERR_SVR_ACCOUNT_USERSIG_CHECK_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountUserSigCheckFailed) forKey:@(ERR_SVR_ACCOUNT_USERSIG_CHECK_FAILED_EX)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountUserSigMismatchPublicKey) forKey:@(ERR_SVR_ACCOUNT_USERSIG_MISMATCH_PUBLICKEY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountUserSigMismatchId) forKey:@(ERR_SVR_ACCOUNT_USERSIG_MISMATCH_ID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountUserSigMismatchSdkAppid) forKey:@(ERR_SVR_ACCOUNT_USERSIG_MISMATCH_SDKAPPID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountUserSigPublicKeyNotFound) forKey:@(ERR_SVR_ACCOUNT_USERSIG_PUBLICKEY_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountUserSigSdkAppidNotFount) forKey:@(ERR_SVR_ACCOUNT_SDKAPPID_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountInvalidUserSig) forKey:@(ERR_SVR_ACCOUNT_INVALID_USERSIG)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountNotFound) forKey:@(ERR_SVR_ACCOUNT_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountSecRstr) forKey:@(ERR_SVR_ACCOUNT_SEC_RSTR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountInternalTimeout) forKey:@(ERR_SVR_ACCOUNT_INTERNAL_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountInvalidCount) forKey:@(ERR_SVR_ACCOUNT_INVALID_COUNT)];
-    [map setObject:TUIKitLocalizableString(TUIkitErrorSVRAccountINvalidParameters) forKey:@(ERR_SVR_ACCOUNT_INVALID_PARAMETERS)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountAdminRequired) forKey:@(ERR_SVR_ACCOUNT_ADMIN_REQUIRED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountLowSDKVersion) forKey:@(ERR_SVR_ACCOUNT_LOW_SDK_VERSION)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountFreqLimit) forKey:@(ERR_SVR_ACCOUNT_FREQ_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountBlackList) forKey:@(ERR_SVR_ACCOUNT_BLACKLIST)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountCountLimit) forKey:@(ERR_SVR_ACCOUNT_COUNT_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountInternalError) forKey:@(ERR_SVR_ACCOUNT_INTERNAL_ERROR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorEnableUserStatusOnConsole) forKey:@(ERR_SVR_ACCOUNT_USER_STATUS_DISABLED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountUserSigExpired) forKey:@(ERR_SVR_ACCOUNT_USERSIG_EXPIRED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountUserSigEmpty) forKey:@(ERR_SVR_ACCOUNT_USERSIG_EMPTY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountUserSigCheckFailed) forKey:@(ERR_SVR_ACCOUNT_USERSIG_CHECK_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountUserSigCheckFailed) forKey:@(ERR_SVR_ACCOUNT_USERSIG_CHECK_FAILED_EX)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountUserSigMismatchPublicKey) forKey:@(ERR_SVR_ACCOUNT_USERSIG_MISMATCH_PUBLICKEY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountUserSigMismatchId) forKey:@(ERR_SVR_ACCOUNT_USERSIG_MISMATCH_ID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountUserSigMismatchSdkAppid) forKey:@(ERR_SVR_ACCOUNT_USERSIG_MISMATCH_SDKAPPID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountUserSigPublicKeyNotFound) forKey:@(ERR_SVR_ACCOUNT_USERSIG_PUBLICKEY_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountUserSigSdkAppidNotFount) forKey:@(ERR_SVR_ACCOUNT_SDKAPPID_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountInvalidUserSig) forKey:@(ERR_SVR_ACCOUNT_INVALID_USERSIG)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountNotFound) forKey:@(ERR_SVR_ACCOUNT_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountSecRstr) forKey:@(ERR_SVR_ACCOUNT_SEC_RSTR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountInternalTimeout) forKey:@(ERR_SVR_ACCOUNT_INTERNAL_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountInvalidCount) forKey:@(ERR_SVR_ACCOUNT_INVALID_COUNT)];
+    [map setObject:TDeskKitLocalizableString(TUIkitErrorSVRAccountINvalidParameters) forKey:@(ERR_SVR_ACCOUNT_INVALID_PARAMETERS)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountAdminRequired) forKey:@(ERR_SVR_ACCOUNT_ADMIN_REQUIRED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountLowSDKVersion) forKey:@(ERR_SVR_ACCOUNT_LOW_SDK_VERSION)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountFreqLimit) forKey:@(ERR_SVR_ACCOUNT_FREQ_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountBlackList) forKey:@(ERR_SVR_ACCOUNT_BLACKLIST)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountCountLimit) forKey:@(ERR_SVR_ACCOUNT_COUNT_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountInternalError) forKey:@(ERR_SVR_ACCOUNT_INTERNAL_ERROR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorEnableUserStatusOnConsole) forKey:@(ERR_SVR_ACCOUNT_USER_STATUS_DISABLED)];
     
     // Profile
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRProfileInvalidParameters) forKey:@(ERR_SVR_PROFILE_INVALID_PARAMETERS)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRProfileAccountMiss) forKey:@(ERR_SVR_PROFILE_ACCOUNT_MISS)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRProfileAccountNotFound) forKey:@(ERR_SVR_PROFILE_ACCOUNT_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRProfileAdminRequired) forKey:@(ERR_SVR_PROFILE_ADMIN_REQUIRED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRProfileSensitiveText) forKey:@(ERR_SVR_PROFILE_SENSITIVE_TEXT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRProfileInternalError) forKey:@(ERR_SVR_PROFILE_INTERNAL_ERROR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRProfileReadWritePermissionRequired) forKey:@(ERR_SVR_PROFILE_READ_PERMISSION_REQUIRED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRProfileReadWritePermissionRequired) forKey:@(ERR_SVR_PROFILE_WRITE_PERMISSION_REQUIRED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRProfileTagNotFound) forKey:@(ERR_SVR_PROFILE_TAG_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRProfileSizeLimit) forKey:@(ERR_SVR_PROFILE_SIZE_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRProfileValueError) forKey:@(ERR_SVR_PROFILE_VALUE_ERROR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRProfileInvalidValueFormat) forKey:@(ERR_SVR_PROFILE_INVALID_VALUE_FORMAT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipInvalidParameters) forKey:@(ERR_SVR_FRIENDSHIP_INVALID_PARAMETERS)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipInvalidSdkAppid) forKey:@(ERR_SVR_FRIENDSHIP_INVALID_SDKAPPID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipAccountNotFound) forKey:@(ERR_SVR_FRIENDSHIP_ACCOUNT_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipAdminRequired) forKey:@(ERR_SVR_FRIENDSHIP_ADMIN_REQUIRED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipSensitiveText) forKey:@(ERR_SVR_FRIENDSHIP_SENSITIVE_TEXT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountInternalError) forKey:@(ERR_SVR_FRIENDSHIP_INTERNAL_ERROR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipNetTimeout) forKey:@(ERR_SVR_FRIENDSHIP_NET_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipWriteConflict) forKey:@(ERR_SVR_FRIENDSHIP_WRITE_CONFLICT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipAddFriendDeny) forKey:@(ERR_SVR_FRIENDSHIP_ADD_FRIEND_DENY)];
-    [map setObject:TUIKitLocalizableString(TUIkitErrorSVRFriendshipCountLimit) forKey:@(ERR_SVR_FRIENDSHIP_COUNT_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipGroupCountLimit) forKey:@(ERR_SVR_FRIENDSHIP_GROUP_COUNT_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipPendencyLimit) forKey:@(ERR_SVR_FRIENDSHIP_PENDENCY_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipBlacklistLimit) forKey:@(ERR_SVR_FRIENDSHIP_BLACKLIST_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipPeerFriendLimit) forKey:@(ERR_SVR_FRIENDSHIP_PEER_FRIEND_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipAlreadyFriends) forKey:@(ERR_SVR_FRIENDSHIP_ALREADY_FRIENDS)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipInSelfBlacklist) forKey:@(ERR_SVR_FRIENDSHIP_IN_SELF_BLACKLIST)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipAllowTypeDenyAny) forKey:@(ERR_SVR_FRIENDSHIP_ALLOW_TYPE_DENY_ANY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipInPeerBlackList) forKey:@(ERR_SVR_FRIENDSHIP_IN_PEER_BLACKLIST)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipAllowTypeNeedConfirm) forKey:@(ERR_SVR_FRIENDSHIP_ALLOW_TYPE_NEED_CONFIRM)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipAddFriendSecRstr) forKey:@(ERR_SVR_FRIENDSHIP_ADD_FRIEND_SEC_RSTR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipPendencyNotFound) forKey:@(ERR_SVR_FRIENDSHIP_PENDENCY_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipDelFriendSecRstr) forKey:@(ERR_SVR_FRIENDSHIP_DEL_FRIEND_SEC_RSTR)];
-    [map setObject:TUIKitLocalizableString(TUIKirErrorSVRFriendAccountNotFoundEx) forKey:@(ERR_SVR_FRIENDSHIP_ACCOUNT_NOT_FOUND_EX)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRProfileInvalidParameters) forKey:@(ERR_SVR_PROFILE_INVALID_PARAMETERS)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRProfileAccountMiss) forKey:@(ERR_SVR_PROFILE_ACCOUNT_MISS)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRProfileAccountNotFound) forKey:@(ERR_SVR_PROFILE_ACCOUNT_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRProfileAdminRequired) forKey:@(ERR_SVR_PROFILE_ADMIN_REQUIRED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRProfileSensitiveText) forKey:@(ERR_SVR_PROFILE_SENSITIVE_TEXT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRProfileInternalError) forKey:@(ERR_SVR_PROFILE_INTERNAL_ERROR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRProfileReadWritePermissionRequired) forKey:@(ERR_SVR_PROFILE_READ_PERMISSION_REQUIRED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRProfileReadWritePermissionRequired) forKey:@(ERR_SVR_PROFILE_WRITE_PERMISSION_REQUIRED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRProfileTagNotFound) forKey:@(ERR_SVR_PROFILE_TAG_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRProfileSizeLimit) forKey:@(ERR_SVR_PROFILE_SIZE_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRProfileValueError) forKey:@(ERR_SVR_PROFILE_VALUE_ERROR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRProfileInvalidValueFormat) forKey:@(ERR_SVR_PROFILE_INVALID_VALUE_FORMAT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipInvalidParameters) forKey:@(ERR_SVR_FRIENDSHIP_INVALID_PARAMETERS)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipInvalidSdkAppid) forKey:@(ERR_SVR_FRIENDSHIP_INVALID_SDKAPPID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipAccountNotFound) forKey:@(ERR_SVR_FRIENDSHIP_ACCOUNT_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipAdminRequired) forKey:@(ERR_SVR_FRIENDSHIP_ADMIN_REQUIRED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipSensitiveText) forKey:@(ERR_SVR_FRIENDSHIP_SENSITIVE_TEXT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountInternalError) forKey:@(ERR_SVR_FRIENDSHIP_INTERNAL_ERROR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipNetTimeout) forKey:@(ERR_SVR_FRIENDSHIP_NET_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipWriteConflict) forKey:@(ERR_SVR_FRIENDSHIP_WRITE_CONFLICT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipAddFriendDeny) forKey:@(ERR_SVR_FRIENDSHIP_ADD_FRIEND_DENY)];
+    [map setObject:TDeskKitLocalizableString(TUIkitErrorSVRFriendshipCountLimit) forKey:@(ERR_SVR_FRIENDSHIP_COUNT_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipGroupCountLimit) forKey:@(ERR_SVR_FRIENDSHIP_GROUP_COUNT_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipPendencyLimit) forKey:@(ERR_SVR_FRIENDSHIP_PENDENCY_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipBlacklistLimit) forKey:@(ERR_SVR_FRIENDSHIP_BLACKLIST_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipPeerFriendLimit) forKey:@(ERR_SVR_FRIENDSHIP_PEER_FRIEND_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipAlreadyFriends) forKey:@(ERR_SVR_FRIENDSHIP_ALREADY_FRIENDS)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipInSelfBlacklist) forKey:@(ERR_SVR_FRIENDSHIP_IN_SELF_BLACKLIST)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipAllowTypeDenyAny) forKey:@(ERR_SVR_FRIENDSHIP_ALLOW_TYPE_DENY_ANY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipInPeerBlackList) forKey:@(ERR_SVR_FRIENDSHIP_IN_PEER_BLACKLIST)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipAllowTypeNeedConfirm) forKey:@(ERR_SVR_FRIENDSHIP_ALLOW_TYPE_NEED_CONFIRM)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipAddFriendSecRstr) forKey:@(ERR_SVR_FRIENDSHIP_ADD_FRIEND_SEC_RSTR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipPendencyNotFound) forKey:@(ERR_SVR_FRIENDSHIP_PENDENCY_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipDelFriendSecRstr) forKey:@(ERR_SVR_FRIENDSHIP_DEL_FRIEND_SEC_RSTR)];
+    [map setObject:TDeskKitLocalizableString(TUIKirErrorSVRFriendAccountNotFoundEx) forKey:@(ERR_SVR_FRIENDSHIP_ACCOUNT_NOT_FOUND_EX)];
     // Conversation
-    [map setObject:TUIKitLocalizableString(TUIKirErrorSVRFriendAccountNotFoundEx) forKey:@(ERR_SVR_CONV_ACCOUNT_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipInvalidParameters) forKey:@(ERR_SVR_CONV_INVALID_PARAMETERS)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipAdminRequired) forKey:@(ERR_SVR_CONV_ADMIN_REQUIRED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountInternalError) forKey:@(ERR_SVR_CONV_INTERNAL_ERROR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRFriendshipNetTimeout) forKey:@(ERR_SVR_CONV_NET_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRConvGroupNameLengthLimit) forKey:@(ERR_SVR_CONV_CONV_GROUP_NAME_EXCEED_LENGTH)];
+    [map setObject:TDeskKitLocalizableString(TUIKirErrorSVRFriendAccountNotFoundEx) forKey:@(ERR_SVR_CONV_ACCOUNT_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipInvalidParameters) forKey:@(ERR_SVR_CONV_INVALID_PARAMETERS)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipAdminRequired) forKey:@(ERR_SVR_CONV_ADMIN_REQUIRED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountInternalError) forKey:@(ERR_SVR_CONV_INTERNAL_ERROR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRFriendshipNetTimeout) forKey:@(ERR_SVR_CONV_NET_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRConvGroupNameLengthLimit) forKey:@(ERR_SVR_CONV_CONV_GROUP_NAME_EXCEED_LENGTH)];
     
     // Message
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgPkgParseFailed) forKey:@(ERR_SVR_MSG_PKG_PARSE_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgInternalAuthFailed) forKey:@(ERR_SVR_MSG_INTERNAL_AUTH_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgInvalidId) forKey:@(ERR_SVR_MSG_INVALID_ID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgNetError) forKey:@(ERR_SVR_MSG_NET_ERROR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgPushDeny) forKey:@(ERR_SVR_MSG_PUSH_DENY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgInPeerBlackList) forKey:@(ERR_SVR_MSG_IN_PEER_BLACKLIST)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgBothNotFriend) forKey:@(ERR_SVR_MSG_BOTH_NOT_FRIEND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgNotPeerFriend) forKey:@(ERR_SVR_MSG_NOT_PEER_FRIEND)];
-    [map setObject:TUIKitLocalizableString(TUIkitErrorSVRMsgNotSelfFriend) forKey:@(ERR_SVR_MSG_NOT_SELF_FRIEND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgShutupDeny) forKey:@(ERR_SVR_MSG_SHUTUP_DENY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgRevokeTimeLimit) forKey:@(ERR_SVR_MSG_REVOKE_TIME_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgDelRambleInternalError) forKey:@(ERR_SVR_MSG_DEL_RAMBLE_INTERNAL_ERROR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgJsonParseFailed) forKey:@(ERR_SVR_MSG_JSON_PARSE_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgInvalidJsonBodyFormat) forKey:@(ERR_SVR_MSG_INVALID_JSON_BODY_FORMAT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgInvalidToAccount) forKey:@(ERR_SVR_MSG_INVALID_TO_ACCOUNT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgInvalidRand) forKey:@(ERR_SVR_MSG_INVALID_RAND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgInvalidTimestamp) forKey:@(ERR_SVR_MSG_INVALID_TIMESTAMP)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgBodyNotArray) forKey:@(ERR_SVR_MSG_BODY_NOT_ARRAY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountAdminRequired) forKey:@(ERR_SVR_MSG_ADMIN_REQUIRED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgInvalidJsonFormat) forKey:@(ERR_SVR_MSG_INVALID_JSON_FORMAT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgToAccountCountLimit) forKey:@(ERR_SVR_MSG_TO_ACCOUNT_COUNT_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgToAccountNotFound) forKey:@(ERR_SVR_MSG_TO_ACCOUNT_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgTimeLimit) forKey:@(ERR_SVR_MSG_TIME_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgInvalidSyncOtherMachine) forKey:@(ERR_SVR_MSG_INVALID_SYNCOTHERMACHINE)];
-    [map setObject:TUIKitLocalizableString(TUIkitErrorSVRMsgInvalidMsgLifeTime) forKey:@(ERR_SVR_MSG_INVALID_MSGLIFETIME)];
-    [map setObject:TUIKitLocalizableString(TUIKirErrorSVRFriendAccountNotFoundEx) forKey:@(ERR_SVR_MSG_ACCOUNT_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRMsgBodySizeLimit) forKey:@(ERR_SVR_MSG_BODY_SIZE_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRmsgLongPollingCountLimit) forKey:@(ERR_SVR_MSG_LONGPOLLING_COUNT_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgPkgParseFailed) forKey:@(ERR_SVR_MSG_PKG_PARSE_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgInternalAuthFailed) forKey:@(ERR_SVR_MSG_INTERNAL_AUTH_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgInvalidId) forKey:@(ERR_SVR_MSG_INVALID_ID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgNetError) forKey:@(ERR_SVR_MSG_NET_ERROR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgPushDeny) forKey:@(ERR_SVR_MSG_PUSH_DENY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgInPeerBlackList) forKey:@(ERR_SVR_MSG_IN_PEER_BLACKLIST)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgBothNotFriend) forKey:@(ERR_SVR_MSG_BOTH_NOT_FRIEND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgNotPeerFriend) forKey:@(ERR_SVR_MSG_NOT_PEER_FRIEND)];
+    [map setObject:TDeskKitLocalizableString(TUIkitErrorSVRMsgNotSelfFriend) forKey:@(ERR_SVR_MSG_NOT_SELF_FRIEND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgShutupDeny) forKey:@(ERR_SVR_MSG_SHUTUP_DENY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgRevokeTimeLimit) forKey:@(ERR_SVR_MSG_REVOKE_TIME_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgDelRambleInternalError) forKey:@(ERR_SVR_MSG_DEL_RAMBLE_INTERNAL_ERROR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgJsonParseFailed) forKey:@(ERR_SVR_MSG_JSON_PARSE_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgInvalidJsonBodyFormat) forKey:@(ERR_SVR_MSG_INVALID_JSON_BODY_FORMAT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgInvalidToAccount) forKey:@(ERR_SVR_MSG_INVALID_TO_ACCOUNT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgInvalidRand) forKey:@(ERR_SVR_MSG_INVALID_RAND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgInvalidTimestamp) forKey:@(ERR_SVR_MSG_INVALID_TIMESTAMP)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgBodyNotArray) forKey:@(ERR_SVR_MSG_BODY_NOT_ARRAY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountAdminRequired) forKey:@(ERR_SVR_MSG_ADMIN_REQUIRED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgInvalidJsonFormat) forKey:@(ERR_SVR_MSG_INVALID_JSON_FORMAT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgToAccountCountLimit) forKey:@(ERR_SVR_MSG_TO_ACCOUNT_COUNT_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgToAccountNotFound) forKey:@(ERR_SVR_MSG_TO_ACCOUNT_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgTimeLimit) forKey:@(ERR_SVR_MSG_TIME_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgInvalidSyncOtherMachine) forKey:@(ERR_SVR_MSG_INVALID_SYNCOTHERMACHINE)];
+    [map setObject:TDeskKitLocalizableString(TUIkitErrorSVRMsgInvalidMsgLifeTime) forKey:@(ERR_SVR_MSG_INVALID_MSGLIFETIME)];
+    [map setObject:TDeskKitLocalizableString(TUIKirErrorSVRFriendAccountNotFoundEx) forKey:@(ERR_SVR_MSG_ACCOUNT_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRMsgBodySizeLimit) forKey:@(ERR_SVR_MSG_BODY_SIZE_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRmsgLongPollingCountLimit) forKey:@(ERR_SVR_MSG_LONGPOLLING_COUNT_LIMIT)];
     
     // Group
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRAccountInternalError) forKey:@(ERR_SVR_GROUP_INTERNAL_ERROR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupApiNameError) forKey:@(ERR_SVR_GROUP_API_NAME_ERROR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRResInvalidParameters) forKey:@(ERR_SVR_GROUP_INVALID_PARAMETERS)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupAccountCountLimit) forKey:@(ERR_SVR_GROUP_ACOUNT_COUNT_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIkitErrorSVRGroupFreqLimit) forKey:@(ERR_SVR_GROUP_FREQ_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupPermissionDeny) forKey:@(ERR_SVR_GROUP_PERMISSION_DENY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupInvalidReq) forKey:@(ERR_SVR_GROUP_INVALID_REQ)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupSuperNotAllowQuit) forKey:@(ERR_SVR_GROUP_SUPER_NOT_ALLOW_QUIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupNotFound) forKey:@(ERR_SVR_GROUP_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupJsonParseFailed) forKey:@(ERR_SVR_GROUP_JSON_PARSE_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupInvalidId) forKey:@(ERR_SVR_GROUP_INVALID_ID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupAllreadyMember) forKey:@(ERR_SVR_GROUP_ALLREADY_MEMBER)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupFullMemberCount) forKey:@(ERR_SVR_GROUP_FULL_MEMBER_COUNT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupInvalidGroupId) forKey:@(ERR_SVR_GROUP_INVALID_GROUPID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupRejectFromThirdParty) forKey:@(ERR_SVR_GROUP_REJECT_FROM_THIRDPARTY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupShutDeny) forKey:@(ERR_SVR_GROUP_SHUTUP_DENY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupRspSizeLimit) forKey:@(ERR_SVR_GROUP_RSP_SIZE_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupAccountNotFound) forKey:@(ERR_SVR_GROUP_ACCOUNT_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupGroupIdInUse) forKey:@(ERR_SVR_GROUP_GROUPID_IN_USED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupSendMsgFreqLimit) forKey:@(ERR_SVR_GROUP_SEND_MSG_FREQ_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupReqAllreadyBeenProcessed) forKey:@(ERR_SVR_GROUP_REQ_ALLREADY_BEEN_PROCESSED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupGroupIdUserdForSuper) forKey:@(ERR_SVR_GROUP_GROUPID_IN_USED_FOR_SUPER)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupSDkAppidDeny) forKey:@(ERR_SVR_GROUP_SDKAPPID_DENY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupRevokeMsgNotFound) forKey:@(ERR_SVR_GROUP_REVOKE_MSG_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupRevokeMsgTimeLimit) forKey:@(ERR_SVR_GROUP_REVOKE_MSG_TIME_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupRevokeMsgDeny) forKey:@(ERR_SVR_GROUP_REVOKE_MSG_DENY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupNotAllowRevokeMsg) forKey:@(ERR_SVR_GROUP_NOT_ALLOW_REVOKE_MSG)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupRemoveMsgDeny) forKey:@(ERR_SVR_GROUP_REMOVE_MSG_DENY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupNotAllowRemoveMsg) forKey:@(ERR_SVR_GROUP_NOT_ALLOW_REMOVE_MSG)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupAvchatRoomCountLimit) forKey:@(ERR_SVR_GROUP_AVCHATROOM_COUNT_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupCountLimit) forKey:@(ERR_SVR_GROUP_COUNT_LIMIT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRGroupMemberCountLimit) forKey:@(ERR_SVR_GROUP_MEMBER_COUNT_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRAccountInternalError) forKey:@(ERR_SVR_GROUP_INTERNAL_ERROR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupApiNameError) forKey:@(ERR_SVR_GROUP_API_NAME_ERROR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRResInvalidParameters) forKey:@(ERR_SVR_GROUP_INVALID_PARAMETERS)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupAccountCountLimit) forKey:@(ERR_SVR_GROUP_ACOUNT_COUNT_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIkitErrorSVRGroupFreqLimit) forKey:@(ERR_SVR_GROUP_FREQ_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupPermissionDeny) forKey:@(ERR_SVR_GROUP_PERMISSION_DENY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupInvalidReq) forKey:@(ERR_SVR_GROUP_INVALID_REQ)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupSuperNotAllowQuit) forKey:@(ERR_SVR_GROUP_SUPER_NOT_ALLOW_QUIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupNotFound) forKey:@(ERR_SVR_GROUP_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupJsonParseFailed) forKey:@(ERR_SVR_GROUP_JSON_PARSE_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupInvalidId) forKey:@(ERR_SVR_GROUP_INVALID_ID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupAllreadyMember) forKey:@(ERR_SVR_GROUP_ALLREADY_MEMBER)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupFullMemberCount) forKey:@(ERR_SVR_GROUP_FULL_MEMBER_COUNT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupInvalidGroupId) forKey:@(ERR_SVR_GROUP_INVALID_GROUPID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupRejectFromThirdParty) forKey:@(ERR_SVR_GROUP_REJECT_FROM_THIRDPARTY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupShutDeny) forKey:@(ERR_SVR_GROUP_SHUTUP_DENY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupRspSizeLimit) forKey:@(ERR_SVR_GROUP_RSP_SIZE_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupAccountNotFound) forKey:@(ERR_SVR_GROUP_ACCOUNT_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupGroupIdInUse) forKey:@(ERR_SVR_GROUP_GROUPID_IN_USED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupSendMsgFreqLimit) forKey:@(ERR_SVR_GROUP_SEND_MSG_FREQ_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupReqAllreadyBeenProcessed) forKey:@(ERR_SVR_GROUP_REQ_ALLREADY_BEEN_PROCESSED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupGroupIdUserdForSuper) forKey:@(ERR_SVR_GROUP_GROUPID_IN_USED_FOR_SUPER)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupSDkAppidDeny) forKey:@(ERR_SVR_GROUP_SDKAPPID_DENY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupRevokeMsgNotFound) forKey:@(ERR_SVR_GROUP_REVOKE_MSG_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupRevokeMsgTimeLimit) forKey:@(ERR_SVR_GROUP_REVOKE_MSG_TIME_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupRevokeMsgDeny) forKey:@(ERR_SVR_GROUP_REVOKE_MSG_DENY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupNotAllowRevokeMsg) forKey:@(ERR_SVR_GROUP_NOT_ALLOW_REVOKE_MSG)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupRemoveMsgDeny) forKey:@(ERR_SVR_GROUP_REMOVE_MSG_DENY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupNotAllowRemoveMsg) forKey:@(ERR_SVR_GROUP_NOT_ALLOW_REMOVE_MSG)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupAvchatRoomCountLimit) forKey:@(ERR_SVR_GROUP_AVCHATROOM_COUNT_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupCountLimit) forKey:@(ERR_SVR_GROUP_COUNT_LIMIT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRGroupMemberCountLimit) forKey:@(ERR_SVR_GROUP_MEMBER_COUNT_LIMIT)];
     
     /////////////////////////////////////////////////////////////////////////////////
     //
     //                      （3）Version 3 deprecated
     //
     /////////////////////////////////////////////////////////////////////////////////
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRNoSuccessResult) forKey:@(ERR_NO_SUCC_RESULT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRToUserInvalid) forKey:@(ERR_TO_USER_INVALID)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRInitCoreFail) forKey:@(ERR_INIT_CORE_FAIL)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorExpiredSessionNode) forKey:@(ERR_EXPIRED_SESSION_NODE)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorLoggedOutBeforeLoginFinished) forKey:@(ERR_LOGGED_OUT_BEFORE_LOGIN_FINISHED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorTLSSDKNotInitialized) forKey:@(ERR_TLSSDK_NOT_INITIALIZED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorTLSSDKUserNotFound) forKey:@(ERR_TLSSDK_USER_NOT_FOUND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorBindFaildRegTimeout) forKey:@(ERR_BIND_FAIL_REG_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorBindFaildIsBinding) forKey:@(ERR_BIND_FAIL_ISBINDING)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorPacketFailUnknown) forKey:@(ERR_PACKET_FAIL_UNKNOWN)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorPacketFailReqNoNet) forKey:@(ERR_PACKET_FAIL_REQ_NO_NET)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorPacketFailRespNoNet) forKey:@(ERR_PACKET_FAIL_RESP_NO_NET)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorPacketFailReqNoAuth) forKey:@(ERR_PACKET_FAIL_REQ_NO_AUTH)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorPacketFailSSOErr) forKey:@(ERR_PACKET_FAIL_SSO_ERR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSVRRequestTimeout) forKey:@(ERR_PACKET_FAIL_REQ_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorPacketFailRespTimeout) forKey:@(ERR_PACKET_FAIL_RESP_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorFriendshipProxySyncing) forKey:@(ERR_FRIENDSHIP_PROXY_SYNCING)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorFriendshipProxySyncedFail) forKey:@(ERR_FRIENDSHIP_PROXY_SYNCED_FAIL)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorFriendshipProxyLocalCheckErr) forKey:@(ERR_FRIENDSHIP_PROXY_LOCAL_CHECK_ERR)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorGroupInvalidField) forKey:@(ERR_GROUP_INVALID_FIELD)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorGroupStoreageDisabled) forKey:@(ERR_GROUP_STORAGE_DISABLED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorLoadGrpInfoFailed) forKey:@(ERR_LOADGRPINFO_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqNoNetOnReq) forKey:@(ERR_REQ_NO_NET_ON_REQ)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqNoNetOnResp) forKey:@(ERR_REQ_NO_NET_ON_RSP)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorServiceNotReady) forKey:@(ERR_SERIVCE_NOT_READY)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorLoginAuthFailed) forKey:@(ERR_LOGIN_AUTH_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorNeverConnectAfterLaunch) forKey:@(ERR_NEVER_CONNECT_AFTER_LAUNCH)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqFailed) forKey:@(ERR_REQ_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqInvaidReq) forKey:@(ERR_REQ_INVALID_REQ)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqOnverLoaded) forKey:@(ERR_REQ_OVERLOADED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqKickOff) forKey:@(ERR_REQ_KICK_OFF)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqServiceSuspend) forKey:@(ERR_REQ_SERVICE_SUSPEND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqInvalidSign) forKey:@(ERR_REQ_INVALID_SIGN)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqInvalidCookie) forKey:@(ERR_REQ_INVALID_COOKIE)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorLoginTlsRspParseFailed) forKey:@(ERR_LOGIN_TLS_RSP_PARSE_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorLoginOpenMsgTimeout) forKey:@(ERR_LOGIN_OPENMSG_TIMEOUT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorLoginOpenMsgRspParseFailed) forKey:@(ERR_LOGIN_OPENMSG_RSP_PARSE_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorLoginTslDecryptFailed) forKey:@(ERR_LOGIN_TLS_DECRYPT_FAILED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorWifiNeedAuth) forKey:@(ERR_WIFI_NEED_AUTH)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorUserCanceled) forKey:@(ERR_USER_CANCELED)];
-    [map setObject:TUIKitLocalizableString(TUIkitErrorRevokeTimeLimitExceed) forKey:@(ERR_REVOKE_TIME_LIMIT_EXCEED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorLackUGExt) forKey:@(ERR_LACK_UGC_EXT)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorAutoLoginNeedUserSig) forKey:@(ERR_AUTOLOGIN_NEED_USERSIG)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorQALNoShortConneAvailable) forKey:@(ERR_QAL_NO_SHORT_CONN_AVAILABLE)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqContentAttach) forKey:@(ERR_REQ_CONTENT_ATTACK)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorLoginSigExpire) forKey:@(ERR_LOGIN_SIG_EXPIRE)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorSDKHadInit) forKey:@(ERR_SDK_HAD_INITIALIZED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorOpenBDHBase) forKey:@(ERR_OPENBDH_BASE)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorRequestNoNetOnReq) forKey:@(ERR_REQUEST_NO_NET_ONREQ)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorRequestNoNetOnRsp) forKey:@(ERR_REQUEST_NO_NET_ONRSP)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorRequestOnverLoaded) forKey:@(ERR_REQUEST_OVERLOADED)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqKickOff) forKey:@(ERR_REQUEST_KICK_OFF)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqServiceSuspend) forKey:@(ERR_REQUEST_SERVICE_SUSPEND)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqInvalidSign) forKey:@(ERR_REQUEST_INVALID_SIGN)];
-    [map setObject:TUIKitLocalizableString(TUIKitErrorReqInvalidCookie) forKey:@(ERR_REQUEST_INVALID_COOKIE)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRNoSuccessResult) forKey:@(ERR_NO_SUCC_RESULT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRToUserInvalid) forKey:@(ERR_TO_USER_INVALID)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRInitCoreFail) forKey:@(ERR_INIT_CORE_FAIL)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorExpiredSessionNode) forKey:@(ERR_EXPIRED_SESSION_NODE)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorLoggedOutBeforeLoginFinished) forKey:@(ERR_LOGGED_OUT_BEFORE_LOGIN_FINISHED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorTLSSDKNotInitialized) forKey:@(ERR_TLSSDK_NOT_INITIALIZED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorTLSSDKUserNotFound) forKey:@(ERR_TLSSDK_USER_NOT_FOUND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorBindFaildRegTimeout) forKey:@(ERR_BIND_FAIL_REG_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorBindFaildIsBinding) forKey:@(ERR_BIND_FAIL_ISBINDING)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorPacketFailUnknown) forKey:@(ERR_PACKET_FAIL_UNKNOWN)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorPacketFailReqNoNet) forKey:@(ERR_PACKET_FAIL_REQ_NO_NET)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorPacketFailRespNoNet) forKey:@(ERR_PACKET_FAIL_RESP_NO_NET)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorPacketFailReqNoAuth) forKey:@(ERR_PACKET_FAIL_REQ_NO_AUTH)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorPacketFailSSOErr) forKey:@(ERR_PACKET_FAIL_SSO_ERR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSVRRequestTimeout) forKey:@(ERR_PACKET_FAIL_REQ_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorPacketFailRespTimeout) forKey:@(ERR_PACKET_FAIL_RESP_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorFriendshipProxySyncing) forKey:@(ERR_FRIENDSHIP_PROXY_SYNCING)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorFriendshipProxySyncedFail) forKey:@(ERR_FRIENDSHIP_PROXY_SYNCED_FAIL)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorFriendshipProxyLocalCheckErr) forKey:@(ERR_FRIENDSHIP_PROXY_LOCAL_CHECK_ERR)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorGroupInvalidField) forKey:@(ERR_GROUP_INVALID_FIELD)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorGroupStoreageDisabled) forKey:@(ERR_GROUP_STORAGE_DISABLED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorLoadGrpInfoFailed) forKey:@(ERR_LOADGRPINFO_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqNoNetOnReq) forKey:@(ERR_REQ_NO_NET_ON_REQ)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqNoNetOnResp) forKey:@(ERR_REQ_NO_NET_ON_RSP)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorServiceNotReady) forKey:@(ERR_SERIVCE_NOT_READY)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorLoginAuthFailed) forKey:@(ERR_LOGIN_AUTH_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorNeverConnectAfterLaunch) forKey:@(ERR_NEVER_CONNECT_AFTER_LAUNCH)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqFailed) forKey:@(ERR_REQ_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqInvaidReq) forKey:@(ERR_REQ_INVALID_REQ)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqOnverLoaded) forKey:@(ERR_REQ_OVERLOADED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqKickOff) forKey:@(ERR_REQ_KICK_OFF)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqServiceSuspend) forKey:@(ERR_REQ_SERVICE_SUSPEND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqInvalidSign) forKey:@(ERR_REQ_INVALID_SIGN)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqInvalidCookie) forKey:@(ERR_REQ_INVALID_COOKIE)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorLoginTlsRspParseFailed) forKey:@(ERR_LOGIN_TLS_RSP_PARSE_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorLoginOpenMsgTimeout) forKey:@(ERR_LOGIN_OPENMSG_TIMEOUT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorLoginOpenMsgRspParseFailed) forKey:@(ERR_LOGIN_OPENMSG_RSP_PARSE_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorLoginTslDecryptFailed) forKey:@(ERR_LOGIN_TLS_DECRYPT_FAILED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorWifiNeedAuth) forKey:@(ERR_WIFI_NEED_AUTH)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorUserCanceled) forKey:@(ERR_USER_CANCELED)];
+    [map setObject:TDeskKitLocalizableString(TUIkitErrorRevokeTimeLimitExceed) forKey:@(ERR_REVOKE_TIME_LIMIT_EXCEED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorLackUGExt) forKey:@(ERR_LACK_UGC_EXT)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorAutoLoginNeedUserSig) forKey:@(ERR_AUTOLOGIN_NEED_USERSIG)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorQALNoShortConneAvailable) forKey:@(ERR_QAL_NO_SHORT_CONN_AVAILABLE)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqContentAttach) forKey:@(ERR_REQ_CONTENT_ATTACK)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorLoginSigExpire) forKey:@(ERR_LOGIN_SIG_EXPIRE)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorSDKHadInit) forKey:@(ERR_SDK_HAD_INITIALIZED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorOpenBDHBase) forKey:@(ERR_OPENBDH_BASE)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorRequestNoNetOnReq) forKey:@(ERR_REQUEST_NO_NET_ONREQ)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorRequestNoNetOnRsp) forKey:@(ERR_REQUEST_NO_NET_ONRSP)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorRequestOnverLoaded) forKey:@(ERR_REQUEST_OVERLOADED)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqKickOff) forKey:@(ERR_REQUEST_KICK_OFF)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqServiceSuspend) forKey:@(ERR_REQUEST_SERVICE_SUSPEND)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqInvalidSign) forKey:@(ERR_REQUEST_INVALID_SIGN)];
+    [map setObject:TDeskKitLocalizableString(TUIKitErrorReqInvalidCookie) forKey:@(ERR_REQUEST_INVALID_COOKIE)];
 }
 + (NSData *)dictionary2JsonData:(NSDictionary *)dict {
     if ([NSJSONSerialization isValidJSONObject:dict]) {
@@ -450,7 +450,7 @@ static NSMutableDictionary * gIMErrorMsgMap = nil;
 
     dispatch_async(queue, ^{
       // The path ends with gif:
-      if ([path tui_containsString:@".gif"]) {
+      if ([path tdesk_containsString:@".gif"]) {
           UIImage *image = [UIImage sd_imageWithGIFData:[NSData dataWithContentsOfFile:path]];
           callback(path, image);
           return;
@@ -800,14 +800,14 @@ static NSMutableDictionary * gIMErrorMsgMap = nil;
     if (isShown) {
         return;
     }
-    NSString *desc = [NSString stringWithFormat:@"%@%@%@", service, TUIKitLocalizableString(TUIKitErrorUnsupportIntefaceDesc), serviceDesc ?: @""];
-    NSArray *buttons = @[ TUIKitLocalizableString(TUIKitErrorUnsupportIntefaceIGotIt), TUIKitLocalizableString(TUIKitErrorUnsupportIntefaceNoMoreAlert) ];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:TUIKitLocalizableString(TUIKitErrorUnsupportIntefaceTitle)
+    NSString *desc = [NSString stringWithFormat:@"%@%@%@", service, TDeskKitLocalizableString(TUIKitErrorUnsupportIntefaceDesc), serviceDesc ?: @""];
+    NSArray *buttons = @[ TDeskKitLocalizableString(TUIKitErrorUnsupportIntefaceIGotIt), TDeskKitLocalizableString(TUIKitErrorUnsupportIntefaceNoMoreAlert) ];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:TDeskKitLocalizableString(TUIKitErrorUnsupportIntefaceTitle)
                                                                              message:desc
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:desc];
     [attrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, desc.length)];
-    [attrStr addAttribute:NSLinkAttributeName value:@"https://" range:[desc rangeOfString:TUIKitLocalizableString(TUIKitErrorUnsupportIntefaceGuidelines)]];
+    [attrStr addAttribute:NSLinkAttributeName value:@"https://" range:[desc rangeOfString:TDeskKitLocalizableString(TUIKitErrorUnsupportIntefaceGuidelines)]];
     [alertController setValue:attrStr forKey:@"attributedMessage"];
     UILabel *msgLabel = [TDeskTool messageLabelInAlertController:alertController];
     msgLabel.userInteractionEnabled = YES;
@@ -835,7 +835,7 @@ static NSMutableDictionary * gIMErrorMsgMap = nil;
     NSString *englishPurchase = @"https://intl.cloud.tencent.com/document/product/1047/36021?lang=en&pg=#changing-configuration";
     NSString *language = [TDeskGlobalization tk_localizableLanguageKey];
     NSURL *url = [NSURL URLWithString:chinesePurchase];
-    if (![language tui_containsString:@"zh-"]) {
+    if (![language tdesk_containsString:@"zh-"]) {
         url = [NSURL URLWithString:englishPurchase];
     }
     [TDeskTool openLinkWithURL:url];
@@ -929,25 +929,25 @@ static NSMutableDictionary * gIMErrorMsgMap = nil;
 
 + (void)showValueAddedUnsupportNeedContactAlertOfService:(NSString *)service onVC:(UIViewController *)vc {
     [self showValueAddedUnsupportAlertOfService:service
-                                    serviceDesc:TUIKitLocalizableString(TUIKitErrorValueAddedUnsupportIntefaceContactDesc)
+                                    serviceDesc:TDeskKitLocalizableString(TUIKitErrorValueAddedUnsupportIntefaceContactDesc)
                                            onVC:vc
-                                  highlightText:TUIKitLocalizableString(TUIKitErrorValueAddedUnsupportIntefaceContactDescHighlight)
+                                  highlightText:TDeskKitLocalizableString(TUIKitErrorValueAddedUnsupportIntefaceContactDescHighlight)
                                             sel:@selector(onTapValueAddedContactLabel)];
 }
 
 + (void)showValueAddedUnsupportNeedPurchaseAlertOfService:(NSString *)service onVC:(UIViewController *)vc {
     [self showValueAddedUnsupportAlertOfService:service
-                                    serviceDesc:TUIKitLocalizableString(TUIKitErrorValueAddedUnsupportIntefacePurchaseDesc)
+                                    serviceDesc:TDeskKitLocalizableString(TUIKitErrorValueAddedUnsupportIntefacePurchaseDesc)
                                            onVC:vc
-                                  highlightText:TUIKitLocalizableString(TUIKitErrorValueAddedUnsupportIntefacePurchaseDescHighlight)
+                                  highlightText:TDeskKitLocalizableString(TUIKitErrorValueAddedUnsupportIntefacePurchaseDescHighlight)
                                             sel:@selector(onTapValueAddedPurchaseLabel)];
 }
 
 + (void)showValueAddedUnsupportAlertOfService:(NSString *)service serviceDesc:(NSString *)serviceDesc onVC:(UIViewController *)vc 
                                 highlightText:(NSString *)text sel:(SEL)selector {
     NSString *desc = [NSString stringWithFormat:@"%@%@", service, serviceDesc ?: @""];
-    NSString *button = TUIKitLocalizableString(TUIKitErrorUnsupportIntefaceIGotIt);
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:TUIKitLocalizableString(TUIKitErrorUnsupportIntefaceTitle)
+    NSString *button = TDeskKitLocalizableString(TUIKitErrorUnsupportIntefaceIGotIt);
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:TDeskKitLocalizableString(TUIKitErrorUnsupportIntefaceTitle)
                                                                              message:desc
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     

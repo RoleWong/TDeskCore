@@ -28,25 +28,25 @@
 }
 
 - (NSString *)showGender {
-    if (self.gender == V2TIM_GENDER_MALE) return TUIKitLocalizableString(Male);
-    if (self.gender == V2TIM_GENDER_FEMALE) return TUIKitLocalizableString(Female);
-    return TUIKitLocalizableString(Unsetted);
+    if (self.gender == V2TIM_GENDER_MALE) return TDeskKitLocalizableString(Male);
+    if (self.gender == V2TIM_GENDER_FEMALE) return TDeskKitLocalizableString(Female);
+    return TDeskKitLocalizableString(Unsetted);
 }
 
 - (NSString *)showSignature {
-    if (self.selfSignature == nil) return TUIKitLocalizableString(TUIKitNoSelfSignature);
-    return [NSString stringWithFormat:TUIKitLocalizableString(TUIKitSelfSignatureFormat), self.selfSignature];
+    if (self.selfSignature == nil) return TDeskKitLocalizableString(TUIKitNoSelfSignature);
+    return [NSString stringWithFormat:TDeskKitLocalizableString(TUIKitSelfSignatureFormat), self.selfSignature];
 }
 
 - (NSString *)showAllowType {
     if (self.allowType == V2TIM_FRIEND_ALLOW_ANY) {
-        return TUIKitLocalizableString(TUIKitAllowTypeAcceptOne);
+        return TDeskKitLocalizableString(TUIKitAllowTypeAcceptOne);
     }
     if (self.allowType == V2TIM_FRIEND_NEED_CONFIRM) {
-        return TUIKitLocalizableString(TUIKitAllowTypeNeedConfirm);
+        return TDeskKitLocalizableString(TUIKitAllowTypeNeedConfirm);
     }
     if (self.allowType == V2TIM_FRIEND_DENY_ANY) {
-        return TUIKitLocalizableString(TUIKitAllowTypeDeclineAll);
+        return TDeskKitLocalizableString(TUIKitAllowTypeDeclineAll);
     }
     return nil;
 }
@@ -362,12 +362,12 @@ static void *gScrollViewBoundsChangeNotificationContext = &gScrollViewBoundsChan
 }
 
 + (void)fetchGroupAvatars:(NSString *)groupID placeholder:(UIImage *)placeholder callback:(void (^)(BOOL success, UIImage *image, NSString *groupID))callback {
-    @tui_weakify(self);
+    @tdesk_weakify(self);
     [[V2TIMManager sharedInstance] getGroupMemberList:groupID
         filter:V2TIM_GROUP_MEMBER_FILTER_ALL
         nextSeq:0
         succ:^(uint64_t nextSeq, NSArray<V2TIMGroupMemberFullInfo *> *memberList) {
-          @tui_strongify(self);
+          @tdesk_strongify(self);
           int i = 0;
           NSMutableArray *groupMemberAvatars = [NSMutableArray arrayWithCapacity:1];
           for (V2TIMGroupMemberFullInfo *member in memberList) {
@@ -395,7 +395,7 @@ static void *gScrollViewBoundsChangeNotificationContext = &gScrollViewBoundsChan
 
           [TDeskGroupAvatar createGroupAvatar:groupMemberAvatars
                                    finished:^(UIImage *groupAvatar) {
-                                     @tui_strongify(self);
+                                     @tdesk_strongify(self);
                                      UIImage *avatar = groupAvatar;
                                      [self cacheGroupAvatar:avatar number:(UInt32)groupMemberAvatars.count groupID:groupID];
 
@@ -575,7 +575,7 @@ static void *gScrollViewBoundsChangeNotificationContext = &gScrollViewBoundsChan
     UIImage *image = [_faceCache objectForKey:path];
     if (!image) {
         // gif extion
-        if ([path tui_containsString:@".gif"]) {
+        if ([path tdesk_containsString:@".gif"]) {
             image = [UIImage sd_imageWithGIFData:[NSData dataWithContentsOfFile:path]];
         }
         else {
@@ -587,7 +587,7 @@ static void *gScrollViewBoundsChangeNotificationContext = &gScrollViewBoundsChan
             }
         }
         if (!image) {
-            image = [_faceCache objectForKey:TUIChatFaceImagePath(@"ic_unknown_image")];
+            image = [_faceCache objectForKey:TDeskChatFaceImagePath(@"ic_unknown_image")];
         }
     }
     return image;
@@ -775,33 +775,33 @@ static void *gScrollViewBoundsChangeNotificationContext = &gScrollViewBoundsChan
 }
 
 @end
-static const void *tui_valueCallbackKey = @"tui_valueCallbackKey";
-static const void *tui_nonValueCallbackKey = @"tui_nonValueCallbackKey";
-static const void *tui_extValueObjKey = @"tui_extValueObjKey";
+static const void *tdesk_valueCallbackKey = @"tdesk_valueCallbackKey";
+static const void *tdesk_nonValueCallbackKey = @"tdesk_nonValueCallbackKey";
+static const void *tdesk_extValueObjKey = @"tdesk_extValueObjKey";
 
 @implementation NSObject (TUIExtValue)
 
-- (void)setTui_valueCallback:(TUIValueCallbck)tui_valueCallback {
-    objc_setAssociatedObject(self, tui_valueCallbackKey, tui_valueCallback, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setTui_valueCallback:(TDeskValueCallbck)tdesk_valueCallback {
+    objc_setAssociatedObject(self, tdesk_valueCallbackKey, tdesk_valueCallback, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (TUIValueCallbck)tui_valueCallback {
-    return objc_getAssociatedObject(self, tui_valueCallbackKey);
+- (TDeskValueCallbck)tdesk_valueCallback {
+    return objc_getAssociatedObject(self, tdesk_valueCallbackKey);
 }
 
-- (void)setTui_nonValueCallback:(TUINonValueCallbck)tui_nonValueCallback {
-    objc_setAssociatedObject(self, tui_nonValueCallbackKey, tui_nonValueCallback, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setTui_nonValueCallback:(TDeskNonValueCallbck)tdesk_nonValueCallback {
+    objc_setAssociatedObject(self, tdesk_nonValueCallbackKey, tdesk_nonValueCallback, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (TUINonValueCallbck)tui_nonValueCallback {
-    return objc_getAssociatedObject(self, tui_nonValueCallbackKey);
+- (TDeskNonValueCallbck)tdesk_nonValueCallback {
+    return objc_getAssociatedObject(self, tdesk_nonValueCallbackKey);
 }
 
-- (void)setTui_extValueObj:(id)tui_extValueObj {
-    objc_setAssociatedObject(self, tui_extValueObjKey, tui_extValueObj, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setTui_extValueObj:(id)tdesk_extValueObj {
+    objc_setAssociatedObject(self, tdesk_extValueObjKey, tdesk_extValueObj, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-- (id)tui_extValueObj {
-    return objc_getAssociatedObject(self, tui_extValueObjKey);
+- (id)tdesk_extValueObj {
+    return objc_getAssociatedObject(self, tdesk_extValueObjKey);
 }
 
 @end

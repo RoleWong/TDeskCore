@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDictionary (TUISafe)
 
-- (id)tui_objectForKey:(NSString *)aKey conformProtocol:(Protocol *)pro;
+- (id)tdesk_objectForKey:(NSString *)aKey conformProtocol:(Protocol *)pro;
 
-- (id)tui_objectForKey:(NSString *)aKey asClass:(Class)cls;
+- (id)tdesk_objectForKey:(NSString *)aKey asClass:(Class)cls;
 
 @end
 

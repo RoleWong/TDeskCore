@@ -12,8 +12,8 @@
 @implementation TDeskCore
 
 + (void)initialize {
-    TDeskRegisterThemeResourcePath(TUICoreThemePath, TUIThemeModuleCore);
-    TDeskRegisterThemeResourcePath(TUIBundlePath(@"TUICoreTheme_Minimalist", TUICoreBundle_Key_Class), TUIThemeModuleCore_Minimalist);
+    TDeskRegisterThemeResourcePath(TDeskCoreThemePath, TUIThemeModuleCore);
+    TDeskRegisterThemeResourcePath(TDeskBundlePath(@"TUICoreTheme_Minimalist", TUICoreBundle_Key_Class), TUIThemeModuleCore_Minimalist);
 }
 
 + (void)registerService:(NSString *)serviceName object:(id<TDeskServiceProtocol>)object {
@@ -35,23 +35,23 @@
 + (id)callService:(NSString *)serviceName
             method:(NSString *)method
              param:(nullable NSDictionary *)param
-    resultCallback:(nullable TUICallServiceResultCallback)resultCallback {
+    resultCallback:(nullable TDeskCallServiceResultCallback)resultCallback {
     return [TDeskServiceManager.shareInstance callService:serviceName method:method param:param resultCallback:resultCallback];
 }
 
 + (void)registerEvent:(NSString *)key subKey:(NSString *)subKey object:(id<TDeskNotificationProtocol>)object {
-    [TUIEventManager.shareInstance registerEvent:key subKey:subKey object:object];
+    [TDeskEventManager.shareInstance registerEvent:key subKey:subKey object:object];
 }
 
 + (void)unRegisterEventByObject:(id<TDeskNotificationProtocol>)object {
-    [TUIEventManager.shareInstance unRegisterEvent:object];
+    [TDeskEventManager.shareInstance unRegisterEvent:object];
 }
 + (void)unRegisterEvent:(nullable NSString *)key subKey:(nullable NSString *)subKey object:(nullable id<TDeskNotificationProtocol>)object {
-    [TUIEventManager.shareInstance unRegisterEvent:key subKey:subKey object:object];
+    [TDeskEventManager.shareInstance unRegisterEvent:key subKey:subKey object:object];
 }
 
 + (void)notifyEvent:(NSString *)key subKey:(NSString *)subKey object:(nullable id)anObject param:(nullable NSDictionary *)param {
-    [TUIEventManager.shareInstance notifyEvent:key subKey:subKey object:anObject param:param];
+    [TDeskEventManager.shareInstance notifyEvent:key subKey:subKey object:anObject param:param];
 }
 
 + (void)registerExtension:(NSString *)extensionID object:(id<TDeskExtensionProtocol>)object {
@@ -94,11 +94,11 @@ static const void *navigateValueCallback = @"navigateValueCallback";
 
 @implementation NSObject (TDeskRoute)
 
-- (void)setNavigateValueCallback:(TUIValueResultCallback)callback {
+- (void)setNavigateValueCallback:(TDeskValueResultCallback)callback {
     objc_setAssociatedObject(self, navigateValueCallback, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (TUIValueResultCallback)navigateValueCallback {
+- (TDeskValueResultCallback)navigateValueCallback {
     return objc_getAssociatedObject(self, navigateValueCallback);
 }
 
@@ -106,7 +106,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
 
 @implementation UIViewController (TDeskRoute)
 
-- (void)pushViewControllerForTDesk:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TUIValueResultCallback)callback {
+- (void)pushViewControllerForTDesk:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TDeskValueResultCallback)callback {
     NSAssert([self isKindOfClass:UINavigationController.class], @"self must be a navigation controller");
     UIViewController *vc = [TDeskObjectFactoryManager.shareInstance createObject:viewControllerKey param:param];
     if ([vc isKindOfClass:UIViewController.class]) {
@@ -117,14 +117,14 @@ static const void *navigateValueCallback = @"navigateValueCallback";
     }
 }
 
-- (void)presentViewControllerForTDesk:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TUIValueResultCallback)callback {
+- (void)presentViewControllerForTDesk:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TDeskValueResultCallback)callback {
     [self presentViewControllerForTDesk:viewControllerKey param:param embbedIn:nil forResult:callback];
 }
 
 - (void)presentViewControllerForTDesk:(NSString *)viewControllerKey
                         param:(nullable NSDictionary *)param
                      embbedIn:(nullable UINavigationController *)navigationVC
-                    forResult:(nullable TUIValueResultCallback)callback {
+                    forResult:(nullable TDeskValueResultCallback)callback {
     UIViewController *vc = [TDeskObjectFactoryManager.shareInstance createObject:viewControllerKey param:param];
     if ([vc isKindOfClass:UIViewController.class]) {
         vc.navigateValueCallback = callback;
@@ -203,7 +203,7 @@ static const void *navigateValueCallback = @"navigateValueCallback";
 - (nullable id)callService:(NSString *)serviceName
                     method:(NSString *)method
                      param:(nullable NSDictionary *)param
-            resultCallback:(nullable TUICallServiceResultCallback)resultCallback {
+            resultCallback:(nullable TDeskCallServiceResultCallback)resultCallback {
     NSAssert(serviceName.length > 0, @"invalid service name");
     NSAssert(method.length > 0, @"invalid method");
 
@@ -231,15 +231,15 @@ static const void *navigateValueCallback = @"navigateValueCallback";
 
 @end
 
-#pragma mark - TUIEvent
+#pragma mark - TDeskEvent
 
-@interface TUIEventManager ()
+@interface TDeskEventManager ()
 
 @property(nonatomic, strong) NSMutableArray<NSDictionary *> *eventList;
 
 @end
 
-@implementation TUIEventManager
+@implementation TDeskEventManager
 
 + (instancetype)shareInstance {
     static id instance = nil;

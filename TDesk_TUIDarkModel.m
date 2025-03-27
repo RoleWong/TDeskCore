@@ -80,7 +80,7 @@
     } else if ([bundleName isEqualToString:TUIChatBundle]) {
         path = TUIChatImagePath(imageName);
     } else if ([bundleName isEqualToString:TUIChatFaceBundle]) {
-        path = TUIChatFaceImagePath(imageName);
+        path = TDeskChatFaceImagePath(imageName);
     } else if ([bundleName isEqualToString:TUIConversationBundle]) {
         path = TUIConversationImagePath(imageName);
     } else if ([bundleName isEqualToString:TUIContactBundle]) {

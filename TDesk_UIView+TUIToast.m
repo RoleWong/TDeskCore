@@ -52,7 +52,7 @@ static const NSString *TUICSToastActiveKey = @"TUICSToastActiveKey";
 static const NSString *TUICSToastActivityViewKey = @"TUICSToastActivityViewKey";
 static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
 
-@interface UIView (TUIToastPrivate)
+@interface UIView (TDeskToastPrivate)
 
 /**
  These private methods are being prefixed with "cs_" to reduce the likelihood of non-obvious
@@ -72,23 +72,23 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
 
 @end
 
-@implementation UIView (TUIToast)
+@implementation UIView (TDeskToast)
 
 #pragma mark - Make Toast Methods
 
 - (void)makeToast:(NSString *)message {
-    [self makeToast:message duration:[TUICSToastManager defaultDuration] position:[TUICSToastManager defaultPosition] style:nil];
+    [self makeToast:message duration:[TDeskCSToastManager defaultDuration] position:[TDeskCSToastManager defaultPosition] style:nil];
 }
 
 - (void)makeToast:(NSString *)message duration:(NSTimeInterval)duration {
-    [self makeToast:message duration:duration position:[TUICSToastManager defaultPosition] style:nil];
+    [self makeToast:message duration:duration position:[TDeskCSToastManager defaultPosition] style:nil];
 }
 
 - (void)makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position {
     [self makeToast:message duration:duration position:position style:nil];
 }
 
-- (void)makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position style:(TUICSToastStyle *)style {
+- (void)makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position style:(TDeskCSToastStyle *)style {
     UIView *toast = [self toastViewForMessage:message title:nil image:nil style:style];
     [self showToast:toast duration:duration position:position completion:nil];
 }
@@ -96,7 +96,7 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
 - (void)makeToastParam:(NSDictionary *)info
               duration:(NSTimeInterval)duration
               position:(id)position
-            style:(TUICSToastStyle *)style
+            style:(TDeskCSToastStyle *)style
        completion:(void (^)(BOOL didTap))completion {
     NSString *message = info[@"message"];
     NSString *title = info[@"title"];
@@ -109,7 +109,7 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
 #pragma mark - Show Toast Methods
 
 - (void)showToast:(UIView *)toast {
-    [self showToast:toast duration:[TUICSToastManager defaultDuration] position:[TUICSToastManager defaultPosition] completion:nil];
+    [self showToast:toast duration:[TDeskCSToastManager defaultDuration] position:[TDeskCSToastManager defaultPosition] completion:nil];
 }
 
 - (void)showToast:(UIView *)toast duration:(NSTimeInterval)duration position:(id)position completion:(void (^)(BOOL didTap))completion {
@@ -119,7 +119,7 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
     // store the completion block on the toast view
     objc_setAssociatedObject(toast, &TUICSToastCompletionKey, completion, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
-    if ([TUICSToastManager isQueueEnabled] && [self.cs_activeToasts count] > 0) {
+    if ([TDeskCSToastManager isQueueEnabled] && [self.cs_activeToasts count] > 0) {
         // we're about to queue this toast view so we need to store the duration and position as well
         objc_setAssociatedObject(toast, &TUICSToastDurationKey, @(duration), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         objc_setAssociatedObject(toast, &TUICSToastPositionKey, position, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -173,7 +173,7 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
     toast.center = [self cs_centerPointForPosition:position withToast:toast];
     toast.alpha = 0.0;
 
-    if ([TUICSToastManager isTapToDismissEnabled]) {
+    if ([TDeskCSToastManager isTapToDismissEnabled]) {
         UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cs_handleToastTapped:)];
         [toast addGestureRecognizer:recognizer];
         toast.userInteractionEnabled = YES;
@@ -184,7 +184,7 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
 
     [self addSubview:toast];
 
-    [UIView animateWithDuration:[[TUICSToastManager sharedStyle] fadeDuration]
+    [UIView animateWithDuration:[[TDeskCSToastManager sharedStyle] fadeDuration]
         delay:0.0
         options:(UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction)
         animations:^{
@@ -205,7 +205,7 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
     NSTimer *timer = (NSTimer *)objc_getAssociatedObject(toast, &TUICSToastTimerKey);
     [timer invalidate];
 
-    [UIView animateWithDuration:[[TUICSToastManager sharedStyle] fadeDuration]
+    [UIView animateWithDuration:[[TDeskCSToastManager sharedStyle] fadeDuration]
         delay:0.0
         options:(UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionBeginFromCurrentState)
         animations:^{
@@ -238,13 +238,13 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
 
 #pragma mark - View Construction
 
-- (UIView *)toastViewForMessage:(NSString *)message title:(NSString *)title image:(UIImage *)image style:(TUICSToastStyle *)style {
+- (UIView *)toastViewForMessage:(NSString *)message title:(NSString *)title image:(UIImage *)image style:(TDeskCSToastStyle *)style {
     // sanity
     if (message == nil && title == nil && image == nil) return nil;
 
     // default to the shared style
     if (style == nil) {
-        style = [TUICSToastManager sharedStyle];
+        style = [TDeskCSToastManager sharedStyle];
     }
 
     // dynamically build a toast view with any combination of message, title, & image
@@ -410,7 +410,7 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
     UIView *existingActivityView = (UIView *)objc_getAssociatedObject(self, &TUICSToastActivityViewKey);
     if (existingActivityView != nil) return;
 
-    TUICSToastStyle *style = [TUICSToastManager sharedStyle];
+    TDeskCSToastStyle *style = [TDeskCSToastManager sharedStyle];
 
     UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, style.activitySize.width, style.activitySize.height)];
     activityView.center = [self cs_centerPointForPosition:position withToast:activityView];
@@ -449,7 +449,7 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
 - (void)hideToastActivity {
     UIView *existingActivityView = (UIView *)objc_getAssociatedObject(self, &TUICSToastActivityViewKey);
     if (existingActivityView != nil) {
-        [UIView animateWithDuration:[[TUICSToastManager sharedStyle] fadeDuration]
+        [UIView animateWithDuration:[[TDeskCSToastManager sharedStyle] fadeDuration]
             delay:0.0
             options:(UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionBeginFromCurrentState)
             animations:^{
@@ -465,7 +465,7 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
 #pragma mark - Helpers
 
 - (CGPoint)cs_centerPointForPosition:(id)point withToast:(UIView *)toast {
-    TUICSToastStyle *style = [TUICSToastManager sharedStyle];
+    TDeskCSToastStyle *style = [TDeskCSToastManager sharedStyle];
 
     UIEdgeInsets safeInsets = UIEdgeInsetsZero;
     if (@available(iOS 11.0, *)) {
@@ -507,7 +507,7 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
 
 @end
 
-@implementation TUICSToastStyle
+@implementation TDeskCSToastStyle
 
 #pragma mark - Constructors
 
@@ -561,9 +561,9 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
 
 @end
 
-@interface TUICSToastManager ()
+@interface TDeskCSToastManager ()
 
-@property(strong, nonatomic) TUICSToastStyle *sharedStyle;
+@property(strong, nonatomic) TDeskCSToastStyle *sharedStyle;
 @property(assign, nonatomic, getter=isTapToDismissEnabled) BOOL tapToDismissEnabled;
 @property(assign, nonatomic, getter=isQueueEnabled) BOOL queueEnabled;
 @property(assign, nonatomic) NSTimeInterval defaultDuration;
@@ -571,12 +571,12 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
 
 @end
 
-@implementation TUICSToastManager
+@implementation TDeskCSToastManager
 
 #pragma mark - Constructors
 
 + (instancetype)sharedManager {
-    static TUICSToastManager *sharedManager = nil;
+    static TDeskCSToastManager *sharedManager = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
       sharedManager = [[self alloc] init];
@@ -588,7 +588,7 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.sharedStyle = [[TUICSToastStyle alloc] initWithDefaultStyle];
+        self.sharedStyle = [[TDeskCSToastStyle alloc] initWithDefaultStyle];
         self.tapToDismissEnabled = YES;
         self.queueEnabled = NO;
         self.defaultDuration = 3.0;
@@ -599,11 +599,11 @@ static const NSString *TUICSToastQueueKey = @"TUICSToastQueueKey";
 
 #pragma mark - Singleton Methods
 
-+ (void)setSharedStyle:(TUICSToastStyle *)sharedStyle {
++ (void)setSharedStyle:(TDeskCSToastStyle *)sharedStyle {
     [[self sharedManager] setSharedStyle:sharedStyle];
 }
 
-+ (TUICSToastStyle *)sharedStyle {
++ (TDeskCSToastStyle *)sharedStyle {
     return [[self sharedManager] sharedStyle];
 }
 

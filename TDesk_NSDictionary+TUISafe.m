@@ -10,7 +10,7 @@
 
 @implementation NSDictionary (TUISafe)
 
-- (id)tui_objectForKey:(NSString *)aKey conformProtocol:(Protocol *)pro {
+- (id)tdesk_objectForKey:(NSString *)aKey conformProtocol:(Protocol *)pro {
     NSParameterAssert(aKey);
     NSParameterAssert(pro);
 
@@ -21,7 +21,7 @@
     return value;
 }
 
-- (id)tui_objectForKey:(NSString *)aKey asClass:(Class)cls {
+- (id)tdesk_objectForKey:(NSString *)aKey asClass:(Class)cls {
     NSParameterAssert(aKey);
     NSParameterAssert(cls);
 

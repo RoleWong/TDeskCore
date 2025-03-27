@@ -12,28 +12,28 @@
 /**
  * Get localized strings in TUIKit
  */
-#define TUIKitLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUIKitLocalizableBundle]
+#define TDeskKitLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUIKitLocalizableBundle]
 
-#define TUICoreLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUICoreLocalizableBundle]
+#define TDeskCoreLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUICoreLocalizableBundle]
 
-#define TUIChatLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUIChatLocalizableBundle]
+#define TDeskChatLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUIChatLocalizableBundle]
 
-#define TUIConversationLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUIConversationLocalizableBundle]
+#define TDeskConversationLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUIConversationLocalizableBundle]
 
-#define TUIContactLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUIContactLocalizableBundle]
+#define TDeskContactLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUIContactLocalizableBundle]
 
-#define TUIGroupLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUIGroupLocalizableBundle]
+#define TDeskGroupLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUIGroupLocalizableBundle]
 
-#define TUISearchLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUISearchLocalizableBundle]
+#define TDeskSearchLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TUISearchLocalizableBundle]
 
-#define TIMCommonLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TIMCommonLocalizableBundle]
+#define TDeskIMCommonLocalizableString(key) [TDeskGlobalization getLocalizedStringForKey:@"" #key "" bundle:TIMCommonLocalizableBundle]
 
 #define isRTL() [TDeskGlobalization getRTLOption]
 
-#define TUICustomLanguageKey @"TUICustomLanguageKey"
-#define TUIChangeLanguageNotification @"TUIChangeLanguageNotification"
+#define TDeskCustomLanguageKey @"TDeskCustomLanguageKey"
+#define TDeskChangeLanguageNotification @"TDeskChangeLanguageNotification"
 
-#define TUIKitGlobalizationRTLOptionKey @"TUIKitGlobalizationRTLOptionKey"
+#define TDeskKitGlobalizationRTLOptionKey @"TDeskKitGlobalizationRTLOptionKey"
 
 @interface TDeskGlobalization : NSObject
 

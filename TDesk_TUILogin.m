@@ -19,7 +19,7 @@ NSString *const TUILogoutFailNotification = @"TUILogoutFailNotification";
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.logLevel = TUI_LOG_INFO;
+        self.logLevel = TDesk_LOG_INFO;
     }
     return self;
 }
@@ -67,11 +67,11 @@ NSString *const TUILogoutFailNotification = @"TUILogoutFailNotification";
     [TDeskLogin.shareInstance logout:succ fail:fail];
 }
 
-+ (void)addLoginListener:(id<TUILoginListener>)listener {
++ (void)addLoginListener:(id<TDeskLoginListener>)listener {
     [TDeskLogin.shareInstance addLoginListener:listener];
 }
 
-+ (void)removeLoginListener:(id<TUILoginListener>)listener {
++ (void)removeLoginListener:(id<TDeskLoginListener>)listener {
     [TDeskLogin.shareInstance removeLoginListener:listener];
 }
 
@@ -289,7 +289,7 @@ NSString *const TUILogoutFailNotification = @"TUILogoutFailNotification";
         }];
 }
 
-- (void)addLoginListener:(id<TUILoginListener>)listener {
+- (void)addLoginListener:(id<TDeskLoginListener>)listener {
     if (listener == nil) {
         return;
     }
@@ -301,7 +301,7 @@ NSString *const TUILogoutFailNotification = @"TUILogoutFailNotification";
     }
 }
 
-- (void)removeLoginListener:(id<TUILoginListener>)listener {
+- (void)removeLoginListener:(id<TDeskLoginListener>)listener {
     if (listener == nil) {
         return;
     }
@@ -347,13 +347,13 @@ NSString *const TUILogoutFailNotification = @"TUILogoutFailNotification";
 - (void)onConnecting {
     __weak typeof(self) weakSelf = self;
     [self doInMainThread:^{
-      for (id<TUILoginListener> listener in weakSelf.loginListenerSet) {
+      for (id<TDeskLoginListener> listener in weakSelf.loginListenerSet) {
           if ([listener respondsToSelector:@selector(onConnecting)]) {
               [listener onConnecting];
           }
       }
-      [TDeskCore notifyEvent:TUICore_NetworkConnection_EVENT_CONNECTION_STATE_CHANGED
-                    subKey:TUICore_NetworkConnection_EVENT_SUB_KEY_CONNECTING
+      [TDeskCore notifyEvent:TDeskCore_NetworkConnection_EVENT_CONNECTION_STATE_CHANGED
+                    subKey:TDeskCore_NetworkConnection_EVENT_SUB_KEY_CONNECTING
                     object:nil
                      param:nil];
     }];
@@ -362,13 +362,13 @@ NSString *const TUILogoutFailNotification = @"TUILogoutFailNotification";
 - (void)onConnectSuccess {
     __weak typeof(self) weakSelf = self;
     [self doInMainThread:^{
-      for (id<TUILoginListener> listener in weakSelf.loginListenerSet) {
+      for (id<TDeskLoginListener> listener in weakSelf.loginListenerSet) {
           if ([listener respondsToSelector:@selector(onConnectSuccess)]) {
               [listener onConnectSuccess];
           }
       }
-      [TDeskCore notifyEvent:TUICore_NetworkConnection_EVENT_CONNECTION_STATE_CHANGED
-                    subKey:TUICore_NetworkConnection_EVENT_SUB_KEY_CONNECT_SUCCESS
+      [TDeskCore notifyEvent:TDeskCore_NetworkConnection_EVENT_CONNECTION_STATE_CHANGED
+                    subKey:TDeskCore_NetworkConnection_EVENT_SUB_KEY_CONNECT_SUCCESS
                     object:nil
                      param:nil];
     }];
@@ -377,13 +377,13 @@ NSString *const TUILogoutFailNotification = @"TUILogoutFailNotification";
 - (void)onConnectFailed:(int)code err:(NSString *)err {
     __weak typeof(self) weakSelf = self;
     [self doInMainThread:^{
-      for (id<TUILoginListener> listener in weakSelf.loginListenerSet) {
+      for (id<TDeskLoginListener> listener in weakSelf.loginListenerSet) {
           if ([listener respondsToSelector:@selector(onConnectFailed:err:)]) {
               [listener onConnectFailed:code err:err];
           }
       }
-      [TDeskCore notifyEvent:TUICore_NetworkConnection_EVENT_CONNECTION_STATE_CHANGED
-                    subKey:TUICore_NetworkConnection_EVENT_SUB_KEY_CONNECT_FAILED
+      [TDeskCore notifyEvent:TDeskCore_NetworkConnection_EVENT_CONNECTION_STATE_CHANGED
+                    subKey:TDeskCore_NetworkConnection_EVENT_SUB_KEY_CONNECT_FAILED
                     object:nil
                      param:nil];
     }];
@@ -393,7 +393,7 @@ NSString *const TUILogoutFailNotification = @"TUILogoutFailNotification";
     self.currentBusinessScene = None;
     __weak typeof(self) weakSelf = self;
     [self doInMainThread:^{
-      for (id<TUILoginListener> listener in weakSelf.loginListenerSet) {
+      for (id<TDeskLoginListener> listener in weakSelf.loginListenerSet) {
           if ([listener respondsToSelector:@selector(onKickedOffline)]) {
               [listener onKickedOffline];
           }
@@ -406,7 +406,7 @@ NSString *const TUILogoutFailNotification = @"TUILogoutFailNotification";
 
     __weak typeof(self) weakSelf = self;
     [self doInMainThread:^{
-      for (id<TUILoginListener> listener in weakSelf.loginListenerSet) {
+      for (id<TDeskLoginListener> listener in weakSelf.loginListenerSet) {
           if ([listener respondsToSelector:@selector(onUserSigExpired)]) {
               [listener onUserSigExpired];
           }

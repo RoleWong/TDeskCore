@@ -55,7 +55,7 @@ static BOOL gRTLOption = NO;
 + (NSString *)getPreferredLanguage {
     // Custom language in app
     if (gCustomLanguage == nil) {
-        gCustomLanguage = [NSUserDefaults.standardUserDefaults objectForKey:TUICustomLanguageKey];
+        gCustomLanguage = [NSUserDefaults.standardUserDefaults objectForKey:TDeskCustomLanguageKey];
     }
     if (gCustomLanguage.length > 0) {
         return gCustomLanguage;
@@ -96,11 +96,11 @@ static BOOL gRTLOption = NO;
 
 + (void)setPreferredLanguage:(NSString *)language {
     gCustomLanguage = language;
-    [NSUserDefaults.standardUserDefaults setObject:language ?: @"" forKey:TUICustomLanguageKey];
+    [NSUserDefaults.standardUserDefaults setObject:language ?: @"" forKey:TDeskCustomLanguageKey];
     [NSUserDefaults.standardUserDefaults synchronize];
 
     dispatch_async(dispatch_get_main_queue(), ^{
-      [NSNotificationCenter.defaultCenter postNotificationName:TUIChangeLanguageNotification object:nil];
+      [NSNotificationCenter.defaultCenter postNotificationName:TDeskChangeLanguageNotification object:nil];
     });
 }
 
@@ -115,7 +115,7 @@ static BOOL gRTLOption = NO;
     [UICollectionView appearance].semanticContentAttribute = op?UISemanticContentAttributeForceRightToLeft:UISemanticContentAttributeForceLeftToRight;
     [UISwitch appearance].semanticContentAttribute = op?UISemanticContentAttributeForceRightToLeft:UISemanticContentAttributeForceLeftToRight;
     
-    [NSUserDefaults.standardUserDefaults setBool:op forKey:TUIKitGlobalizationRTLOptionKey];
+    [NSUserDefaults.standardUserDefaults setBool:op forKey:TDeskKitGlobalizationRTLOptionKey];
     [NSUserDefaults.standardUserDefaults synchronize];
 }
 
@@ -134,15 +134,15 @@ static BOOL gRTLOption = NO;
 
 @end
 
-@interface TUIBundle : NSBundle
+@interface TDeskBundle : NSBundle
 
 @end
 
-@implementation TUIBundle
+@implementation TDeskBundle
 
 - (NSString *)localizedStringForKey:(NSString *)key value:(NSString *)value table:(NSString *)tableName {
-    if ([TUIBundle private_mainBundle]) {
-        return [[TUIBundle private_mainBundle] localizedStringForKey:key value:value table:tableName];
+    if ([TDeskBundle private_mainBundle]) {
+        return [[TDeskBundle private_mainBundle] localizedStringForKey:key value:value table:tableName];
     } else {
         return [super localizedStringForKey:key value:value table:tableName];
     }
@@ -179,7 +179,7 @@ static BOOL gRTLOption = NO;
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-      object_setClass([NSBundle mainBundle], [TUIBundle class]);
+      object_setClass([NSBundle mainBundle], [TDeskBundle class]);
     });
 }
 

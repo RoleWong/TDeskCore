@@ -38,7 +38,7 @@ extern const NSString *TUICSToastPositionBottom;
 extern const NSString *TUICSToastPositionBottomLeft;
 extern const NSString *TUICSToastPositionBottomRight;
 
-@class TUICSToastStyle;
+@class TDeskCSToastStyle;
 
 /**
  Toast is an Objective-C category that adds toast notifications to the UIView
@@ -50,7 +50,7 @@ extern const NSString *TUICSToastPositionBottomRight;
  The `showToast:` methods display any view as toast.
 
  */
-@interface UIView (TUIToast)
+@interface UIView (TDeskToast)
 
 /**
  Creates and presents a new toast view with a message and displays it with the
@@ -90,7 +90,7 @@ extern const NSString *TUICSToastPositionBottomRight;
  constants or a `CGPoint` wrapped in an `NSValue` object.
  @param style The style. The shared style will be used when nil
  */
-- (void)makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position style:(TUICSToastStyle *)style;
+- (void)makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position style:(TDeskCSToastStyle *)style;
 
 /**
  Creates and presents a new toast view with a message, title, and image. Duration,
@@ -112,7 +112,7 @@ extern const NSString *TUICSToastPositionBottomRight;
 - (void)makeToastParam:(NSDictionary *)info
               duration:(NSTimeInterval)duration
               position:(id)position
-            style:(TUICSToastStyle *)style
+            style:(TDeskCSToastStyle *)style
             completion:(void (^)(BOOL didTap))completion;
 
 /**
@@ -129,7 +129,7 @@ extern const NSString *TUICSToastPositionBottomRight;
  @param style The style. The shared style will be used when nil
  @return The newly created toast view
  */
-- (UIView *)toastViewForMessage:(NSString *)message title:(NSString *)title image:(UIImage *)image style:(TUICSToastStyle *)style;
+- (UIView *)toastViewForMessage:(NSString *)message title:(NSString *)title image:(UIImage *)image style:(TDeskCSToastStyle *)style;
 
 /**
  Hides the active toast. If there are multiple toasts active in a view, this method
@@ -215,16 +215,16 @@ extern const NSString *TUICSToastPositionBottomRight;
 @end
 
 /**
- `TUICSToastStyle` instances define the look and feel for toast views created via the
+ `TDeskCSToastStyle` instances define the look and feel for toast views created via the
  `makeToast:` methods as well for toast views created directly with
  `toastViewForMessage:title:image:style:`.
 
- @warning `TUICSToastStyle` offers relatively simple styling options for the default
+ @warning `TDeskCSToastStyle` offers relatively simple styling options for the default
  toast view. If you require a toast view with more complex UI, it probably makes more
  sense to create your own custom UIView subclass and present it with the `showToast:`
  methods.
  */
-@interface TUICSToastStyle : NSObject
+@interface TDeskCSToastStyle : NSObject
 
 /**
  The background color. Default is `[UIColor blackColor]` at 80% opacity.
@@ -356,41 +356,41 @@ extern const NSString *TUICSToastPositionBottomRight;
 @property(assign, nonatomic) NSTimeInterval fadeDuration;
 
 /**
- Creates a new instance of `TUICSToastStyle` with all the default values set.
+ Creates a new instance of `TDeskCSToastStyle` with all the default values set.
  */
 - (instancetype)initWithDefaultStyle NS_DESIGNATED_INITIALIZER;
 
 /**
  @warning Only the designated initializer should be used to create
- an instance of `TUICSToastStyle`.
+ an instance of `TDeskCSToastStyle`.
  */
 - (instancetype)init NS_UNAVAILABLE;
 
 @end
 
 /**
- `TUICSToastManager` provides general configuration options for all toast
+ `TDeskCSToastManager` provides general configuration options for all toast
  notifications. Backed by a singleton instance.
  */
-@interface TUICSToastManager : NSObject
+@interface TDeskCSToastManager : NSObject
 
 /**
  Sets the shared style on the singleton. The shared style is used whenever
  a `makeToast:` method (or `toastViewForMessage:title:image:style:`) is called
- with with a nil style. By default, this is set to `TUICSToastStyle`'s default
+ with with a nil style. By default, this is set to `TDeskCSToastStyle`'s default
  style.
 
  @param sharedStyle the shared style
  */
-+ (void)setSharedStyle:(TUICSToastStyle *)sharedStyle;
++ (void)setSharedStyle:(TDeskCSToastStyle *)sharedStyle;
 
 /**
  Gets the shared style from the singlton. By default, this is
- `TUICSToastStyle`'s default style.
+ `TDeskCSToastStyle`'s default style.
 
  @return the shared style
  */
-+ (TUICSToastStyle *)sharedStyle;
++ (TDeskCSToastStyle *)sharedStyle;
 
 /**
  Enables or disables tap to dismiss on toast views. Default is `YES`.

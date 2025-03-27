@@ -2,10 +2,10 @@
 //  Created by Tencent on 2023/06/09.
 //  Copyright © 2023 Tencent. All rights reserved.
 
-#define tui_mm_weakify(object) \
+#define tdesk_mm_weakify(object) \
     autoreleasepool {}         \
     __weak typeof(object) weak##object = object;
-#define tui_mm_strongify(object) \
+#define tdesk_mm_strongify(object) \
     autoreleasepool {}           \
     __strong typeof(weak##object) object = weak##object;
 
@@ -50,7 +50,7 @@
 - (UIView * (^)(CGFloat x))mm__centerX;          ///< set center
 - (UIView * (^)(CGFloat y))mm__centerY;          ///< set center
 
-- (UIView * (^)(void))tui_mm_center;
+- (UIView * (^)(void))tdesk_mm_center;
 - (UIView * (^)(void))mm_fill;
 
 - (UIView * (^)(CGFloat space))mm_hstack;

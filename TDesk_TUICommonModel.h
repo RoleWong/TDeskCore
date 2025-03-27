@@ -111,7 +111,7 @@ NS_ASSUME_NONNULL_BEGIN
 //
 /////////////////////////////////////////////////////////////////////////////////
 @class TDeskNavigationController;
-@protocol TUINavigationControllerDelegate <NSObject>
+@protocol TDeskNavigationControllerDelegate <NSObject>
 @optional
 - (void)navigationControllerDidClickLeftButton:(TDeskNavigationController *)controller;
 - (void)navigationControllerDidSideSlideReturn:(TDeskNavigationController *)controller fromViewController:(UIViewController *)fromViewController;
@@ -120,7 +120,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TDeskNavigationController : UINavigationController <UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
 @property(nonatomic, weak) UIViewController *currentShowVC;
-@property(nonatomic, weak) id<TUINavigationControllerDelegate> uiNaviDelegate;
+@property(nonatomic, weak) id<TDeskNavigationControllerDelegate> uiNaviDelegate;
 @property(nonatomic, strong) UIImage *navigationItemBackArrowImage;
 @property(nonatomic, strong) UIColor *navigationBackColor;
 @end
@@ -131,18 +131,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-typedef void (^TUIValueCallbck)(NSDictionary *param);
-typedef void (^TUINonValueCallbck)(void);
+typedef void (^TDeskValueCallbck)(NSDictionary *param);
+typedef void (^TDeskNonValueCallbck)(void);
 
-typedef NSString *TUIExtVauleType;
+typedef NSString *TDeskExtVauleType;
 
 @interface NSObject (TUIExtValue)
 
-@property(nonatomic, copy) TUIValueCallbck tui_valueCallback;
+@property(nonatomic, copy) TDeskValueCallbck tdesk_valueCallback;
 
-@property(nonatomic, copy) TUINonValueCallbck tui_nonValueCallback;
+@property(nonatomic, copy) TDeskNonValueCallbck tdesk_nonValueCallback;
 
-@property(nonatomic, strong) id tui_extValueObj;
+@property(nonatomic, strong) id tdesk_extValueObj;
 
 @end
 

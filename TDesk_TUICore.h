@@ -16,7 +16,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^TUICallServiceResultCallback)(NSInteger errorCode, NSString *errorMessage, NSDictionary *param);
+typedef void (^TDeskCallServiceResultCallback)(NSInteger errorCode, NSString *errorMessage, NSDictionary *param);
 
 #pragma mark - TDeskCore
 /////////////////////////////////////////////////////////////////////////////////
@@ -34,7 +34,7 @@ typedef void (^TUICallServiceResultCallback)(NSInteger errorCode, NSString *erro
 + (nullable id)callService:(NSString *)serviceName
                     method:(NSString *)method
                      param:(nullable NSDictionary *)param
-            resultCallback:(nullable TUICallServiceResultCallback)resultCallback;
+            resultCallback:(nullable TDeskCallServiceResultCallback)resultCallback;
 
 + (void)registerEvent:(NSString *)key subKey:(NSString *)subKey object:(id<TDeskNotificationProtocol>)object;
 + (void)unRegisterEventByObject:(id<TDeskNotificationProtocol>)object;
@@ -62,23 +62,23 @@ typedef void (^TUICallServiceResultCallback)(NSInteger errorCode, NSString *erro
 //
 /////////////////////////////////////////////////////////////////////////////////
 
-typedef void (^TUIValueResultCallback)(NSDictionary *param);
+typedef void (^TDeskValueResultCallback)(NSDictionary *param);
 
 @interface NSObject (TDeskRoute)
 
-@property(nonatomic, copy) TUIValueResultCallback navigateValueCallback;
+@property(nonatomic, copy) TDeskValueResultCallback navigateValueCallback;
 
 @end
 
 @interface UIViewController (TDeskRoute)
 
-- (void)pushViewControllerForTDesk:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TUIValueResultCallback)callback;
+- (void)pushViewControllerForTDesk:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TDeskValueResultCallback)callback;
 
-- (void)presentViewControllerForTDesk:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TUIValueResultCallback)callback;
+- (void)presentViewControllerForTDesk:(NSString *)viewControllerKey param:(nullable NSDictionary *)param forResult:(nullable TDeskValueResultCallback)callback;
 - (void)presentViewControllerForTDesk:(NSString *)viewControllerKey
                         param:(nullable NSDictionary *)param
                      embbedIn:(nullable UINavigationController *)navigationVC
-                    forResult:(nullable TUIValueResultCallback)callback;
+                    forResult:(nullable TDeskValueResultCallback)callback;
 
 @end
 
@@ -93,7 +93,7 @@ typedef void (^TUIValueResultCallback)(NSDictionary *param);
 
 @optional
 - (nullable id)onCall:(NSString *)method param:(nullable NSDictionary *)param;
-- (nullable id)onCall:(NSString *)method param:(nullable NSDictionary *)param resultCallback:(TUICallServiceResultCallback)resultCallback;
+- (nullable id)onCall:(NSString *)method param:(nullable NSDictionary *)param resultCallback:(TDeskCallServiceResultCallback)resultCallback;
 
 @end
 
@@ -109,14 +109,14 @@ typedef void (^TUIValueResultCallback)(NSDictionary *param);
 - (nullable id)callService:(NSString *)serviceName
                     method:(NSString *)method
                      param:(nullable NSDictionary *)param
-            resultCallback:(nullable TUICallServiceResultCallback)resultCallback;
+            resultCallback:(nullable TDeskCallServiceResultCallback)resultCallback;
 
 @end
 
-#pragma mark - TUIEvent
+#pragma mark - TDeskEvent
 /////////////////////////////////////////////////////////////////////////////////
 //
-//             Definition of TUIEvent, APIs
+//             Definition of TDeskEvent, APIs
 //
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -126,7 +126,7 @@ typedef void (^TUIValueResultCallback)(NSDictionary *param);
 
 @end
 
-@interface TUIEventManager : NSObject
+@interface TDeskEventManager : NSObject
 
 + (instancetype)shareInstance;
 

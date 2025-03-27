@@ -99,77 +99,77 @@
 #pragma mark - chain call
 
 - (UIView * (^)(CGFloat))mm_top {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^(CGFloat m_top) {
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       self.mm_y = m_top;
       return self;
     };
 }
 
 - (UIView * (^)(CGFloat))mm_bottom {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^(CGFloat m_bottom) {
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       self.mm_b = m_bottom;
       return self;
     };
 }
 - (UIView * (^)(CGFloat))mm_flexToBottom {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^(CGFloat m_flexToBottom) {
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       self.mm_h += self.mm_b - m_flexToBottom;
       return self;
     };
 }
 - (UIView * (^)(CGFloat))mm_left {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^(CGFloat m_left) {
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       self.mm_x = m_left;
       return self;
     };
 }
 
 - (UIView * (^)(CGFloat))mm_right {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^(CGFloat m_right) {
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       self.mm_r = m_right;
       return self;
     };
 }
 - (UIView * (^)(CGFloat))mm_flexToRight {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^(CGFloat m_flexToRight) {
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       self.mm_w += self.mm_r - m_flexToRight;
       return self;
     };
 }
 
 - (UIView * (^)(CGFloat))mm_width {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^(CGFloat m_width) {
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       self.mm_w = m_width;
       return self;
     };
 }
 - (UIView * (^)(CGFloat))mm_height {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^(CGFloat m_height) {
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       self.mm_h = m_height;
       return self;
     };
 }
 
 - (UIView * (^)(CGFloat))mm__centerX {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^(CGFloat x) {
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       NSAssert(self.mm_w, @"must set width first");
       self.mm_centerX = x;
       return self;
@@ -177,19 +177,19 @@
 }
 
 - (UIView * (^)(CGFloat))mm__centerY {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^(CGFloat y) {
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       NSAssert(self.mm_h, @"must set height first");
       self.mm_centerY = y;
       return self;
     };
 }
 
-- (UIView * (^)(void))tui_mm_center {
-    @tui_mm_weakify(self);
+- (UIView * (^)(void))tdesk_mm_center {
+    @tdesk_mm_weakify(self);
     return ^{
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       if (self.superview) {
           self.mm_centerX = self.superview.mm_w / 2;
           self.mm_centerY = self.superview.mm_h / 2;
@@ -199,9 +199,9 @@
 }
 
 - (UIView * (^)(void))mm_fill {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^{
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       if (self.superview) {
           self.mm_x = self.mm_y = 0;
           self.mm_w = self.superview.mm_w;
@@ -212,17 +212,17 @@
 }
 
 - (UIView * (^)(void))mm_sizeToFit {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^{
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       [self sizeToFit];
       return self;
     };
 }
 - (UIView * (^)(CGFloat w, CGFloat h))mm_sizeToFitThan {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^(CGFloat w, CGFloat h) {
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       [self sizeToFit];
       if (self.mm_w < w) self.mm_w = w;
       if (self.mm_h < h) self.mm_h = h;
@@ -231,9 +231,9 @@
 }
 
 - (UIView * (^)(CGFloat space))mm_hstack {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^(CGFloat space) {
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       if (self.mm_sibling) {
           self.mm__centerY(self.mm_sibling.mm_centerY).mm_left(self.mm_sibling.mm_maxX + space);
       }
@@ -242,9 +242,9 @@
 }
 
 - (UIView * (^)(CGFloat space))mm_vstack {
-    @tui_mm_weakify(self);
+    @tdesk_mm_weakify(self);
     return ^(CGFloat space) {
-      @tui_mm_strongify(self);
+      @tdesk_mm_strongify(self);
       if (self.mm_sibling) {
           self.mm__centerX(self.mm_sibling.mm_centerX).mm_top(self.mm_sibling.mm_maxY + space);
       }

@@ -9,20 +9,20 @@
 #import "TDesk_TUIThemeManager.h"
 #import "TDesk_UIColor+TUIHexColor.h"
 
-@interface TUIDarkThemeRootVC : UIViewController
+@interface TDeskDarkThemeRootVC : UIViewController
 
 @end
-@implementation TUIDarkThemeRootVC
+@implementation TDeskDarkThemeRootVC
 - (BOOL)shouldAutorotate {
     return NO;
 }
 @end
 
-@interface TUIDarkWindow : UIWindow
-@property(nonatomic, readonly, class) TUIDarkWindow *sharedInstance;
+@interface TDeskDarkWindow : UIWindow
+@property(nonatomic, readonly, class) TDeskDarkWindow *sharedInstance;
 @property(nonatomic, strong) UIWindow *previousKeyWindow;
 @end
-@implementation TUIDarkWindow
+@implementation TDeskDarkWindow
 
 + (void)load {
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(windowDidBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
@@ -36,7 +36,7 @@
             darkWindow.windowScene = (UIWindowScene *)scene;
         }
     }
-    [darkWindow setRootViewController:[TUIDarkThemeRootVC new]];
+    [darkWindow setRootViewController:[TDeskDarkThemeRootVC new]];
     darkWindow.hidden = NO;
     [NSNotificationCenter.defaultCenter removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
@@ -87,7 +87,7 @@
 }
 
 + (instancetype)sharedInstance {
-    static TUIDarkWindow *shareWindow = nil;
+    static TDeskDarkWindow *shareWindow = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
       shareWindow = [[self alloc] init];
@@ -135,11 +135,11 @@
                   case UIUserInterfaceStyleLight:
                   case UIUserInterfaceStyleUnspecified:
                   default:
-                      return [UIColor tui_colorWithHex:hex];
+                      return [UIColor tdesk_colorWithHex:hex];
               }
             }];
         } else {
-            return [UIColor tui_colorWithHex:hex];
+            return [UIColor tdesk_colorWithHex:hex];
         }
     }
 }
@@ -149,11 +149,11 @@
 
     NSString *colorHex = [self.manifest objectForKey:colorKey];
     if (colorHex && [colorHex isKindOfClass:NSString.class]) {
-        color = [UIColor tui_colorWithHex:colorHex];
+        color = [UIColor tdesk_colorWithHex:colorHex];
     }
 
     if (color == nil) {
-        color = [UIColor tui_colorWithHex:hex];
+        color = [UIColor tdesk_colorWithHex:hex];
     }
     return color;
 }

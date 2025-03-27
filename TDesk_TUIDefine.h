@@ -19,10 +19,10 @@
 #import "TDesk_NSString+TUIUtil.h"
 @import ImSDK_Plus;
 
-#define tui_weakify(object) \
+#define tdesk_weakify(object) \
     autoreleasepool {}         \
     __weak typeof(object) weak##object = object;
-#define tui_strongify(object) \
+#define tdesk_strongify(object) \
     autoreleasepool {}           \
     __strong typeof(weak##object) object = weak##object;
 
@@ -181,7 +181,7 @@
 #define TIMCommonLocalizableBundle_Key_Class @"TDeskConfig"
 #define TUICustomerServicePluginBundle_Key_Class @"TUICustomerServicePluginService"
 
-static inline NSString *getTUIFrameWorkName(NSString *bundleKeyClass) {
+static inline NSString *getTDeskFrameWorkName(NSString *bundleKeyClass) {
     if ([bundleKeyClass isEqualToString:TUICoreBundle_Key_Class] || [bundleKeyClass isEqualToString:TUIKitLocalizableBundle_Key_Class]) {
         return @"TDeskCore";
     }
@@ -229,7 +229,7 @@ static inline NSString *getTUIFrameWorkName(NSString *bundleKeyClass) {
     return @"";
 }
 
-static inline NSString *getTUIGetBundlePath(NSString *bundleName, NSString *bundleKeyClass) {
+static inline NSString *getTDeskGetBundlePath(NSString *bundleName, NSString *bundleKeyClass) {
     static NSMutableDictionary *bundlePathCache = nil;
     if (bundlePathCache == nil) {
         bundlePathCache = [NSMutableDictionary dictionary];
@@ -245,7 +245,7 @@ static inline NSString *getTUIGetBundlePath(NSString *bundleName, NSString *bund
     if (bundlePath.length == 0) {
         bundlePath = [NSBundle mainBundle].bundlePath;
         bundlePath = [bundlePath stringByAppendingPathComponent:@"Frameworks"];
-        bundlePath = [bundlePath stringByAppendingPathComponent:getTUIFrameWorkName(bundleKeyClass)];
+        bundlePath = [bundlePath stringByAppendingPathComponent:getTDeskFrameWorkName(bundleKeyClass)];
         bundlePath = [bundlePath stringByAppendingPathExtension:@"framework"];
         bundlePath = [bundlePath stringByAppendingPathComponent:bundleName];
         bundlePath = [bundlePath stringByAppendingPathExtension:@"bundle"];
@@ -256,60 +256,60 @@ static inline NSString *getTUIGetBundlePath(NSString *bundleName, NSString *bund
     return bundlePath;
 }
 
-#define TUIBundlePath(bundleName, bundleKeyClass) getTUIGetBundlePath(bundleName, bundleKeyClass)
+#define TDeskBundlePath(bundleName, bundleKeyClass) getTDeskGetBundlePath(bundleName, bundleKeyClass)
 
-#define TUIDemoThemePath TUIBundlePath(@"TUIDemoTheme", TUIDemoBundle_Key_Class)
-#define TUICoreThemePath TUIBundlePath(@"TDeskCoreTheme", TUICoreBundle_Key_Class)
-#define TUIChatThemePath TUIBundlePath(@"TDeskChatTheme", TUIChatBundle_Key_Class)
-#define TUIConversationThemePath TUIBundlePath(@"TUIConversationTheme", TUIConversationBundle_Key_Class)
-#define TUIConversationGroupTheme TUIBundlePath(@"TUIConversationGroupTheme", TUIConversationGroupBundle_Key_Class)
-#define TUIContactThemePath TUIBundlePath(@"TUIContactTheme", TUIContactBundle_Key_Class)
-#define TUIGroupThemePath TUIBundlePath(@"TUIGroupTheme", TUIGroupBundle_Key_Class)
-#define TUISearchThemePath TUIBundlePath(@"TUISearchTheme", TUISearchBundle_Key_Class)
-#define TUIPollThemePath TUIBundlePath(@"TUIPollTheme", TUIPollBundle_Key_Class)
-#define TUIGroupNoteThemePath TUIBundlePath(@"TUIGroupNoteTheme", TUIGroupNoteBundle_Key_Class)
-#define TIMCommonThemePath TUIBundlePath(@"TDeskCommonTheme", TIMCommonBundle_Key_Class)
-#define TUITranslationThemePath TUIBundlePath(@"TUITranslationTheme", TUITranslationBundle_Key_Class)
-#define TUIVoiceToTextThemePath TUIBundlePath(@"TUIVoiceToTextTheme", TUIVoiceToTextBundle_Key_Class)
-#define TUICallKitThemePath TUIBundlePath(@"TUICallKitTheme", TUICallKitBundle_Key_Class)
-#define TUICustomerServicePluginThemePath TUIBundlePath(@"TUICustomerServicePluginTheme",TUICustomerServicePluginBundle_Key_Class)
+#define TDeskDemoThemePath TDeskBundlePath(@"TUIDemoTheme", TUIDemoBundle_Key_Class)
+#define TDeskCoreThemePath TDeskBundlePath(@"TDeskCoreTheme", TUICoreBundle_Key_Class)
+#define TUDeskChatThemePath TDeskBundlePath(@"TDeskChatTheme", TUIChatBundle_Key_Class)
+#define TDeskConversationThemePath TDeskBundlePath(@"TUIConversationTheme", TUIConversationBundle_Key_Class)
+#define TDeskConversationGroupTheme TDeskBundlePath(@"TDeskConversationGroupTheme", TUIConversationGroupBundle_Key_Class)
+#define TDeskContactThemePath TDeskBundlePath(@"TUIContactTheme", TUIContactBundle_Key_Class)
+#define TDeskGroupThemePath TDeskBundlePath(@"TUIGroupTheme", TUIGroupBundle_Key_Class)
+#define TDeskSearchThemePath TDeskBundlePath(@"TUISearchTheme", TUISearchBundle_Key_Class)
+#define TDeskPollThemePath TDeskBundlePath(@"TUIPollTheme", TUIPollBundle_Key_Class)
+#define TDeskGroupNoteThemePath TDeskBundlePath(@"TUIGroupNoteTheme", TUIGroupNoteBundle_Key_Class)
+#define TDeskCommonThemePath TDeskBundlePath(@"TDeskCommonTheme", TIMCommonBundle_Key_Class)
+#define TDeskTranslationThemePath TDeskBundlePath(@"TUITranslationTheme", TUITranslationBundle_Key_Class)
+#define TDeskVoiceToTextThemePath TDeskBundlePath(@"TUIVoiceToTextTheme", TUIVoiceToTextBundle_Key_Class)
+#define TDeskCallKitThemePath TDeskBundlePath(@"TUICallKitTheme", TUICallKitBundle_Key_Class)
+#define TDeskkCustomerServicePluginThemePath TDeskBundlePath(@"TUICustomerServicePluginTheme",TUICustomerServicePluginBundle_Key_Class)
 
 static inline NSBundle *getTDeskGetLocalizable(NSString *bundleName) {
     if ([bundleName isEqualToString:TUIChatLocalizableBundle] || [bundleName isEqualToString:TUIChatFaceBundle]) {
-        return [NSBundle bundleWithPath:TUIBundlePath(bundleName, TUIChatLocalizableBundle_Key_Class)];
+        return [NSBundle bundleWithPath:TDeskBundlePath(bundleName, TUIChatLocalizableBundle_Key_Class)];
     } else if ([bundleName isEqualToString:TIMCommonLocalizableBundle]) {
-        return [NSBundle bundleWithPath:TUIBundlePath(bundleName, TIMCommonLocalizableBundle_Key_Class)];
+        return [NSBundle bundleWithPath:TDeskBundlePath(bundleName, TIMCommonLocalizableBundle_Key_Class)];
     }
     else {
-        return [NSBundle bundleWithPath:TUIBundlePath(bundleName, TUIKitLocalizableBundle_Key_Class)];
+        return [NSBundle bundleWithPath:TDeskBundlePath(bundleName, TUIKitLocalizableBundle_Key_Class)];
     }
 }
 #define TUIKitLocalizable(bundleName) getTDeskGetLocalizable(bundleName)
 
-#define TUIDemoImagePath(imageName) [TUIBundlePath(TUIDemoBundle, TUIDemoBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUICoreImagePath(imageName) [TUIBundlePath(TUICoreBundle, TUICoreBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUIChatImagePath(imageName) [TUIBundlePath(TUIChatBundle, TUIChatBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUIChatFaceImagePath(imageName) [TUIBundlePath(TUIChatFaceBundle, TUIChatFaceBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUIDemoImagePath(imageName) [TDeskBundlePath(TUIDemoBundle, TUIDemoBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUICoreImagePath(imageName) [TDeskBundlePath(TUICoreBundle, TUICoreBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUIChatImagePath(imageName) [TDeskBundlePath(TUIChatBundle, TUIChatBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TDeskChatFaceImagePath(imageName) [TDeskBundlePath(TUIChatFaceBundle, TUIChatFaceBundle_Key_Class) stringByAppendingPathComponent:imageName]
 
-#define TUIConversationImagePath(imageName) [TUIBundlePath(TUIConversationBundle, TUIConversationBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUIConversationImagePath(imageName) [TDeskBundlePath(TUIConversationBundle, TUIConversationBundle_Key_Class) stringByAppendingPathComponent:imageName]
 #define TUIConversationGroupImagePath(imageName) \
-    [TUIBundlePath(TUIConversationGroupBundle, TUIConversationGroupBundle_Key_Class) stringByAppendingPathComponent:imageName]
+    [TDeskBundlePath(TUIConversationGroupBundle, TUIConversationGroupBundle_Key_Class) stringByAppendingPathComponent:imageName]
 #define TUIConversationMarkImagePath(imageName) \
-    [TUIBundlePath(TUIConversationMarkBundle, TUIConversationMarkBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUIContactImagePath(imageName) [TUIBundlePath(TUIContactBundle, TUIContactBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUIGroupImagePath(imageName) [TUIBundlePath(TUIGroupBundle, TUIGroupBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUISearchImagePath(imageName) [TUIBundlePath(TUISearchBundle, TUISearchBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUIPollImagePath(imageName) [TUIBundlePath(TUIPollBundle, TUIPollBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUIGroupNoteImagePath(imageName) [TUIBundlePath(TUIGroupNoteBundle, TUIGroupNoteBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TIMCommonImagePath(imageName) [TUIBundlePath(TIMCommonBundle, TIMCommonBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUITranslationImagePath(imageName) [TUIBundlePath(TUITranslationBundle, TUITranslationBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUIVoiceToTextImagePath(imageName) [TUIBundlePath(TUIVoiceToTextBundle, TUIVoiceToTextBundle_Key_Class) stringByAppendingPathComponent:imageName]
+    [TDeskBundlePath(TUIConversationMarkBundle, TUIConversationMarkBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUIContactImagePath(imageName) [TDeskBundlePath(TUIContactBundle, TUIContactBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUIGroupImagePath(imageName) [TDeskBundlePath(TUIGroupBundle, TUIGroupBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUISearchImagePath(imageName) [TDeskBundlePath(TUISearchBundle, TUISearchBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUIPollImagePath(imageName) [TDeskBundlePath(TUIPollBundle, TUIPollBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUIGroupNoteImagePath(imageName) [TDeskBundlePath(TUIGroupNoteBundle, TUIGroupNoteBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TIMCommonImagePath(imageName) [TDeskBundlePath(TIMCommonBundle, TIMCommonBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUITranslationImagePath(imageName) [TDeskBundlePath(TUITranslationBundle, TUITranslationBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUIVoiceToTextImagePath(imageName) [TDeskBundlePath(TUIVoiceToTextBundle, TUIVoiceToTextBundle_Key_Class) stringByAppendingPathComponent:imageName]
 #define TUICustomerServicePluginImagePath(imageName) \
-    [TUIBundlePath(TUICustomerServicePluginBundle,TUICustomerServicePluginBundle_Key_Class) stringByAppendingPathComponent:imageName]
+    [TDeskBundlePath(TUICustomerServicePluginBundle,TUICustomerServicePluginBundle_Key_Class) stringByAppendingPathComponent:imageName]
 
 //-----Minimalist-------
 #define TUIDemoBundle_Minimalist @"TUIDemo_Minimalist"
-#define TUICoreBundle_Minimalist @"TUICore_Minimalist"
+#define TUICoreBundle_Minimalist @"TDeskCore_Minimalist"
 #define TUIChatBundle_Minimalist @"TUIChat_Minimalist"
 #define TUIChatFaceBundle_Minimalist @"TUIChatFace_Minimalist"
 #define TUIConversationBundle_Minimalist @"TUIConversation_Minimalist"
@@ -322,26 +322,26 @@ static inline NSBundle *getTDeskGetLocalizable(NSString *bundleName) {
 #define TUIVoiceToTextBundle_Minimalist @"TUIVoiceToText_Minimalist"
 // #define TUIKitLocalizableBundle  @"TUIKitLocalizable"
 
-// #define TUIKitLocalizable(bundleName) [NSBundle bundleWithPath:TUIBundlePath(bundleName, TUIKitLocalizableBundle_Key_Class)]
+// #define TUIKitLocalizable(bundleName) [NSBundle bundleWithPath:TDeskBundlePath(bundleName, TUIKitLocalizableBundle_Key_Class)]
 
-#define TUIDemoImagePath_Minimalist(imageName) [TUIBundlePath(TUIDemoBundle_Minimalist, TUIDemoBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUICoreImagePath_Minimalist(imageName) [TUIBundlePath(TUICoreBundle_Minimalist, TUICoreBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUIChatImagePath_Minimalist(imageName) [TUIBundlePath(TUIChatBundle_Minimalist, TUIChatBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUIChatFaceImagePath_Minimalist(imageName) \
-    [TUIBundlePath(TUIChatFaceBundle_Minimalist, TUIChatFaceBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUIDemoImagePath_Minimalist(imageName) [TDeskBundlePath(TUIDemoBundle_Minimalist, TUIDemoBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUICoreImagePath_Minimalist(imageName) [TDeskBundlePath(TUICoreBundle_Minimalist, TUICoreBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUIChatImagePath_Minimalist(imageName) [TDeskBundlePath(TUIChatBundle_Minimalist, TUIChatBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TDeskChatFaceImagePath_Minimalist(imageName) \
+    [TDeskBundlePath(TUIChatFaceBundle_Minimalist, TUIChatFaceBundle_Key_Class) stringByAppendingPathComponent:imageName]
 #define TUIConversationImagePath_Minimalist(imageName) \
-    [TUIBundlePath(TUIConversationBundle_Minimalist, TUIConversationBundle_Key_Class) stringByAppendingPathComponent:imageName]
+    [TDeskBundlePath(TUIConversationBundle_Minimalist, TUIConversationBundle_Key_Class) stringByAppendingPathComponent:imageName]
 #define TUIContactImagePath_Minimalist(imageName) \
-    [TUIBundlePath(TUIContactBundle_Minimalist, TUIContactBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUIGroupImagePath_Minimalist(imageName) [TUIBundlePath(TUIGroupBundle_Minimalist, TUIGroupBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUISearchImagePath_Minimalist(imageName) [TUIBundlePath(TUISearchBundle_Minimalist, TUISearchBundle_Key_Class) stringByAppendingPathComponent:imageName]
-#define TUIPollImagePath_Minimalist(imageName) [TUIBundlePath(TUIPollBundle_Minimalist, TUIPollBundle_Key_Class) stringByAppendingPathComponent:imageName]
+    [TDeskBundlePath(TUIContactBundle_Minimalist, TUIContactBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUIGroupImagePath_Minimalist(imageName) [TDeskBundlePath(TUIGroupBundle_Minimalist, TUIGroupBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUISearchImagePath_Minimalist(imageName) [TDeskBundlePath(TUISearchBundle_Minimalist, TUISearchBundle_Key_Class) stringByAppendingPathComponent:imageName]
+#define TUIPollImagePath_Minimalist(imageName) [TDeskBundlePath(TUIPollBundle_Minimalist, TUIPollBundle_Key_Class) stringByAppendingPathComponent:imageName]
 #define TUIGroupNoteImagePath_Minimalist(imageName) \
-    [TUIBundlePath(TUIGroupNoteBundle_Minimalist, TUIGroupNoteBundle_Key_Class) stringByAppendingPathComponent:imageName]
+    [TDeskBundlePath(TUIGroupNoteBundle_Minimalist, TUIGroupNoteBundle_Key_Class) stringByAppendingPathComponent:imageName]
 #define TUITranslationImagePath_Minimalist(imageName) \
-    [TUIBundlePath(TUITranslationBundle_Minimalist, TUITranslationBundle_Key_Class) stringByAppendingPathComponent:imageName]
+    [TDeskBundlePath(TUITranslationBundle_Minimalist, TUITranslationBundle_Key_Class) stringByAppendingPathComponent:imageName]
 #define TUIVoiceToTextImagePath_Minimalist(imageName) \
-    [TUIBundlePath(TUIVoiceToTextBundle_Minimalist, TUIVoiceToTextBundle_Key_Class) stringByAppendingPathComponent:imageName]
+    [TDeskBundlePath(TUIVoiceToTextBundle_Minimalist, TUIVoiceToTextBundle_Key_Class) stringByAppendingPathComponent:imageName]
 //-----
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -521,7 +521,7 @@ static inline NSBundle *getTDeskGetLocalizable(NSString *bundleName) {
 #define TUIPopView_Background_Color_Dark RGBA(76, 76, 76, 0.5)
 
 // pop cell
-#define TUIPopCell_ReuseId @"TUIPopCell"
+#define TUIPopCell_ReuseId @"TDeskPopCell"
 #define TUIPopCell_Height 45
 #define TUIPopCell_Margin 18
 #define TUIPopCell_Padding 12
@@ -686,136 +686,136 @@ static inline NSBundle *getTDeskGetLocalizable(NSString *bundleName) {
 //
 /////////////////////////////////////////////////////////////////////////////////
 
-#pragma mark - TUICore_TUIChat_Service
-#define TUICore_TUIChatService @"TUICore_TUIChatService"
-#define TUICore_TUIChatService_Minimalist @"TUICore_TUIChatService_Minimalist"
+#pragma mark - TDeskCore_TUIChat_Service
+#define TDeskCore_TUIChatService @"TDeskCore_TUIChatService"
+#define TDeskCore_TUIChatService_Minimalist @"TDeskCore_TUIChatService_Minimalist"
 
-#define TUICore_TUIChatService_GetDisplayStringMethod @"TUICore_TUIChatService_GetDisplayStringMethod"
-#define TUICore_TUIChatService_GetDisplayStringMethod_MsgKey @"msg"
+#define TDeskCore_TUIChatService_GetDisplayStringMethod @"TDeskCore_TUIChatService_GetDisplayStringMethod"
+#define TDeskCore_TUIChatService_GetDisplayStringMethod_MsgKey @"msg"
 
-#define TUICore_TUIChatService_AsyncGetDisplayStringMethod @"TUICore_TUIChatService_AsyncGetDisplayStringMethod"
-#define TUICore_TUIChatService_AsyncGetDisplayStringMethod_MsgListKey @"TUICore_TUIChatService_AsyncGetDisplayStringMethod_MsgListKey"
+#define TDeskCore_TUIChatService_AsyncGetDisplayStringMethod @"TDeskCore_TUIChatService_AsyncGetDisplayStringMethod"
+#define TDeskCore_TUIChatService_AsyncGetDisplayStringMethod_MsgListKey @"TDeskCore_TUIChatService_AsyncGetDisplayStringMethod_MsgListKey"
 
-#define TUICore_TUIChatService_SendMessageMethod @"TUICore_TUIChatService_SendMessageMethod"
-#define TUICore_TUIChatService_SendMessageMethod_MsgKey @"TUICore_TUIChatService_SendMessageMethod_MsgKey"
+#define TDeskCore_TUIChatService_SendMessageMethod @"TDeskCore_TUIChatService_SendMessageMethod"
+#define TDeskCore_TUIChatService_SendMessageMethod_MsgKey @"TDeskCore_TUIChatService_SendMessageMethod_MsgKey"
 
-#define TUICore_TUIChatService_SendMessageMethodWithoutUpdateUI @"TUICore_TUIChatService_SendMessageMethodWithoutUpdateUI"
-#define TUICore_TUIChatService_SendMessageMethodWithoutUpdateUI_MsgKey @"TUICore_TUIChatService_SendMessageMethodWithoutUpdateUI_MsgKey"
+#define TDeskCore_TUIChatService_SendMessageMethodWithoutUpdateUI @"TDeskCore_TUIChatService_SendMessageMethodWithoutUpdateUI"
+#define TDeskCore_TUIChatService_SendMessageMethodWithoutUpdateUI_MsgKey @"TDeskCore_TUIChatService_SendMessageMethodWithoutUpdateUI_MsgKey"
 
-#define TUICore_TUIChatService_SetChatExtensionMethod @"TUICore_TUIChatService_SetChatExtensionMethod"
-#define TUICore_TUIChatService_SetChatExtensionMethod_EnableVideoCallKey @"TUICore_TUIChatService_SetChatExtensionMethod_EnableVideoCallKey"
-#define TUICore_TUIChatService_SetChatExtensionMethod_EnableAudioCallKey @"TUICore_TUIChatService_SetChatExtensionMethod_EnableAudioCallKey"
-#define TUICore_TUIChatService_SetChatExtensionMethod_EnableLinkKey @"TUICore_TUIChatService_SetChatExtensionMethod_EnableLinkKey"
+#define TDeskCore_TUIChatService_SetChatExtensionMethod @"TDeskCore_TUIChatService_SetChatExtensionMethod"
+#define TDeskCore_TUIChatService_SetChatExtensionMethod_EnableVideoCallKey @"TDeskCore_TUIChatService_SetChatExtensionMethod_EnableVideoCallKey"
+#define TDeskCore_TUIChatService_SetChatExtensionMethod_EnableAudioCallKey @"TDeskCore_TUIChatService_SetChatExtensionMethod_EnableAudioCallKey"
+#define TDeskCore_TUIChatService_SetChatExtensionMethod_EnableLinkKey @"TDeskCore_TUIChatService_SetChatExtensionMethod_EnableLinkKey"
 
-#define TUICore_TUIChatService_AppendCustomMessageMethod @"TUICore_TUIChatService_AppendCustomMessageMethod"
-#define TUICore_TUIChatService_SetMaxTextSize @"TUICore_TUIChatService_SetMaxTextSize"
+#define TDeskCore_TUIChatService_AppendCustomMessageMethod @"TDeskCore_TUIChatService_AppendCustomMessageMethod"
+#define TDeskCore_TUIChatService_SetMaxTextSize @"TDeskCore_TUIChatService_SetMaxTextSize"
 
 
-#pragma mark - TUICore_TUIChat_Notify
-#define TUICore_TUIChatNotify @"TUICore_TUIChatNotify"
-#define TUICore_TDeskNotify @"TUICore_TDeskNotify"
-#define TUICore_TUIChatNotify_SendMessageSubKey @"TUICore_TUIChatNotify_SendMessageSubKey"
-#define TUICore_TUIChatNotify_SendMessageSubKey_Code @"TUICore_TUIChatNotify_SendMessageSubKey_Code"
-#define TUICore_TUIChatNotify_SendMessageSubKey_Desc @"TUICore_TUIChatNotify_SendMessageSubKey_Desc"
-#define TUICore_TUIChatNotify_SendMessageSubKey_Message @"TUICore_TUIChatNotify_SendMessageSubKey_Message"
-#define TUICore_TUIChatNotify_KeyboardWillHideSubKey @"TUICore_TUIChatNotify_KeyboardWillHideSubKey"
-#define TUICore_TUIChatNotify_ChatVC_ViewDidLoadSubKey @"TUICore_TUIChatNotify_ChatVC_ViewDidLoadSubKey"
-#define TUICore_TDeskNotify_ChatVC_ViewDidLoadSubKey @"TUICore_TDeskNotify_ChatVC_ViewDidLoadSubKey"
-#define TUICore_TUIChatNotify_ChatVC_ViewDidLoadSubKey_UserID @"TUICore_TUIChatNotify_ChatVC_ViewDidLoadSubKey_UserID"
+#pragma mark - TDeskCore_TUIChat_Notify
+#define TDeskCore_TUIChatNotify @"TDeskCore_TUIChatNotify"
+#define TDeskCore_TDeskNotify @"TDeskCore_TDeskNotify"
+#define TDeskCore_TUIChatNotify_SendMessageSubKey @"TDeskCore_TUIChatNotify_SendMessageSubKey"
+#define TDeskCore_TUIChatNotify_SendMessageSubKey_Code @"TDeskCore_TUIChatNotify_SendMessageSubKey_Code"
+#define TDeskCore_TUIChatNotify_SendMessageSubKey_Desc @"TDeskCore_TUIChatNotify_SendMessageSubKey_Desc"
+#define TDeskCore_TUIChatNotify_SendMessageSubKey_Message @"TDeskCore_TUIChatNotify_SendMessageSubKey_Message"
+#define TDeskCore_TUIChatNotify_KeyboardWillHideSubKey @"TDeskCore_TUIChatNotify_KeyboardWillHideSubKey"
+#define TDeskCore_TUIChatNotify_ChatVC_ViewDidLoadSubKey @"TDeskCore_TUIChatNotify_ChatVC_ViewDidLoadSubKey"
+#define TDeskCore_TDeskNotify_ChatVC_ViewDidLoadSubKey @"TDeskCore_TDeskNotify_ChatVC_ViewDidLoadSubKey"
+#define TDeskCore_TUIChatNotify_ChatVC_ViewDidLoadSubKey_UserID @"TDeskCore_TUIChatNotify_ChatVC_ViewDidLoadSubKey_UserID"
 // The notification of displaying the message cell data
-#define TUICore_TUIChatNotify_MessageDisplayedSubKey @"TUICore_TUIChatNotify_MessageDisplayedSubKey"
+#define TDeskCore_TUIChatNotify_MessageDisplayedSubKey @"TDeskCore_TUIChatNotify_MessageDisplayedSubKey"
 
-#pragma mark - TUICore_TUIChat_Extension
-#define TUICore_TUIChatExtension_GetMoreCellInfo_VideoCall @"TUICore_TUIChatExtension_GetMoreCellInfo_VideoCall"
-#define TUICore_TUIChatExtension_GetMoreCellInfo_AudioCall @"TUICore_TUIChatExtension_GetMoreCellInfo_AudioCall"
-#define TUICore_TUIChatExtension_GetMoreCellInfo_UserID @"TUICore_TUIChatExtension_GetMoreCellInfo_UserID"
-#define TUICore_TUIChatExtension_GetMoreCellInfo_GroupID @"TUICore_TUIChatExtension_GetMoreCellInfo_GroupID"
-#define TUICore_TUIChatExtension_GetMoreCellInfo_View @"TUICore_TUIChatExtension_GetMoreCellInfo_View"
+#pragma mark - TDeskCore_TUIChat_Extension
+#define TDeskCore_TUIChatExtension_GetMoreCellInfo_VideoCall @"TDeskCore_TUIChatExtension_GetMoreCellInfo_VideoCall"
+#define TDeskCore_TUIChatExtension_GetMoreCellInfo_AudioCall @"TDeskCore_TUIChatExtension_GetMoreCellInfo_AudioCall"
+#define TDeskCore_TUIChatExtension_GetMoreCellInfo_UserID @"TDeskCore_TUIChatExtension_GetMoreCellInfo_UserID"
+#define TDeskCore_TUIChatExtension_GetMoreCellInfo_GroupID @"TDeskCore_TUIChatExtension_GetMoreCellInfo_GroupID"
+#define TDeskCore_TUIChatExtension_GetMoreCellInfo_View @"TDeskCore_TUIChatExtension_GetMoreCellInfo_View"
 
 // Chat interface configuration extension
-#define TUICore_TUIChatExtension_GetChatConversationModelParams @"TUICore_TUIChatExtension_GetChatConversationModelParams"
-#define TUICore_TUIChatExtension_GetChatConversationModelParams_UserID @"TUICore_TUIChatExtension_GetChatConversationModelParams_UserID"
-#define TUICore_TUIChatExtension_GetChatConversationModelParams_MsgNeedReadReceipt @"TUICore_TUIChatExtension_GetChatConversationModelParams_MsgNeedReadReceipt" //bool
-#define TUICore_TUIChatExtension_GetChatConversationModelParams_EnableVideoCall @"TUICore_TUIChatExtension_GetChatConversationModelParams_EnableVideoCall" //bool
-#define TUICore_TUIChatExtension_GetChatConversationModelParams_EnableAudioCall @"TUICore_TUIChatExtension_GetChatConversationModelParams_EnableAudioCall" //bool
-#define TUICore_TUIChatExtension_GetChatConversationModelParams_EnableWelcomeCustomMessage @"TUICore_TUIChatExtension_GetChatConversationModelParams_EnableWelcomeCustomMessage" //bool
+#define TDeskCore_TUIChatExtension_GetChatConversationModelParams @"TDeskCore_TUIChatExtension_GetChatConversationModelParams"
+#define TDeskCore_TUIChatExtension_GetChatConversationModelParams_UserID @"TDeskCore_TUIChatExtension_GetChatConversationModelParams_UserID"
+#define TDeskCore_TUIChatExtension_GetChatConversationModelParams_MsgNeedReadReceipt @"TDeskCore_TUIChatExtension_GetChatConversationModelParams_MsgNeedReadReceipt" //bool
+#define TDeskCore_TUIChatExtension_GetChatConversationModelParams_EnableVideoCall @"TDeskCore_TUIChatExtension_GetChatConversationModelParams_EnableVideoCall" //bool
+#define TDeskCore_TUIChatExtension_GetChatConversationModelParams_EnableAudioCall @"TDeskCore_TUIChatExtension_GetChatConversationModelParams_EnableAudioCall" //bool
+#define TDeskCore_TUIChatExtension_GetChatConversationModelParams_EnableWelcomeCustomMessage @"TDeskCore_TUIChatExtension_GetChatConversationModelParams_EnableWelcomeCustomMessage" //bool
 
 // Chat page top area expansion
-#define TUICore_TUIChatExtension_ChatViewTopArea_ClassicExtensionID @"TUICore_TUIChatExtension_ChatViewTopArea_ClassicExtensionID"
-#define TUICore_TUIChatExtension_ChatViewTopArea_MinimalistExtensionID @"TUICore_TUIChatExtension_ChatViewTopArea_MinimalistExtensionID"
-#define TUICore_TUIChatExtension_ChatViewTopArea_ChangedNotification @"TUICore_TUIChatExtension_ChatViewTopArea_ChangedNotification"
-#define TUICore_TUIChatExtension_ChatViewTopArea_ViewType @"TUICore_TUIChatExtension_ChatViewTopArea_ViewType"
-#define TUICore_TUIChatExtension_ChatViewTopArea_ChatID @"TUICore_TUIChatExtension_ChatViewTopArea_ChatID"
-#define TUICore_TUIChatExtension_ChatViewTopArea_IsGroup @"TUICore_TUIChatExtension_ChatViewTopArea_IsGroup"
+#define TDeskCore_TUIChatExtension_ChatViewTopArea_ClassicExtensionID @"TDeskCore_TUIChatExtension_ChatViewTopArea_ClassicExtensionID"
+#define TDeskCore_TUIChatExtension_ChatViewTopArea_MinimalistExtensionID @"TDeskCore_TUIChatExtension_ChatViewTopArea_MinimalistExtensionID"
+#define TDeskCore_TUIChatExtension_ChatViewTopArea_ChangedNotification @"TDeskCore_TUIChatExtension_ChatViewTopArea_ChangedNotification"
+#define TDeskCore_TUIChatExtension_ChatViewTopArea_ViewType @"TDeskCore_TUIChatExtension_ChatViewTopArea_ViewType"
+#define TDeskCore_TUIChatExtension_ChatViewTopArea_ChatID @"TDeskCore_TUIChatExtension_ChatViewTopArea_ChatID"
+#define TDeskCore_TUIChatExtension_ChatViewTopArea_IsGroup @"TDeskCore_TUIChatExtension_ChatViewTopArea_IsGroup"
 
 // UI extension when clicking the avatar in message list
-#define TUICore_TUIChatExtension_ClickAvatar_ClassicExtensionID @"TUICore_TUIChatExtension_ClickAvatar_ClassicExtensionID"
-#define TUICore_TUIChatExtension_ClickAvatar_MinimalistExtensionID @"TUICore_TUIChatExtension_ClickAvatar_MinimalistExtensionID"
-#define TUICore_TUIChatExtension_ClickAvatar_UserID @"TUICore_TUIChatExtension_ClickAvatar_UserID"
-#define TUICore_TUIChatExtension_ClickAvatar_GroupID @"TUICore_TUIChatExtension_ClickAvatar_GroupID"
-#define TUICore_TUIChatExtension_ClickAvatar_PushVC @"TUICore_TUIChatExtension_ClickAvatar_PushVC"
+#define TDeskCore_TUIChatExtension_ClickAvatar_ClassicExtensionID @"TDeskCore_TUIChatExtension_ClickAvatar_ClassicExtensionID"
+#define TDeskCore_TUIChatExtension_ClickAvatar_MinimalistExtensionID @"TDeskCore_TUIChatExtension_ClickAvatar_MinimalistExtensionID"
+#define TDeskCore_TUIChatExtension_ClickAvatar_UserID @"TDeskCore_TUIChatExtension_ClickAvatar_UserID"
+#define TDeskCore_TUIChatExtension_ClickAvatar_GroupID @"TDeskCore_TUIChatExtension_ClickAvatar_GroupID"
+#define TDeskCore_TUIChatExtension_ClickAvatar_PushVC @"TDeskCore_TUIChatExtension_ClickAvatar_PushVC"
 
 // UI extension on the right side of navigation bar in chat page
-#define TUICore_TUIChatExtension_NavigationMoreItem_ClassicExtensionID @"TUICore_TUIChatExtension_NavigationMoreItem_ClassicExtensionID"
-#define TUICore_TUIChatExtension_NavigationMoreItem_MinimalistExtensionID @"TUICore_TUIChatExtension_NavigationMoreItem_MinimalistExtensionID"
-#define TUICore_TUIChatExtension_NavigationMoreItem_UserID @"TUICore_TUIChatExtension_NavigationMoreItem_UserID"
-#define TUICore_TUIChatExtension_NavigationMoreItem_GroupID @"TUICore_TUIChatExtension_NavigationMoreItem_GroupID"
-#define TUICore_TUIChatExtension_NavigationMoreItem_FilterVideoCall @"TUICore_TUIChatExtension_NavigationMoreItem_FilterVideoCall"
-#define TUICore_TUIChatExtension_NavigationMoreItem_FilterAudioCall @"TUICore_TUIChatExtension_NavigationMoreItem_FilterAudioCall"
-#define TUICore_TUIChatExtension_NavigationMoreItem_ItemSize @"TUICore_TUIChatExtension_NavigationMoreItem_ItemSize"
-#define TUICore_TUIChatExtension_NavigationMoreItem_ItemImage @"TUICore_TUIChatExtension_NavigationMoreItem_ItemImage"
-#define TUICore_TUIChatExtension_NavigationMoreItem_PushVC @"TUICore_TUIChatExtension_NavigationMoreItem_PushVC"
+#define TDeskCore_TUIChatExtension_NavigationMoreItem_ClassicExtensionID @"TDeskCore_TUIChatExtension_NavigationMoreItem_ClassicExtensionID"
+#define TDeskCore_TUIChatExtension_NavigationMoreItem_MinimalistExtensionID @"TDeskCore_TUIChatExtension_NavigationMoreItem_MinimalistExtensionID"
+#define TDeskCore_TUIChatExtension_NavigationMoreItem_UserID @"TDeskCore_TUIChatExtension_NavigationMoreItem_UserID"
+#define TDeskCore_TUIChatExtension_NavigationMoreItem_GroupID @"TDeskCore_TUIChatExtension_NavigationMoreItem_GroupID"
+#define TDeskCore_TUIChatExtension_NavigationMoreItem_FilterVideoCall @"TDeskCore_TUIChatExtension_NavigationMoreItem_FilterVideoCall"
+#define TDeskCore_TUIChatExtension_NavigationMoreItem_FilterAudioCall @"TDeskCore_TUIChatExtension_NavigationMoreItem_FilterAudioCall"
+#define TDeskCore_TUIChatExtension_NavigationMoreItem_ItemSize @"TDeskCore_TUIChatExtension_NavigationMoreItem_ItemSize"
+#define TDeskCore_TUIChatExtension_NavigationMoreItem_ItemImage @"TDeskCore_TUIChatExtension_NavigationMoreItem_ItemImage"
+#define TDeskCore_TUIChatExtension_NavigationMoreItem_PushVC @"TDeskCore_TUIChatExtension_NavigationMoreItem_PushVC"
 
 // UI extension for the input area at the bottom of the chat page
-#define TUICore_TUIChatExtension_InputViewMoreItem_ClassicExtensionID @"TUICore_TUIChatExtension_InputViewMoreItem_ClassicExtensionID"
-#define TUICore_TUIChatExtension_InputViewMoreItem_MinimalistExtensionID @"TUICore_TUIChatExtension_InputViewMoreItem_MinimalistExtensionID"
-#define TUICore_TUIChatExtension_InputViewMoreItem_UserID @"TUICore_TUIChatExtension_InputViewMoreItem_UserID"
-#define TUICore_TUIChatExtension_InputViewMoreItem_GroupID @"TUICore_TUIChatExtension_InputViewMoreItem_GroupID"
-#define TUICore_TUIChatExtension_InputViewMoreItem_FilterVideoCall @"TUICore_TUIChatExtension_InputViewMoreItem_FilterVideoCall"
-#define TUICore_TUIChatExtension_InputViewMoreItem_FilterAudioCall @"TUICore_TUIChatExtension_InputViewMoreItem_FilterAudioCall"
-#define TUICore_TUIChatExtension_InputViewMoreItem_FilterRoom @"TUICore_TUIChatExtension_InputViewMoreItem_FilterRoom"
-#define TUICore_TUIChatExtension_InputViewMoreItem_FilterPoll @"TUICore_TUIChatExtension_InputViewMoreItem_FilterPoll"
-#define TUICore_TUIChatExtension_InputViewMoreItem_FilterGroupNote @"TUICore_TUIChatExtension_InputViewMoreItem_FilterGroupNote"
-#define TUICore_TUIChatExtension_InputViewMoreItem_ItemSize @"TUICore_TUIChatExtension_InputViewMoreItem_ItemSize"
-#define TUICore_TUIChatExtension_InputViewMoreItem_ItemImage @"TUICore_TUIChatExtension_InputViewMoreItem_ItemImage"
-#define TUICore_TUIChatExtension_InputViewMoreItem_ItemTitle @"TUICore_TUIChatExtension_InputViewMoreItem_ItemTitle"
-#define TUICore_TUIChatExtension_InputViewMoreItem_PushVC @"TUICore_TUIChatExtension_InputViewMoreItem_PushVC"
-#define TUICore_TUIChatExtension_InputViewMoreItem_VC @"TUICore_TUIChatExtension_InputViewMoreItem_VC"
-#define TUICore_TUIChatExtension_InputViewMoreItem_ActionVC @"TUICore_TUIChatExtension_InputViewMoreItem_ActionVC"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_ClassicExtensionID @"TDeskCore_TUIChatExtension_InputViewMoreItem_ClassicExtensionID"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_MinimalistExtensionID @"TDeskCore_TUIChatExtension_InputViewMoreItem_MinimalistExtensionID"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_UserID @"TDeskCore_TUIChatExtension_InputViewMoreItem_UserID"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_GroupID @"TDeskCore_TUIChatExtension_InputViewMoreItem_GroupID"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_FilterVideoCall @"TDeskCore_TUIChatExtension_InputViewMoreItem_FilterVideoCall"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_FilterAudioCall @"TDeskCore_TUIChatExtension_InputViewMoreItem_FilterAudioCall"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_FilterRoom @"TDeskCore_TUIChatExtension_InputViewMoreItem_FilterRoom"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_FilterPoll @"TDeskCore_TUIChatExtension_InputViewMoreItem_FilterPoll"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_FilterGroupNote @"TDeskCore_TUIChatExtension_InputViewMoreItem_FilterGroupNote"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_ItemSize @"TDeskCore_TUIChatExtension_InputViewMoreItem_ItemSize"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_ItemImage @"TDeskCore_TUIChatExtension_InputViewMoreItem_ItemImage"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_ItemTitle @"TDeskCore_TUIChatExtension_InputViewMoreItem_ItemTitle"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_PushVC @"TDeskCore_TUIChatExtension_InputViewMoreItem_PushVC"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_VC @"TDeskCore_TUIChatExtension_InputViewMoreItem_VC"
+#define TDeskCore_TUIChatExtension_InputViewMoreItem_ActionVC @"TDeskCore_TUIChatExtension_InputViewMoreItem_ActionVC"
 
 // Chat page message long press pop-up UI extension.
-#define TUICore_TUIChatExtension_ChatPopMenuReactRecentView_ClassicExtensionID @"TUICore_TUIChatExtension_ChatPopMenuReactRecentView_ClassicExtensionID"
-#define TUICore_TUIChatExtension_ChatPopMenuReactRecentView_MinimalistExtensionID @"TUICore_TUIChatExtension_ChatPopMenuReactRecentView_MinimalistExtensionID"
-#define TUICore_TUIChatExtension_ChatPopMenuReactRecentView_Delegate @"TUICore_TUIChatExtension_ChatPopMenuReactRecentView_Delegate"
+#define TDeskCore_TUIChatExtension_ChatPopMenuReactRecentView_ClassicExtensionID @"TDeskCore_TUIChatExtension_ChatPopMenuReactRecentView_ClassicExtensionID"
+#define TDeskCore_TUIChatExtension_ChatPopMenuReactRecentView_MinimalistExtensionID @"TDeskCore_TUIChatExtension_ChatPopMenuReactRecentView_MinimalistExtensionID"
+#define TDeskCore_TUIChatExtension_ChatPopMenuReactRecentView_Delegate @"TDeskCore_TUIChatExtension_ChatPopMenuReactRecentView_Delegate"
 
 
-#define TUICore_TUIChatExtension_ChatPopMenuReactDetailView_ClassicExtensionID @"TUICore_TUIChatExtension_ChatPopMenuReactDetailView_ClassicExtensionID"
-#define TUICore_TUIChatExtension_ChatPopMenuReactDetailView_MinimalistExtensionID @"TUICore_TUIChatExtension_ChatPopMenuReactDetailView_MinimalistExtensionID"
+#define TDeskCore_TUIChatExtension_ChatPopMenuReactDetailView_ClassicExtensionID @"TDeskCore_TUIChatExtension_ChatPopMenuReactDetailView_ClassicExtensionID"
+#define TDeskCore_TUIChatExtension_ChatPopMenuReactDetailView_MinimalistExtensionID @"TDeskCore_TUIChatExtension_ChatPopMenuReactDetailView_MinimalistExtensionID"
 
-#define TUICore_TUIChatExtension_PopMenuActionItem_ClassicExtensionID @"TUICore_TUIChatExtension_PopMenuActionItem_ClassicExtensionID"
-#define TUICore_TUIChatExtension_PopMenuActionItem_MinimalistExtensionID @"TUICore_TUIChatExtension_PopMenuActionItem_MinimalistExtensionID"
-#define TUICore_TUIChatExtension_PopMenuActionItem_TargetVC @"TUICore_TUIChatExtension_PopMenuActionItem_TargetVC"
-#define TUICore_TUIChatExtension_PopMenuActionItem_ClickCell @"TUICore_TUIChatExtension_PopMenuActionItem_ClickCell"
+#define TDeskCore_TUIChatExtension_PopMenuActionItem_ClassicExtensionID @"TDeskCore_TUIChatExtension_PopMenuActionItem_ClassicExtensionID"
+#define TDeskCore_TUIChatExtension_PopMenuActionItem_MinimalistExtensionID @"TDeskCore_TUIChatExtension_PopMenuActionItem_MinimalistExtensionID"
+#define TDeskCore_TUIChatExtension_PopMenuActionItem_TargetVC @"TDeskCore_TUIChatExtension_PopMenuActionItem_TargetVC"
+#define TDeskCore_TUIChatExtension_PopMenuActionItem_ClickCell @"TDeskCore_TUIChatExtension_PopMenuActionItem_ClickCell"
 // Chat message cell container UI extension.
-#define TUICore_TUIChatExtension_ChatMessageReactPreview_ClassicExtensionID @"TUICore_TUIChatExtension_ChatMessageReactPreview_ClassicExtensionID"
-#define TUICore_TUIChatExtension_ChatMessageReactPreview_MinimalistExtensionID @"TUICore_TUIChatExtension_ChatMessageReactPreview_MinimalistExtensionID"
-#define TUICore_TUIChatExtension_ChatMessageReactPreview_Delegate @"TUICore_TUIChatExtension_ChatMessageReactPreview_Delegate"
+#define TDeskCore_TUIChatExtension_ChatMessageReactPreview_ClassicExtensionID @"TDeskCore_TUIChatExtension_ChatMessageReactPreview_ClassicExtensionID"
+#define TDeskCore_TUIChatExtension_ChatMessageReactPreview_MinimalistExtensionID @"TDeskCore_TUIChatExtension_ChatMessageReactPreview_MinimalistExtensionID"
+#define TDeskCore_TUIChatExtension_ChatMessageReactPreview_Delegate @"TDeskCore_TUIChatExtension_ChatMessageReactPreview_Delegate"
 
 // Chat message cell bottom container UI extension.
-#define TUICore_TUIChatExtension_BottomContainer_ClassicExtensionID @"TUICore_TUIChatExtension_BottomContainer_ClassicExtensionID"
-#define TUICore_TUIChatExtension_BottomContainer_MinimalistExtensionID @"TUICore_TUIChatExtension_BottomContainer_MinimalistExtensionID"
-#define TUICore_TUIChatExtension_BottomContainer_CellData @"TUICore_TUIChatExtension_BottomContainer_CellData"
-#define TUICore_TUIChatExtension_BottomContainer_VC @"TUICore_TUIChatExtension_BottomContainer_VC"
+#define TDeskCore_TUIChatExtension_BottomContainer_ClassicExtensionID @"TDeskCore_TUIChatExtension_BottomContainer_ClassicExtensionID"
+#define TDeskCore_TUIChatExtension_BottomContainer_MinimalistExtensionID @"TDeskCore_TUIChatExtension_BottomContainer_MinimalistExtensionID"
+#define TDeskCore_TUIChatExtension_BottomContainer_CellData @"TDeskCore_TUIChatExtension_BottomContainer_CellData"
+#define TDeskCore_TUIChatExtension_BottomContainer_VC @"TDeskCore_TUIChatExtension_BottomContainer_VC"
 // Chat page UI extension below chatVC
-#define TUICore_TUIChatExtension_ChatVCBottomContainer_ClassicExtensionID @"TUICore_TUIChatExtension_ChatVCBottomContainer_ClassicExtensionID"
-#define TUICore_TUIChatExtension_ChatVCBottomContainer_VC @"TUICore_TUIChatExtension_ChatVCBottomContainer_VC"
-#define TUICore_TUIChatExtension_ChatVCBottomContainer_UserID @"TUICore_TUIChatExtension_ChatVCBottomContainer_UserID"
+#define TDeskCore_TUIChatExtension_ChatVCBottomContainer_ClassicExtensionID @"TDeskCore_TUIChatExtension_ChatVCBottomContainer_ClassicExtensionID"
+#define TDeskCore_TUIChatExtension_ChatVCBottomContainer_VC @"TDeskCore_TUIChatExtension_ChatVCBottomContainer_VC"
+#define TDeskCore_TUIChatExtension_ChatVCBottomContainer_UserID @"TDeskCore_TUIChatExtension_ChatVCBottomContainer_UserID"
 
-#pragma mark - TUICore_TUIChat_ObjectFactory
+#pragma mark - TDeskCore_TUIChat_ObjectFactory
 #define TDeskCore_TUIChatObjectFactory @"TDeskCore_TUIChatObjectFactory"
 #define TDeskCore_TUIChatObjectFactory_Minimalist @"TDeskCore_TUIChatObjectFactory_Minimalist"
 
-#pragma mark - TUICore_TUIChat_ObjectFactory_Route
+#pragma mark - TDeskCore_TUIChat_ObjectFactory_Route
 #define TDeskCore_TUIChatObjectFactory_ChatViewController_Classic @"TDeskCore_TUIChatObjectFactory_ChatViewController_Classic"
 #define TDeskCore_TUIChatObjectFactory_ChatViewController_Minimalist @"TDeskCore_TUIChatObjectFactory_ChatViewController_Minimalist"
 #define TDeskCore_TUIChatObjectFactory_ChatViewController_Title @"TDeskCore_TUIChatObjectFactory_ChatViewController_Title"
@@ -841,419 +841,419 @@ static inline NSBundle *getTDeskGetLocalizable(NSString *bundleName) {
 #define TDeskCore_TUIChatObjectFactory_ChatViewController_Enable_File @"TDeskCore_TUIChatObjectFactory_ChatViewController_Enable_File"
 #define TDeskCore_TUIChatObjectFactory_ChatViewController_Enable_Album @"TDeskCore_TUIChatObjectFactory_ChatViewController_Enable_Album"
 
-#pragma mark - TUICore_TUIConversation_Service
-#define TUICore_TUIConversationService @"TUICore_TUIConversationService"
-#define TUICore_TUIConversationService_Minimalist @"TUICore_TUIConversationService_Minimalist"
+#pragma mark - TDeskCore_TUIConversation_Service
+#define TDeskCore_TUIConversationService @"TDeskCore_TUIConversationService"
+#define TDeskCore_TUIConversationService_Minimalist @"TDeskCore_TUIConversationService_Minimalist"
 
-#pragma mark - TUICore_TUIConversation_Notify
-#define TUICore_TUIConversationNotify @"TUICore_TUIConversationNotify"
-#define TUICore_TUIConversationNotify_RemoveConversationSubKey @"TUICore_TUIConversationNotify_RemoveConversationSubKey"
-#define TUICore_TUIConversationNotify_RemoveConversationSubKey_ConversationID @"TUICore_TUIConversationNotify_RemoveConversationSubKey_ConversationID"
-#define TUICore_TUIConversationNotify_ClearConversationUIHistorySubKey @"TUICore_TUIConversationNotify_ClearConversationUIHistorySubKey"
+#pragma mark - TDeskCore_TUIConversation_Notify
+#define TDeskCore_TUIConversationNotify @"TDeskCore_TUIConversationNotify"
+#define TDeskCore_TUIConversationNotify_RemoveConversationSubKey @"TDeskCore_TUIConversationNotify_RemoveConversationSubKey"
+#define TDeskCore_TUIConversationNotify_RemoveConversationSubKey_ConversationID @"TDeskCore_TUIConversationNotify_RemoveConversationSubKey_ConversationID"
+#define TDeskCore_TUIConversationNotify_ClearConversationUIHistorySubKey @"TDeskCore_TUIConversationNotify_ClearConversationUIHistorySubKey"
 
-#pragma mark - TUICore_TUIConversation_Extension
+#pragma mark - TDeskCore_TUIConversation_Extension
 // UI extension for the banner in the conversation list page
-#define TUICore_TUIConversationExtension_ConversationListBanner_ClassicExtensionID @"TUICore_TUIConversationExtension_ConversationListBanner_ClassicExtensionID"
-#define TUICore_TUIConversationExtension_ConversationListBanner_MinimalistExtensionID \
-    @"TUICore_TUIConversationExtension_ConversationListBanner_MinimalistExtensionID"
-#define TUICore_TUIConversationExtension_ConversationListBanner_BannerSize @"TUICore_TUIConversationExtension_ConversationListBanner_BannerSize"
-#define TUICore_TUIConversationExtension_ConversationListBanner_ModalVC @"TUICore_TUIConversationExtension_ConversationListBanner_ModalVC"
+#define TDeskCore_TUIConversationExtension_ConversationListBanner_ClassicExtensionID @"TDeskCore_TUIConversationExtension_ConversationListBanner_ClassicExtensionID"
+#define TDeskCore_TUIConversationExtension_ConversationListBanner_MinimalistExtensionID \
+    @"TDeskCore_TUIConversationExtension_ConversationListBanner_MinimalistExtensionID"
+#define TDeskCore_TUIConversationExtension_ConversationListBanner_BannerSize @"TDeskCore_TUIConversationExtension_ConversationListBanner_BannerSize"
+#define TDeskCore_TUIConversationExtension_ConversationListBanner_ModalVC @"TDeskCore_TUIConversationExtension_ConversationListBanner_ModalVC"
 
-#pragma mark - TUICore_TUIConversation_ObjectFactory
-#define TUICore_TUIConversationObjectFactory @"TUICore_TUIConversationObjectFactory"
-#define TUICore_TUIConversationObjectFactory_Minimalist @"TUICore_TUIConversationObjectFactory_Minimalist"
+#pragma mark - TDeskCore_TUIConversation_ObjectFactory
+#define TDeskCore_TUIConversationObjectFactory @"TDeskCore_TUIConversationObjectFactory"
+#define TDeskCore_TUIConversationObjectFactory_Minimalist @"TDeskCore_TUIConversationObjectFactory_Minimalist"
 
-#define TUICore_TUIConversationObjectFactory_GetConversationControllerMethod @"TUICore_TUIConversationObjectFactory_GetConversationControllerMethod"
+#define TDeskCore_TUIConversationObjectFactory_GetConversationControllerMethod @"TDeskCore_TUIConversationObjectFactory_GetConversationControllerMethod"
 
-#pragma mark - TUICore_TUIConversation_ObjectFactory_Route
+#pragma mark - TDeskCore_TUIConversation_ObjectFactory_Route
 // Route to conversation select page
-#define TUICore_TUIConversationObjectFactory_ConversationSelectVC_Classic @"TUICore_TUIConversationObjectFactory_ConversationSelectVC_Classic"
-#define TUICore_TUIConversationObjectFactory_ConversationSelectVC_Minimalist @"TUICore_TUIConversationObjectFactory_ConversationSelectVC_Minimalist"
-#define TUICore_TUIConversationObjectFactory_ConversationSelectVC_ResultList @"TUICore_TUIConversationObjectFactory_ConversationSelectVC_ResultList"
-#define TUICore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_ConversationID \
-    @"TUICore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_ConversationID"
-#define TUICore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_Title @"TUICore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_Title"
-#define TUICore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_UserID \
-    @"TUICore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_UserID"
-#define TUICore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_GroupID \
-    @"TUICore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_GroupID"
+#define TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_Classic @"TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_Classic"
+#define TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_Minimalist @"TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_Minimalist"
+#define TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_ResultList @"TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_ResultList"
+#define TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_ConversationID \
+    @"TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_ConversationID"
+#define TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_Title @"TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_Title"
+#define TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_UserID \
+    @"TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_UserID"
+#define TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_GroupID \
+    @"TDeskCore_TUIConversationObjectFactory_ConversationSelectVC_ResultList_GroupID"
 
 // UI extension for the banner in the conversation group list
-#define TUICore_TUIConversationExtension_ConversationGroupListBanner_ClassicExtensionID \
-    @"TUICore_TUIConversationExtension_ConversationGroupListBanner_ClassicExtensionID"
-#define TUICore_TUIConversationExtension_ConversationGroupListBanner_GroupItemKey @"TUICore_TUIConversationExtension_ConversationGroupListBanner_GroupItemKey"
+#define TDeskCore_TUIConversationExtension_ConversationGroupListBanner_ClassicExtensionID \
+    @"TDeskCore_TUIConversationExtension_ConversationGroupListBanner_ClassicExtensionID"
+#define TDeskCore_TUIConversationExtension_ConversationGroupListBanner_GroupItemKey @"TDeskCore_TUIConversationExtension_ConversationGroupListBanner_GroupItemKey"
 
 // UI extension for the conversation group manager
-#define TUICore_TUIConversationExtension_ConversationGroupManagerContainer_ClassicExtensionID \
-    @"TUICore_TUIConversationExtension_ConversationGroupManagerContainer_ClassicExtensionID"
-#define TUICore_TUIConversationExtension_ConversationGroupManagerContainer_ParentVCKey \
-    @"TUICore_TUIConversationExtension_ConversationGroupManagerContainer_ParentVCKey"
+#define TDeskCore_TUIConversationExtension_ConversationGroupManagerContainer_ClassicExtensionID \
+    @"TDeskCore_TUIConversationExtension_ConversationGroupManagerContainer_ClassicExtensionID"
+#define TDeskCore_TUIConversationExtension_ConversationGroupManagerContainer_ParentVCKey \
+    @"TDeskCore_TUIConversationExtension_ConversationGroupManagerContainer_ParentVCKey"
 
 // UI extension for the conversation list
-#define TUICore_TUIConversationExtension_ConversationListContainer_ClassicExtensionID \
-    @"TUICore_TUIConversationExtension_ConversationListContainer_ClassicExtensionID"
-#define TUICore_TUIConversationExtension_ConversationListContainer_GroupNameKey @"TUICore_TUIConversationExtension_ConversationListContainer_GroupNameKey"
+#define TDeskCore_TUIConversationExtension_ConversationListContainer_ClassicExtensionID \
+    @"TDeskCore_TUIConversationExtension_ConversationListContainer_ClassicExtensionID"
+#define TDeskCore_TUIConversationExtension_ConversationListContainer_GroupNameKey @"TDeskCore_TUIConversationExtension_ConversationListContainer_GroupNameKey"
 
 // UI extension for the conversation cell upper right corner
-#define TUICore_TUIConversationExtension_ConversationCellUpperRightCorner_ClassicExtensionID \
-    @"TUICore_TUIConversationExtension_ConversationCellUpperRightCorner_ClassicExtensionID"
-#define TUICore_TUIConversationExtension_ConversationCellUpperRightCorner_GroupListKey \
-    @"TUICore_TUIConversationExtension_ConversationCellUpperRightCorner_GroupListKey"
-#define TUICore_TUIConversationExtension_ConversationCellUpperRightCorner_MarkListKey \
-    @"TUICore_TUIConversationExtension_ConversationCellUpperRightCorner_MarkListKey"
+#define TDeskCore_TUIConversationExtension_ConversationCellUpperRightCorner_ClassicExtensionID \
+    @"TDeskCore_TUIConversationExtension_ConversationCellUpperRightCorner_ClassicExtensionID"
+#define TDeskCore_TUIConversationExtension_ConversationCellUpperRightCorner_GroupListKey \
+    @"TDeskCore_TUIConversationExtension_ConversationCellUpperRightCorner_GroupListKey"
+#define TDeskCore_TUIConversationExtension_ConversationCellUpperRightCorner_MarkListKey \
+    @"TDeskCore_TUIConversationExtension_ConversationCellUpperRightCorner_MarkListKey"
 
 // UI extension for click more
-#define TUICore_TUIConversationExtension_ConversationCellMoreAction_ClassicExtensionID \
-    @"TUICore_TUIConversationExtension_ConversationCellMoreAction_ClassicExtensionID"
-#define TUICore_TUIConversationExtension_ConversationCellAction_ConversationIDKey @"TUICore_TUIConversationExtension_ConversationCellAction_ConversationIDKey"
-#define TUICore_TUIConversationExtension_ConversationCellAction_MarkListKey @"TUICore_TUIConversationExtension_ConversationCellAction_MarkListKey"
-#define TUICore_TUIConversationExtension_ConversationCellAction_GroupListKey @"TUICore_TUIConversationExtension_ConversationCellAction_GroupListKey"
+#define TDeskCore_TUIConversationExtension_ConversationCellMoreAction_ClassicExtensionID \
+    @"TDeskCore_TUIConversationExtension_ConversationCellMoreAction_ClassicExtensionID"
+#define TDeskCore_TUIConversationExtension_ConversationCellAction_ConversationIDKey @"TDeskCore_TUIConversationExtension_ConversationCellAction_ConversationIDKey"
+#define TDeskCore_TUIConversationExtension_ConversationCellAction_MarkListKey @"TDeskCore_TUIConversationExtension_ConversationCellAction_MarkListKey"
+#define TDeskCore_TUIConversationExtension_ConversationCellAction_GroupListKey @"TDeskCore_TUIConversationExtension_ConversationCellAction_GroupListKey"
 
-#pragma mark - TUICore_TUIConversationGroupNotify
-#define TUICore_TUIConversationGroupNotify @"TUICore_TUIConversationGroupNotify"
-#define TUICore_TUIConversationGroupNotify_GroupListReloadKey @"TUICore_TUIConversationGroupNotify_GroupListReloadKey"
-#define TUICore_TUIConversationGroupNotify_GroupAddKey @"TUICore_TUIConversationGroupNotify_GroupAddKey"
-#define TUICore_TUIConversationGroupNotify_GroupUpdateKey @"TUICore_TUIConversationGroupNotify_GroupUpdateKey"
-#define TUICore_TUIConversationGroupNotify_GroupRenameKey @"TUICore_TUIConversationGroupNotify_GroupRenameKey"
-#define TUICore_TUIConversationGroupNotify_GroupDeleteKey @"TUICore_TUIConversationGroupNotify_GroupDeleteKey"
+#pragma mark - TDeskCore_TUIConversationGroupNotify
+#define TDeskCore_TUIConversationGroupNotify @"TDeskCore_TUIConversationGroupNotify"
+#define TDeskCore_TUIConversationGroupNotify_GroupListReloadKey @"TDeskCore_TUIConversationGroupNotify_GroupListReloadKey"
+#define TDeskCore_TUIConversationGroupNotify_GroupAddKey @"TDeskCore_TUIConversationGroupNotify_GroupAddKey"
+#define TDeskCore_TUIConversationGroupNotify_GroupUpdateKey @"TDeskCore_TUIConversationGroupNotify_GroupUpdateKey"
+#define TDeskCore_TUIConversationGroupNotify_GroupRenameKey @"TDeskCore_TUIConversationGroupNotify_GroupRenameKey"
+#define TDeskCore_TUIConversationGroupNotify_GroupDeleteKey @"TDeskCore_TUIConversationGroupNotify_GroupDeleteKey"
 
 #pragma mark - UICore_TUIConversationGroupExtension
-#define TUICore_TUIConversationGroupExtension_ConversationGroupListSort_ClassicExtensionID \
-    @"TUICore_TUIConversationGroupExtension_ConversationGroupListSort_ClassicExtensionID"
-#define TUICore_TUIConversationGroupExtension_ConversationGroupListSort_GroupItemKey \
-    @"TUICore_TUIConversationGroupExtension_ConversationGroupListSort_GroupItemKey"
+#define TDeskCore_TUIConversationGroupExtension_ConversationGroupListSort_ClassicExtensionID \
+    @"TDeskCore_TUIConversationGroupExtension_ConversationGroupListSort_ClassicExtensionID"
+#define TDeskCore_TUIConversationGroupExtension_ConversationGroupListSort_GroupItemKey \
+    @"TDeskCore_TUIConversationGroupExtension_ConversationGroupListSort_GroupItemKey"
 
-#pragma mark - TUICore_TUIConversationMarkNotify
-#define TUICore_TUIConversationMarkNotify @"TUICore_TUIConversationMarkNotify"
-#define TUICore_TUIConversationGroupNotify_MarkAddKey @"TUICore_TUIConversationGroupNotify_MarkAddKey"
-#define TUICore_TUIConversationGroupNotify_MarkUpdateKey @"TUICore_TUIConversationGroupNotify_MarkUpdateKey"
+#pragma mark - TDeskCore_TUIConversationMarkNotify
+#define TDeskCore_TUIConversationMarkNotify @"TDeskCore_TUIConversationMarkNotify"
+#define TDeskCore_TUIConversationGroupNotify_MarkAddKey @"TDeskCore_TUIConversationGroupNotify_MarkAddKey"
+#define TDeskCore_TUIConversationGroupNotify_MarkUpdateKey @"TDeskCore_TUIConversationGroupNotify_MarkUpdateKey"
 
-#pragma mark - TUICore_TUIContact_Service
-#define TUICore_TUIContactService @"TUICore_TUIContactService"
-#define TUICore_TUIContactService_Minimalist @"TUICore_TUIContactService_Minimalist"
+#pragma mark - TDeskCore_TUIContact_Service
+#define TDeskCore_TUIContactService @"TDeskCore_TUIContactService"
+#define TDeskCore_TUIContactService_Minimalist @"TDeskCore_TUIContactService_Minimalist"
 
-#pragma mark - TUICore_TUIContact_Notify
-#define TUICore_TUIContactNotify @"TUICore_TUIContactNotify"
+#pragma mark - TDeskCore_TUIContact_Notify
+#define TDeskCore_TUIContactNotify @"TDeskCore_TUIContactNotify"
 
-#define TUICore_TUIContactNotify_UpdateConversationBackgroundImageSubKey @"TUICore_TUIContactNotify_UpdateConversationBackgroundImageSubKey"
-#define TUICore_TUIContactNotify_UpdateConversationBackgroundImageSubKey_ConversationID \
-    @"TUICore_TUIContactNotify_UpdateConversationBackgroundImageSubKey_ConversationID"
+#define TDeskCore_TUIContactNotify_UpdateConversationBackgroundImageSubKey @"TDeskCore_TUIContactNotify_UpdateConversationBackgroundImageSubKey"
+#define TDeskCore_TUIContactNotify_UpdateConversationBackgroundImageSubKey_ConversationID \
+    @"TDeskCore_TUIContactNotify_UpdateConversationBackgroundImageSubKey_ConversationID"
 
-#pragma mark - TUICore_TUIContact_Extension
+#pragma mark - TDeskCore_TUIContact_Extension
 // UI extension for the action menus in the friend profile page
-#define TUICore_TUIContactExtension_FriendProfileActionMenu_ClassicExtensionID @"TUICore_TUIContactExtension_FriendProfileActionMenu_ClassicExtensionID"
-#define TUICore_TUIContactExtension_FriendProfileActionMenu_MinimalistExtensionID @"TUICore_TUIContactExtension_FriendProfileActionMenu_MinimalistExtensionID"
-#define TUICore_TUIContactExtension_FriendProfileActionMenu_UserID @"TUICore_TUIContactExtension_FriendProfileActionMenu_UserID"
-#define TUICore_TUIContactExtension_FriendProfileActionMenu_UserIcon @"TUICore_TUIContactExtension_FriendProfileActionMenu_UserIcon"
-#define TUICore_TUIContactExtension_FriendProfileActionMenu_UserName @"TUICore_TUIContactExtension_FriendProfileActionMenu_UserName"
+#define TDeskCore_TUIContactExtension_FriendProfileActionMenu_ClassicExtensionID @"TDeskCore_TUIContactExtension_FriendProfileActionMenu_ClassicExtensionID"
+#define TDeskCore_TUIContactExtension_FriendProfileActionMenu_MinimalistExtensionID @"TDeskCore_TUIContactExtension_FriendProfileActionMenu_MinimalistExtensionID"
+#define TDeskCore_TUIContactExtension_FriendProfileActionMenu_UserID @"TDeskCore_TUIContactExtension_FriendProfileActionMenu_UserID"
+#define TDeskCore_TUIContactExtension_FriendProfileActionMenu_UserIcon @"TDeskCore_TUIContactExtension_FriendProfileActionMenu_UserIcon"
+#define TDeskCore_TUIContactExtension_FriendProfileActionMenu_UserName @"TDeskCore_TUIContactExtension_FriendProfileActionMenu_UserName"
 
-#define TUICore_TUIContactExtension_FriendProfileActionMenu_FilterVideoCall @"TUICore_TUIContactExtension_FriendProfileActionMenu_FilterVideoCall"
-#define TUICore_TUIContactExtension_FriendProfileActionMenu_FilterAudioCall @"TUICore_TUIContactExtension_FriendProfileActionMenu_FilterAudioCall"
-#define TUICore_TUIContactExtension_FriendProfileActionMenu_PushVC @"TUICore_TUIContactExtension_FriendProfileActionMenu_PushVC"
+#define TDeskCore_TUIContactExtension_FriendProfileActionMenu_FilterVideoCall @"TDeskCore_TUIContactExtension_FriendProfileActionMenu_FilterVideoCall"
+#define TDeskCore_TUIContactExtension_FriendProfileActionMenu_FilterAudioCall @"TDeskCore_TUIContactExtension_FriendProfileActionMenu_FilterAudioCall"
+#define TDeskCore_TUIContactExtension_FriendProfileActionMenu_PushVC @"TDeskCore_TUIContactExtension_FriendProfileActionMenu_PushVC"
 
 // UI extension for the settings in the "Me" profile page
-#define TUICore_TUIContactExtension_MeSettingMenu_ClassicExtensionID @"TUICore_TUIContactExtension_MeSettingMenu_ClassicExtensionID"
-#define TUICore_TUIContactExtension_MeSettingMenu_MinimalistExtensionID @"TUICore_TUIContactExtension_MeSettingMenu_MinimalistExtensionID"
-#define TUICore_TUIContactExtension_MeSettingMenu_Nav @"TUICore_TUIContactExtension_MeSettingMenu_Nav"
-#define TUICore_TUIContactExtension_MeSettingMenu_Data @"TUICore_TUIContactExtension_MeSettingMenu_Data"
-#define TUICore_TUIContactExtension_MeSettingMenu_View @"TUICore_TUIContactExtension_MeSettingMenu_View"
-#define TUICore_TUIContactExtension_MeSettingMenu_Weight @"TUICore_TUIContactExtension_MeSettingMenu_Weight"
+#define TDeskCore_TUIContactExtension_MeSettingMenu_ClassicExtensionID @"TDeskCore_TUIContactExtension_MeSettingMenu_ClassicExtensionID"
+#define TDeskCore_TUIContactExtension_MeSettingMenu_MinimalistExtensionID @"TDeskCore_TUIContactExtension_MeSettingMenu_MinimalistExtensionID"
+#define TDeskCore_TUIContactExtension_MeSettingMenu_Nav @"TDeskCore_TUIContactExtension_MeSettingMenu_Nav"
+#define TDeskCore_TUIContactExtension_MeSettingMenu_Data @"TDeskCore_TUIContactExtension_MeSettingMenu_Data"
+#define TDeskCore_TUIContactExtension_MeSettingMenu_View @"TDeskCore_TUIContactExtension_MeSettingMenu_View"
+#define TDeskCore_TUIContactExtension_MeSettingMenu_Weight @"TDeskCore_TUIContactExtension_MeSettingMenu_Weight"
 
 // UI extension for group type in the "Contact" page
-#define TUICore_TUIContactExtension_ContactMenu_ClassicExtensionID @"TUICore_TUIContactExtension_ContactMenu_ClassicExtensionID"
-#define TUICore_TUIContactExtension_ContactMenu_MinimalistExtensionID @"TUICore_TUIContactExtension_ContactMenu_MinimalistExtensionID"
-#define TUICore_TUIContactExtension_ContactMenu_Nav @"TUICore_TUIContactExtension_ContactMenu_Nav"
+#define TDeskCore_TUIContactExtension_ContactMenu_ClassicExtensionID @"TDeskCore_TUIContactExtension_ContactMenu_ClassicExtensionID"
+#define TDeskCore_TUIContactExtension_ContactMenu_MinimalistExtensionID @"TDeskCore_TUIContactExtension_ContactMenu_MinimalistExtensionID"
+#define TDeskCore_TUIContactExtension_ContactMenu_Nav @"TDeskCore_TUIContactExtension_ContactMenu_Nav"
 
-#pragma mark - TUICore_TUIContact_ObjectFactory
-#define TUICore_TUIContactObjectFactory @"TUICore_TUIContactObjectFactory"
-#define TUICore_TUIContactObjectFactory_Minimalist @"TUICore_TUIContactObjectFactory_Minimalist"
+#pragma mark - TDeskCore_TUIContact_ObjectFactory
+#define TDeskCore_TUIContactObjectFactory @"TDeskCore_TUIContactObjectFactory"
+#define TDeskCore_TUIContactObjectFactory_Minimalist @"TDeskCore_TUIContactObjectFactory_Minimalist"
 
-#define TUICore_TUIContactObjectFactory_GetContactControllerMethod @"TUICore_TUIContactObjectFactory_GetContactControllerMethod"
+#define TDeskCore_TUIContactObjectFactory_GetContactControllerMethod @"TDeskCore_TUIContactObjectFactory_GetContactControllerMethod"
 
-#define TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod @"TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod"
-#define TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod_TitleKey @"TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod_TitleKey"
-#define TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod_MaxSelectCount \
-    @"TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod_MaxSelectCount"
-#define TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod_SourceIdsKey \
-    @"TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod_SourceIdsKey"
-#define TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod_DisableIdsKey \
-    @"TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod_DisableIdsKey"
-#define TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod_DisplayNamesKey \
-    @"TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod_DisplayNamesKey"
-#define TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod_CompletionKey \
-    @"TUICore_TUIContactObjectFactory_GetContactSelectControllerMethod_CompletionKey"
+#define TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod @"TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod"
+#define TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod_TitleKey @"TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod_TitleKey"
+#define TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod_MaxSelectCount \
+    @"TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod_MaxSelectCount"
+#define TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod_SourceIdsKey \
+    @"TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod_SourceIdsKey"
+#define TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod_DisableIdsKey \
+    @"TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod_DisableIdsKey"
+#define TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod_DisplayNamesKey \
+    @"TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod_DisplayNamesKey"
+#define TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod_CompletionKey \
+    @"TDeskCore_TUIContactObjectFactory_GetContactSelectControllerMethod_CompletionKey"
 
-#define TUICore_TUIContactObjectFactory_GetFriendProfileControllerMethod @"TUICore_TUIContactObjectFactory_GetFriendProfileControllerMethod"
-#define TUICore_TUIContactObjectFactory_GetFriendProfileControllerMethod_FriendProfileKey \
-    @"TUICore_TUIContactObjectFactory_GetFriendProfileControllerMethod_FriendProfileKey"
+#define TDeskCore_TUIContactObjectFactory_GetFriendProfileControllerMethod @"TDeskCore_TUIContactObjectFactory_GetFriendProfileControllerMethod"
+#define TDeskCore_TUIContactObjectFactory_GetFriendProfileControllerMethod_FriendProfileKey \
+    @"TDeskCore_TUIContactObjectFactory_GetFriendProfileControllerMethod_FriendProfileKey"
 
-#define TUICore_TUIContactObjectFactory_GetGroupCreateControllerMethod @"TUICore_TUIContactObjectFactory_GetGroupCreateControllerMethod"
-#define TUICore_TUIContactObjectFactory_GetGroupCreateControllerMethod_TitleKey @"TUICore_TUIContactObjectFactory_GetGroupCreateControllerMethod_TitleKey"
-#define TUICore_TUIContactObjectFactory_GetGroupCreateControllerMethod_GroupNameKey \
-    @"TUICore_TUIContactObjectFactory_GetGroupCreateControllerMethod_GroupNameKey"
-#define TUICore_TUIContactObjectFactory_GetGroupCreateControllerMethod_GroupTypeKey \
-    @"TUICore_TUIContactObjectFactory_GetGroupCreateControllerMethod_GroupTypeKey"
-#define TUICore_TUIContactObjectFactory_GetGroupCreateControllerMethod_ContactListKey \
-    @"TUICore_TUIContactObjectFactory_GetGroupCreateControllerMethod_ContactListKey"
-#define TUICore_TUIContactObjectFactory_GetGroupCreateControllerMethod_CompletionKey \
-    @"TUICore_TUIContactObjectFactory_GetGroupCreateControllerMethod_CompletionKey"
+#define TDeskCore_TUIContactObjectFactory_GetGroupCreateControllerMethod @"TDeskCore_TUIContactObjectFactory_GetGroupCreateControllerMethod"
+#define TDeskCore_TUIContactObjectFactory_GetGroupCreateControllerMethod_TitleKey @"TDeskCore_TUIContactObjectFactory_GetGroupCreateControllerMethod_TitleKey"
+#define TDeskCore_TUIContactObjectFactory_GetGroupCreateControllerMethod_GroupNameKey \
+    @"TDeskCore_TUIContactObjectFactory_GetGroupCreateControllerMethod_GroupNameKey"
+#define TDeskCore_TUIContactObjectFactory_GetGroupCreateControllerMethod_GroupTypeKey \
+    @"TDeskCore_TUIContactObjectFactory_GetGroupCreateControllerMethod_GroupTypeKey"
+#define TDeskCore_TUIContactObjectFactory_GetGroupCreateControllerMethod_ContactListKey \
+    @"TDeskCore_TUIContactObjectFactory_GetGroupCreateControllerMethod_ContactListKey"
+#define TDeskCore_TUIContactObjectFactory_GetGroupCreateControllerMethod_CompletionKey \
+    @"TDeskCore_TUIContactObjectFactory_GetGroupCreateControllerMethod_CompletionKey"
 
-#define TUICore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod @"TUICore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod"
-#define TUICore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod_UserIDKey @"TUICore_TUIContactService_etUserOrFriendProfileVCMethod_UserIDKey"
-#define TUICore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod_SuccKey @"TUICore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod_SuccKey"
-#define TUICore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod_FailKey @"TUICore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod_FailKey"
+#define TDeskCore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod @"TDeskCore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod"
+#define TDeskCore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod_UserIDKey @"TDeskCore_TUIContactService_etUserOrFriendProfileVCMethod_UserIDKey"
+#define TDeskCore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod_SuccKey @"TDeskCore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod_SuccKey"
+#define TDeskCore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod_FailKey @"TDeskCore_TUIContactObjectFactory_GetUserOrFriendProfileVCMethod_FailKey"
 
-#pragma mark - TUICore_TUIContact_ObjectFactory_Route
+#pragma mark - TDeskCore_TUIContact_ObjectFactory_Route
 // Route to user profile page
-#define TUICore_TUIContactObjectFactory_UserProfileController_Classic @"TUICore_TUIContactObjectFactory_UserProfileController_Classic"
-#define TUICore_TUIContactObjectFactory_UserProfileController_Minimalist @"TUICore_TUIContactObjectFactory_UserProfileController_Minimalist"
-#define TUICore_TUIContactObjectFactory_UserProfileController_UserProfile @"TUICore_TUIContactObjectFactory_UserProfileController_UserProfile"
-#define TUICore_TUIContactObjectFactory_UserProfileController_PendencyData @"TUICore_TUIContactObjectFactory_UserProfileController_PendencyData"
-#define TUICore_TUIContactObjectFactory_UserProfileController_ActionType @"TUICore_TUIContactObjectFactory_UserProfileController_ActionType"
+#define TDeskCore_TUIContactObjectFactory_UserProfileController_Classic @"TDeskCore_TUIContactObjectFactory_UserProfileController_Classic"
+#define TDeskCore_TUIContactObjectFactory_UserProfileController_Minimalist @"TDeskCore_TUIContactObjectFactory_UserProfileController_Minimalist"
+#define TDeskCore_TUIContactObjectFactory_UserProfileController_UserProfile @"TDeskCore_TUIContactObjectFactory_UserProfileController_UserProfile"
+#define TDeskCore_TUIContactObjectFactory_UserProfileController_PendencyData @"TDeskCore_TUIContactObjectFactory_UserProfileController_PendencyData"
+#define TDeskCore_TUIContactObjectFactory_UserProfileController_ActionType @"TDeskCore_TUIContactObjectFactory_UserProfileController_ActionType"
 
-#pragma mark - TUICore_TUIGroup_Service
-#define TUICore_TUIGroupService @"TUICore_TUIGroupService"
-#define TUICore_TUIGroupService_Minimalist @"TUICore_TUIGroupService_Minimalist"
+#pragma mark - TDeskCore_TUIGroup_Service
+#define TDeskCore_TUIGroupService @"TDeskCore_TUIGroupService"
+#define TDeskCore_TUIGroupService_Minimalist @"TDeskCore_TUIGroupService_Minimalist"
 
-#define TUICore_TUIGroupService_CreateGroupMethod @"TUICore_TUIGroupService_CreateGroupMethod"
-#define TUICore_TUIGroupService_CreateGroupMethod_GroupTypeKey @"TUICore_TUIGroupService_CreateGroupMethod_GroupTypeKey"
-#define TUICore_TUIGroupService_CreateGroupMethod_OptionKey @"TUICore_TUIGroupService_CreateGroupMethod_OptionKey"
-#define TUICore_TUIGroupService_CreateGroupMethod_ContactsKey @"TUICore_TUIGroupService_CreateGroupMethod_ContactsKey"
-#define TUICore_TUIGroupService_CreateGroupMethod_CompletionKey @"TUICore_TUIGroupService_CreateGroupMethod_CompletionKey"
+#define TDeskCore_TUIGroupService_CreateGroupMethod @"TDeskCore_TUIGroupService_CreateGroupMethod"
+#define TDeskCore_TUIGroupService_CreateGroupMethod_GroupTypeKey @"TDeskCore_TUIGroupService_CreateGroupMethod_GroupTypeKey"
+#define TDeskCore_TUIGroupService_CreateGroupMethod_OptionKey @"TDeskCore_TUIGroupService_CreateGroupMethod_OptionKey"
+#define TDeskCore_TUIGroupService_CreateGroupMethod_ContactsKey @"TDeskCore_TUIGroupService_CreateGroupMethod_ContactsKey"
+#define TDeskCore_TUIGroupService_CreateGroupMethod_CompletionKey @"TDeskCore_TUIGroupService_CreateGroupMethod_CompletionKey"
 
-#pragma mark - TUICore_TUIGroup_Notify
-#define TUICore_TUIGroupNotify @"TUICore_TUIContactNotify"
+#pragma mark - TDeskCore_TUIGroup_Notify
+#define TDeskCore_TUIGroupNotify @"TDeskCore_TUIContactNotify"
 
-#define TUICore_TUIGroupNotify_UpdateConversationBackgroundImageSubKey @"TUICore_TUIGroupNotify_UpdateConversationBackgroundImageSubKey"
-#define TUICore_TUIGroupNotify_UpdateConversationBackgroundImageSubKey_ConversationID \
-    @"TUICore_TUIGroupNotify_UpdateConversationBackgroundImageSubKey_ConversationID"
+#define TDeskCore_TUIGroupNotify_UpdateConversationBackgroundImageSubKey @"TDeskCore_TUIGroupNotify_UpdateConversationBackgroundImageSubKey"
+#define TDeskCore_TUIGroupNotify_UpdateConversationBackgroundImageSubKey_ConversationID \
+    @"TDeskCore_TUIGroupNotify_UpdateConversationBackgroundImageSubKey_ConversationID"
 
-#pragma mark - TUICore_TUIGroup_Extension
+#pragma mark - TDeskCore_TUIGroup_Extension
 // UI extension for the action menus in the group infomation page
-#define TUICore_TUIGroupExtension_GroupInfoCardActionMenu_MinimalistExtensionID @"TUICore_TUIGroupExtension_GroupInfoCardActionMenu_MinimalistExtensionID"
-#define TUICore_TUIGroupExtension_GroupInfoCardActionMenu_GroupID @"TUICore_TUIGroupExtension_GroupInfoCardActionMenu_GroupID"
-#define TUICore_TUIGroupExtension_GroupInfoCardActionMenu_FilterVideoCall @"TUICore_TUIGroupExtension_GroupInfoCardActionMenu_FilterVideoCall"
-#define TUICore_TUIGroupExtension_GroupInfoCardActionMenu_FilterAudioCall @"TUICore_TUIGroupExtension_GroupInfoCardActionMenu_FilterAudioCall"
-#define TUICore_TUIGroupExtension_GroupInfoCardActionMenu_PushVC @"TUICore_TUIGroupExtension_GroupInfoCardActionMenu_PushVC"
+#define TDeskCore_TUIGroupExtension_GroupInfoCardActionMenu_MinimalistExtensionID @"TDeskCore_TUIGroupExtension_GroupInfoCardActionMenu_MinimalistExtensionID"
+#define TDeskCore_TUIGroupExtension_GroupInfoCardActionMenu_GroupID @"TDeskCore_TUIGroupExtension_GroupInfoCardActionMenu_GroupID"
+#define TDeskCore_TUIGroupExtension_GroupInfoCardActionMenu_FilterVideoCall @"TDeskCore_TUIGroupExtension_GroupInfoCardActionMenu_FilterVideoCall"
+#define TDeskCore_TUIGroupExtension_GroupInfoCardActionMenu_FilterAudioCall @"TDeskCore_TUIGroupExtension_GroupInfoCardActionMenu_FilterAudioCall"
+#define TDeskCore_TUIGroupExtension_GroupInfoCardActionMenu_PushVC @"TDeskCore_TUIGroupExtension_GroupInfoCardActionMenu_PushVC"
 
-#pragma mark - TUICore_TUIGroup_ObjectFactory
-#define TUICore_TUIGroupObjectFactory @"TUICore_TUIGroupObjectFactory"
-#define TUICore_TUIGroupObjectFactory_Minimalist @"TUICore_TUIGroupObjectFactory_Minimalist"
+#pragma mark - TDeskCore_TUIGroup_ObjectFactory
+#define TDeskCore_TUIGroupObjectFactory @"TDeskCore_TUIGroupObjectFactory"
+#define TDeskCore_TUIGroupObjectFactory_Minimalist @"TDeskCore_TUIGroupObjectFactory_Minimalist"
 
-#define TUICore_TUIGroupObjectFactory_GetGroupRequestViewControllerMethod @"TUICore_TUIGroupObjectFactory_GetGroupRequestViewControllerMethod"
-#define TUICore_TUIGroupObjectFactory_GetGroupRequestViewControllerMethod_GroupInfoKey \
-    @"TUICore_TUIGroupObjectFactory_GetGroupRequestViewControllerMethod_GroupInfoKey"
+#define TDeskCore_TUIGroupObjectFactory_GetGroupRequestViewControllerMethod @"TDeskCore_TUIGroupObjectFactory_GetGroupRequestViewControllerMethod"
+#define TDeskCore_TUIGroupObjectFactory_GetGroupRequestViewControllerMethod_GroupInfoKey \
+    @"TDeskCore_TUIGroupObjectFactory_GetGroupRequestViewControllerMethod_GroupInfoKey"
 
-#pragma mark - TUICore_TUIGroup_ObjectFactory_Route
+#pragma mark - TDeskCore_TUIGroup_ObjectFactory_Route
 // Route to the page for selecting group member
-#define TUICore_TUIGroupObjectFactory_SelectGroupMemberVC_Classic @"TUICore_TUIGroupObjectFactory_SelectGroupMemberVC_Classic"
-#define TUICore_TUIGroupObjectFactory_SelectGroupMemberVC_Minimalist @"TUICore_TUIGroupObjectFactory_SelectGroupMemberVC_Minimalist"
-#define TUICore_TUIGroupObjectFactory_SelectGroupMemberVC_GroupID @"TUICore_TUIGroupService_GetSelectGroupMemberViewControllerMethod"
-#define TUICore_TUIGroupObjectFactory_SelectGroupMemberVC_Name @"TUICore_TUIGroupService_GetSelectGroupMemberViewControllerMethod_NameKey"
-#define TUICore_TUIGroupObjectFactory_SelectGroupMemberVC_OptionalStyle @"TUICore_TUIGroupService_GetSelectGroupMemberViewControllerMethod_optionalStyleKey"
-#define TUICore_TUIGroupObjectFactory_SelectGroupMemberVC_SelectedUserIDList \
-    @"TUICore_TUIGroupService_GetSelectGroupMemberViewControllerMethod_SelectedUserIDListKey"
-#define TUICore_TUIGroupObjectFactory_SelectGroupMemberVC_ResultUserList @"TUICore_TUIGroupObjectFactory_SelectGroupMemberVC_ResultUserList"
+#define TDeskCore_TUIGroupObjectFactory_SelectGroupMemberVC_Classic @"TDeskCore_TUIGroupObjectFactory_SelectGroupMemberVC_Classic"
+#define TDeskCore_TUIGroupObjectFactory_SelectGroupMemberVC_Minimalist @"TDeskCore_TUIGroupObjectFactory_SelectGroupMemberVC_Minimalist"
+#define TDeskCore_TUIGroupObjectFactory_SelectGroupMemberVC_GroupID @"TDeskCore_TUIGroupService_GetSelectGroupMemberViewControllerMethod"
+#define TDeskCore_TUIGroupObjectFactory_SelectGroupMemberVC_Name @"TDeskCore_TUIGroupService_GetSelectGroupMemberViewControllerMethod_NameKey"
+#define TDeskCore_TUIGroupObjectFactory_SelectGroupMemberVC_OptionalStyle @"TDeskCore_TUIGroupService_GetSelectGroupMemberViewControllerMethod_optionalStyleKey"
+#define TDeskCore_TUIGroupObjectFactory_SelectGroupMemberVC_SelectedUserIDList \
+    @"TDeskCore_TUIGroupService_GetSelectGroupMemberViewControllerMethod_SelectedUserIDListKey"
+#define TDeskCore_TUIGroupObjectFactory_SelectGroupMemberVC_ResultUserList @"TDeskCore_TUIGroupObjectFactory_SelectGroupMemberVC_ResultUserList"
 
 // Route to group info page
-#define TUICore_TUIGroupObjectFactory_GetGroupInfoVC_Classic @"TUICore_TUIGroupObjectFactory_GetGroupInfoVC_Classic"
-#define TUICore_TUIGroupObjectFactory_GetGroupInfoVC_Minimalist @"TUICore_TUIGroupObjectFactory_GetGroupInfoVC_Minimalist"
-#define TUICore_TUIGroupObjectFactory_GetGroupInfoVC_GroupID @"TUICore_TUIGroupObjectFactory_GetGroupInfoVC_GroupID"
+#define TDeskCore_TUIGroupObjectFactory_GetGroupInfoVC_Classic @"TDeskCore_TUIGroupObjectFactory_GetGroupInfoVC_Classic"
+#define TDeskCore_TUIGroupObjectFactory_GetGroupInfoVC_Minimalist @"TDeskCore_TUIGroupObjectFactory_GetGroupInfoVC_Minimalist"
+#define TDeskCore_TUIGroupObjectFactory_GetGroupInfoVC_GroupID @"TDeskCore_TUIGroupObjectFactory_GetGroupInfoVC_GroupID"
 
-#pragma mark - TUICore_TUICallKit_TUICallingService
-#define TUICore_TUICallingService @"TUICore_TUICallingService"
+#pragma mark - TDeskCore_TUICallKit_TUICallingService
+#define TDeskCore_TUICallingService @"TDeskCore_TUICallingService"
 
-#define TUICore_TUICallingService_ShowCallingViewMethod @"TUICore_TUICallingService_ShowCallingViewMethod"
+#define TDeskCore_TUICallingService_ShowCallingViewMethod @"TDeskCore_TUICallingService_ShowCallingViewMethod"
 
-#define TUICore_TUICallingService_ShowCallingViewMethod_GroupIDKey @"TUICore_TUICallingService_ShowCallingViewMethod_GroupIDKey"
-#define TUICore_TUICallingService_ShowCallingViewMethod_UserIDsKey @"TUICore_TUICallingService_ShowCallingViewMethod_UserIDsKey"
-#define TUICore_TUICallingService_ShowCallingViewMethod_CallTypeKey @"TUICore_TUICallingService_ShowCallingViewMethod_CallTypeKey"
+#define TDeskCore_TUICallingService_ShowCallingViewMethod_GroupIDKey @"TDeskCore_TUICallingService_ShowCallingViewMethod_GroupIDKey"
+#define TDeskCore_TUICallingService_ShowCallingViewMethod_UserIDsKey @"TDeskCore_TUICallingService_ShowCallingViewMethod_UserIDsKey"
+#define TDeskCore_TUICallingService_ShowCallingViewMethod_CallTypeKey @"TDeskCore_TUICallingService_ShowCallingViewMethod_CallTypeKey"
 
-#define TUICore_TUICallingService_ReceivePushCallingMethod @"TUICore_TUICallingService_ReceivePushCallingMethod"
-#define TUICore_TUICallingService_ShowCallingViewMethod_SignalingInfo @"TUICore_TUICallingService_ShowCallingViewMethod_SignalingInfo"
+#define TDeskCore_TUICallingService_ReceivePushCallingMethod @"TDeskCore_TUICallingService_ReceivePushCallingMethod"
+#define TDeskCore_TUICallingService_ShowCallingViewMethod_SignalingInfo @"TDeskCore_TUICallingService_ShowCallingViewMethod_SignalingInfo"
 
-#define TUICore_TUICallingService_EnableMultiDeviceAbilityMethod @"TUICore_TUICallingService_EnableMultiDeviceAbilityMethod"
-#define TUICore_TUICallingService_EnableMultiDeviceAbilityMethod_EnableMultiDeviceAbility \
-    @"TUICore_TUICallingService_EnableMultiDeviceAbilityMethod_EnableMultiDeviceAbility"
+#define TDeskCore_TUICallingService_EnableMultiDeviceAbilityMethod @"TDeskCore_TUICallingService_EnableMultiDeviceAbilityMethod"
+#define TDeskCore_TUICallingService_EnableMultiDeviceAbilityMethod_EnableMultiDeviceAbility \
+    @"TDeskCore_TUICallingService_EnableMultiDeviceAbilityMethod_EnableMultiDeviceAbility"
 
-#define TUICore_TUICallingService_EnableFloatWindowMethod @"TUICore_TUICallingService_EnableFloatWindowMethod"
-#define TUICore_TUICallingService_EnableFloatWindowMethod_EnableFloatWindow @"TUICore_TUICallingService_EnableFloatWindowMethod_EnableFloatWindow"
+#define TDeskCore_TUICallingService_EnableFloatWindowMethod @"TDeskCore_TUICallingService_EnableFloatWindowMethod"
+#define TDeskCore_TUICallingService_EnableFloatWindowMethod_EnableFloatWindow @"TDeskCore_TUICallingService_EnableFloatWindowMethod_EnableFloatWindow"
 
-#define TUICore_TUICallingService_SetAudioPlaybackDeviceMethod @"TUICore_TUICallingService_SetAudioPlaybackDeviceMethod"
-#define TUICore_TUICallingService_SetAudioPlaybackDevice_AudioPlaybackDevice @"TUICore_TUICallingService_SetAudioPlaybackDevice_AudioPlaybackDevice"
-#define TUICore_TUICallingService_SetIsMicMuteMethod @"TUICore_TUICallingService_SetIsMicMuteMethod"
-#define TUICore_TUICallingService_SetIsMicMuteMethod_IsMicMute @"TUICore_TUICallingService_SetIsMicMuteMethod_IsMicMute"
+#define TDeskCore_TUICallingService_SetAudioPlaybackDeviceMethod @"TDeskCore_TUICallingService_SetAudioPlaybackDeviceMethod"
+#define TDeskCore_TUICallingService_SetAudioPlaybackDevice_AudioPlaybackDevice @"TDeskCore_TUICallingService_SetAudioPlaybackDevice_AudioPlaybackDevice"
+#define TDeskCore_TUICallingService_SetIsMicMuteMethod @"TDeskCore_TUICallingService_SetIsMicMuteMethod"
+#define TDeskCore_TUICallingService_SetIsMicMuteMethod_IsMicMute @"TDeskCore_TUICallingService_SetIsMicMuteMethod_IsMicMute"
 
-#pragma mark - TUICore_TUICallKit_TUIAudioMessageRecordService
-#define TUICore_TUIAudioMessageRecordService @"TUIAudioMessageRecordService"
-#define TUICore_TUIAudioMessageRecordService_StartRecordAudioMessageMethod @"TUICore_TUIAudioMessageRecordService_StartRecordAudioMessageMethod"
-#define TUICore_TUIAudioMessageRecordService_StopRecordAudioMessageMethod @"TUICore_TUIAudioMessageRecordService_StopRecordAudioMessageMethod"
+#pragma mark - TDeskCore_TUICallKit_TUIAudioMessageRecordService
+#define TDeskCore_TUIAudioMessageRecordService @"TUIAudioMessageRecordService"
+#define TDeskCore_TUIAudioMessageRecordService_StartRecordAudioMessageMethod @"TDeskCore_TUIAudioMessageRecordService_StartRecordAudioMessageMethod"
+#define TDeskCore_TUIAudioMessageRecordService_StopRecordAudioMessageMethod @"TDeskCore_TUIAudioMessageRecordService_StopRecordAudioMessageMethod"
 
-#define TUICore_TUIAudioMessageRecordService_StartRecordAudioMessageMethod_SdkappidKey @"sdkappid"
-#define TUICore_TUIAudioMessageRecordService_StartRecordAudioMessageMethod_SignatureKey @"signature"
-#define TUICore_TUIAudioMessageRecordService_StartRecordAudioMessageMethod_PathKey @"path"
+#define TDeskCore_TUIAudioMessageRecordService_StartRecordAudioMessageMethod_SdkappidKey @"sdkappid"
+#define TDeskCore_TUIAudioMessageRecordService_StartRecordAudioMessageMethod_SignatureKey @"signature"
+#define TDeskCore_TUIAudioMessageRecordService_StartRecordAudioMessageMethod_PathKey @"path"
 
-#pragma mark - TUICore_TUICallKit_TUICallingNotify
-#define TUICore_RecordAudioMessageNotify @"TUICore_RecordAudioMessageNotify"
-#define TUICore_RecordAudioMessageNotify_StartRecordAudioMessageSubKey @"TUICore_RecordAudioMessageNotify_StartRecordAudioMessageSubKey"
-#define TUICore_RecordAudioMessageNotify_StopRecordAudioMessageSubKey @"TUICore_RecordAudioMessageNotify_StopRecordAudioMessageSubKey"
+#pragma mark - TDeskCore_TUICallKit_TUICallingNotify
+#define TDeskCore_RecordAudioMessageNotify @"TDeskCore_RecordAudioMessageNotify"
+#define TDeskCore_RecordAudioMessageNotify_StartRecordAudioMessageSubKey @"TDeskCore_RecordAudioMessageNotify_StartRecordAudioMessageSubKey"
+#define TDeskCore_RecordAudioMessageNotify_StopRecordAudioMessageSubKey @"TDeskCore_RecordAudioMessageNotify_StopRecordAudioMessageSubKey"
 
-#define TUICore_RecordAudioMessageNotify_RecordAudioVoiceVolumeSubKey @"TUICore_RecordAudioMessageNotify_RecordAudioVoiceVolumeSubKey"
-#define TUICore_RecordAudioMessageNotify_RecordAudioVoiceVolumeSubKey_VolumeKey @"volume"
+#define TDeskCore_RecordAudioMessageNotify_RecordAudioVoiceVolumeSubKey @"TDeskCore_RecordAudioMessageNotify_RecordAudioVoiceVolumeSubKey"
+#define TDeskCore_RecordAudioMessageNotify_RecordAudioVoiceVolumeSubKey_VolumeKey @"volume"
 
-#pragma mark - TUICore_TUICallKit_TUICallingObjectFactory
-#define TUICore_TUICallingObjectFactory @"TUICore_TUICallingObjectFactory"
+#pragma mark - TDeskCore_TUICallKit_TUICallingObjectFactory
+#define TDeskCore_TUICallingObjectFactory @"TDeskCore_TUICallingObjectFactory"
 
 // Get the view controler for displaying call history
-#define TUICore_TUICallingObjectFactory_RecordCallsVC @"TUICore_TUICallingObjectFactory_RecordCallsVC"
-#define TUICore_TUICallingObjectFactory_RecordCallsVC_UIStyle @"TUICore_TUICallingObjectFactory_RecordCallsVC_UIStyle"
-#define TUICore_TUICallingObjectFactory_RecordCallsVC_UIStyle_Classic @"TUICore_TUICallingObjectFactory_RecordCallsVC_UIStyle_Classic"
-#define TUICore_TUICallingObjectFactory_RecordCallsVC_UIStyle_Minimalist @"TUICore_TUICallingObjectFactory_RecordCallsVC_UIStyle_Minimalist"
+#define TDeskCore_TUICallingObjectFactory_RecordCallsVC @"TDeskCore_TUICallingObjectFactory_RecordCallsVC"
+#define TDeskCore_TUICallingObjectFactory_RecordCallsVC_UIStyle @"TDeskCore_TUICallingObjectFactory_RecordCallsVC_UIStyle"
+#define TDeskCore_TUICallingObjectFactory_RecordCallsVC_UIStyle_Classic @"TDeskCore_TUICallingObjectFactory_RecordCallsVC_UIStyle_Classic"
+#define TDeskCore_TUICallingObjectFactory_RecordCallsVC_UIStyle_Minimalist @"TDeskCore_TUICallingObjectFactory_RecordCallsVC_UIStyle_Minimalist"
 
-#pragma mark - TUICore_TUIPlugin_Notify
-#define TUICore_TUIPluginNotify @"TUICore_TUIPluginNotify"
-#define TUICore_TUIPluginNotify_PluginCustomCellClick @"TUICore_TUIPluginNotify_PluginCustomCellClick"
-#define TUICore_TUIPluginNotify_PluginCustomCellClick_PushVC @"TUICore_TUIPluginNotify_PluginCustomCellClick_PushVC"
-#define TUICore_TUIPluginNotify_PluginCustomCellClick_Cell @"TUICore_TUIPluginNotify_PluginCustomCellClick_Cell"
+#pragma mark - TDeskCore_TUIPlugin_Notify
+#define TDeskCore_TUIPluginNotify @"TDeskCore_TUIPluginNotify"
+#define TDeskCore_TUIPluginNotify_PluginCustomCellClick @"TDeskCore_TUIPluginNotify_PluginCustomCellClick"
+#define TDeskCore_TUIPluginNotify_PluginCustomCellClick_PushVC @"TDeskCore_TUIPluginNotify_PluginCustomCellClick_PushVC"
+#define TDeskCore_TUIPluginNotify_PluginCustomCellClick_Cell @"TDeskCore_TUIPluginNotify_PluginCustomCellClick_Cell"
 
-#define TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey @"TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey"
-#define TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message @"TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message"
+#define TDeskCore_TUIPluginNotify_PluginViewSizeChangedSubKey @"TDeskCore_TUIPluginNotify_PluginViewSizeChangedSubKey"
+#define TDeskCore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message @"TDeskCore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message"
 
-#define TUICore_TUIPluginNotify_PluginViewDidAddToSuperview @"TUICore_TUIPluginNotify_PluginViewDidAddToSuperview"
-#define TUICore_TUIPluginNotify_PluginViewDidAddToSuperviewSubKey_PluginViewHeight @"TUICore_TUIPluginNotify_PluginViewDidAddToSuperviewSubKey_PluginViewHeight"
+#define TDeskCore_TUIPluginNotify_PluginViewDidAddToSuperview @"TDeskCore_TUIPluginNotify_PluginViewDidAddToSuperview"
+#define TDeskCore_TUIPluginNotify_PluginViewDidAddToSuperviewSubKey_PluginViewHeight @"TDeskCore_TUIPluginNotify_PluginViewDidAddToSuperviewSubKey_PluginViewHeight"
 
-#define TUICore_TUIPluginNotify_DidChangePluginViewSubKey @"TUICore_TUIPluginNotify_DidChangePluginViewSubKey"
-#define TUICore_TUIPluginNotify_DidChangePluginViewSubKey_Data @"TUICore_TUIPluginNotify_DidChangePluginViewSubKey_Data"
-#define TUICore_TUIPluginNotify_DidChangePluginViewSubKey_VC @"TUICore_TUIPluginNotify_DidChangePluginViewSubKey_VC"
-#define TUICore_TUIPluginNotify_DidChangePluginViewSubKey_isAllowScroll2Bottom @"TUICore_TUIPluginNotify_DidChangePluginViewSubKey_isAllowScroll2Bottom"
+#define TDeskCore_TUIPluginNotify_DidChangePluginViewSubKey @"TDeskCore_TUIPluginNotify_DidChangePluginViewSubKey"
+#define TDeskCore_TUIPluginNotify_DidChangePluginViewSubKey_Data @"TDeskCore_TUIPluginNotify_DidChangePluginViewSubKey_Data"
+#define TDeskCore_TUIPluginNotify_DidChangePluginViewSubKey_VC @"TDeskCore_TUIPluginNotify_DidChangePluginViewSubKey_VC"
+#define TDeskCore_TUIPluginNotify_DidChangePluginViewSubKey_isAllowScroll2Bottom @"TDeskCore_TUIPluginNotify_DidChangePluginViewSubKey_isAllowScroll2Bottom"
 
-#define TUICore_TUIPluginNotify_WillForwardTextSubKey @"TUICore_TUIPluginNotify_WillForwardTextSubKey"
-#define TUICore_TUIPluginNotify_WillForwardTextSubKey_Text @"TUICore_TUIPluginNotify_WillForwardTextSubKey_Text"
+#define TDeskCore_TUIPluginNotify_WillForwardTextSubKey @"TDeskCore_TUIPluginNotify_WillForwardTextSubKey"
+#define TDeskCore_TUIPluginNotify_WillForwardTextSubKey_Text @"TDeskCore_TUIPluginNotify_WillForwardTextSubKey_Text"
 
 // Initialization and recording successful, recording successful
-#define TUICore_RecordAudioMessageNotifyError_None 0
+#define TDeskCore_RecordAudioMessageNotifyError_None 0
 // Parameter is empty
-#define TUICore_RecordAudioMessageNotifyError_InvalidParam -1001
+#define TDeskCore_RecordAudioMessageNotifyError_InvalidParam -1001
 // Recording rejected, currently on a call
-#define TUICore_RecordAudioMessageNotifyError_StatusInCall -1002
+#define TDeskCore_RecordAudioMessageNotifyError_StatusInCall -1002
 // The recording was rejected and the current recording has not ended.
-#define TUICore_RecordAudioMessageNotifyError_StatusIsAudioRecording -1003
+#define TDeskCore_RecordAudioMessageNotifyError_StatusIsAudioRecording -1003
 // Recording rejected, failed to obtain microphone permission
-#define TUICore_RecordAudioMessageNotifyError_MicPermissionRefused -1004
+#define TDeskCore_RecordAudioMessageNotifyError_MicPermissionRefused -1004
 // Recording rejected, failed to obtain audio focus
-#define TUICore_RecordAudioMessageNotifyError_RequestAudioFocusFailed -1005
+#define TDeskCore_RecordAudioMessageNotifyError_RequestAudioFocusFailed -1005
 
 // -1, failed to initialize recording (onLocalRecordBegin)
-#define TUICore_RecordAudioMessageNotifyError_RecordInitFailed -2001
+#define TDeskCore_RecordAudioMessageNotifyError_RecordInitFailed -2001
 // -2, wrong file extension (onLocalRecordBegin)
-#define TUICore_RecordAudioMessageNotifyError_PathFormatNotSupport -2002
+#define TDeskCore_RecordAudioMessageNotifyError_PathFormatNotSupport -2002
 // -1, recording failed
-#define TUICore_RecordAudioMessageNotifyError_RecordFailed -2003
+#define TDeskCore_RecordAudioMessageNotifyError_RecordFailed -2003
 // -3, the audio data or video data has not arrived and the formal recording has not started.
-#define TUICore_RecordAudioMessageNotifyError_NoMessageToRecord -2004
+#define TDeskCore_RecordAudioMessageNotifyError_NoMessageToRecord -2004
 
 // -4, signature error (onLocalRecordBegin)
-#define TUICore_RecordAudioMessageNotifyError_SignatureError -3001
+#define TDeskCore_RecordAudioMessageNotifyError_SignatureError -3001
 // -5, signature expired (onLocalRecordBegin)
-#define TUICore_RecordAudioMessageNotifyError_SignatureExpired -3002
+#define TDeskCore_RecordAudioMessageNotifyError_SignatureExpired -3002
 
 // Failed to open the microphone. For example, on Windows or Mac devices, the microphone configuration program (driver) is abnormal. Disable and then re-enable the device, or restart the machine, or update the configuration program.
-#define TUICore_RecordAudioMessageNotifyError_MicStartFail -1302
+#define TDeskCore_RecordAudioMessageNotifyError_MicStartFail -1302
 // The microphone device is not authorized. It usually appears on mobile devices. The permission may be denied by the user.
-#define TUICore_RecordAudioMessageNotifyError_MicNotAuthorized -1317
+#define TDeskCore_RecordAudioMessageNotifyError_MicNotAuthorized -1317
 // Microphone setting parameters failed
-#define TUICore_RecordAudioMessageNotifyError_MicSetParamFail -1318
+#define TDeskCore_RecordAudioMessageNotifyError_MicSetParamFail -1318
 // The microphone is occupied. For example, when the mobile device is making a call, opening the microphone will fail.
-#define TUICore_RecordAudioMessageNotifyError_MicOccupy -1319
+#define TDeskCore_RecordAudioMessageNotifyError_MicOccupy -1319
 
-#pragma mark - TUICore_TUIGiftExtension
-#define TUICore_TUIGiftExtension_GetEnterBtn @"TUICore_TUIGiftExtension_GetEnterBtn"
-#define TUICore_TUIGiftExtension_GetLikeBtn @"TUICore_TUIGiftExtension_GetLikeBtn"
-#define TUICore_TUIGiftExtension_GetTUIGiftListPanel @"TUICore_TUIGiftExtension_GetTUIGiftListPanel"
-#define TUICore_TUIGiftExtension_GetTUIGiftPlayView @"TUICore_TUIGiftExtension_GetTUIGiftPlayView"
+#pragma mark - TDeskCore_TUIGiftExtension
+#define TDeskCore_TUIGiftExtension_GetEnterBtn @"TDeskCore_TUIGiftExtension_GetEnterBtn"
+#define TDeskCore_TUIGiftExtension_GetLikeBtn @"TDeskCore_TUIGiftExtension_GetLikeBtn"
+#define TDeskCore_TUIGiftExtension_GetTUIGiftListPanel @"TDeskCore_TUIGiftExtension_GetTUIGiftListPanel"
+#define TDeskCore_TUIGiftExtension_GetTUIGiftPlayView @"TDeskCore_TUIGiftExtension_GetTUIGiftPlayView"
 
-#pragma mark - TUICore_TUIGiftService
-#define TUICore_TUIGiftService @"TUICore_TUIGiftService"
-#define TUICore_TUIGiftService_SendLikeMethod @"TUICore_TUIGiftService_SendLikeMethod"
+#pragma mark - TDeskCore_TUIGiftService
+#define TDeskCore_TUIGiftService @"TDeskCore_TUIGiftService"
+#define TDeskCore_TUIGiftService_SendLikeMethod @"TDeskCore_TUIGiftService_SendLikeMethod"
 
-#pragma mark - TUICore_TUIBarrageExtension
-#define TUICore_TUIBarrageExtension_GetEnterBtn @"TUICore_TUIBarrageExtension_GetEnterBtn"
-#define TUICore_TUIBarrageExtension_GetTUIBarrageSendView @"TUICore_TUIBarrageExtension_GetTUIBarrageSendView"
-#define TUICore_TUIBarrageExtension_TUIBarrageDisplayView @"TUICore_TUIBarrageExtension_GetTUIBarrageDisplayView"
+#pragma mark - TDeskCore_TUIBarrageExtension
+#define TDeskCore_TUIBarrageExtension_GetEnterBtn @"TDeskCore_TUIBarrageExtension_GetEnterBtn"
+#define TDeskCore_TUIBarrageExtension_GetTUIBarrageSendView @"TDeskCore_TUIBarrageExtension_GetTUIBarrageSendView"
+#define TDeskCore_TUIBarrageExtension_TUIBarrageDisplayView @"TDeskCore_TUIBarrageExtension_GetTUIBarrageDisplayView"
 
-#pragma mark - TUICore_TUIBeautyExtension
-#define TUICore_TUIBeautyExtension_BeautyView @"TUICore_TUIBeautyExtension_BeautyView"
-#define TUICore_TUIBeautyExtension_Extension @"TUICore_TUIBeautyExtension_Extension"
+#pragma mark - TDeskCore_TUIBeautyExtension
+#define TDeskCore_TUIBeautyExtension_BeautyView @"TDeskCore_TUIBeautyExtension_BeautyView"
+#define TDeskCore_TUIBeautyExtension_Extension @"TDeskCore_TUIBeautyExtension_Extension"
 
-#define TUICore_TUIBeautyExtension_BeautyView_View @"TUICore_TUIBeautyExtension_BeautyView_View"
-#define TUICore_TUIBeautyExtension_Extension_View @"TUICore_TUIBeautyExtension_Extension_View"
+#define TDeskCore_TUIBeautyExtension_BeautyView_View @"TDeskCore_TUIBeautyExtension_BeautyView_View"
+#define TDeskCore_TUIBeautyExtension_Extension_View @"TDeskCore_TUIBeautyExtension_Extension_View"
 
-#define TUICore_TUIBeautyExtension_BeautyView_BeautyManager @"TUICore_TUIBeautyExtension_BeautyView_BeautyManager"
-#define TUICore_TUIBeautyExtension_BeautyView_LicenseUrl @"TUICore_TUIBeautyExtension_BeautyView_LicenseUrl"
-#define TUICore_TUIBeautyExtension_BeautyView_LicenseKey @"TUICore_TUIBeautyExtension_BeautyView_LicenseKey"
-#define TUICore_TUIBeautyExtension_BeautyView_DataProcessDelegate @"TUICore_TUIBeautyExtension_BeautyView_DataProcessDelegate"
+#define TDeskCore_TUIBeautyExtension_BeautyView_BeautyManager @"TDeskCore_TUIBeautyExtension_BeautyView_BeautyManager"
+#define TDeskCore_TUIBeautyExtension_BeautyView_LicenseUrl @"TDeskCore_TUIBeautyExtension_BeautyView_LicenseUrl"
+#define TDeskCore_TUIBeautyExtension_BeautyView_LicenseKey @"TDeskCore_TUIBeautyExtension_BeautyView_LicenseKey"
+#define TDeskCore_TUIBeautyExtension_BeautyView_DataProcessDelegate @"TDeskCore_TUIBeautyExtension_BeautyView_DataProcessDelegate"
 
-#pragma mark - TUICore_TUIBeautyService
-#define TUICore_TUIBeautyService @"TUICore_TUIBeautyService"
-#define TUICore_TUIBeautyService_SetLicense @"TUICore_TUIBeautyService_SetLicense"
-#define TUICore_TUIBeautyService_ProcessVideoFrame @"TUICore_TUIBeautyService_ProcessVideoFrame"
-#define TUICore_TUIBeautyService_ProcessVideoFrame_SRCTextureIdKey @"TUICore_TUIBeautyService_ProcessVideoFrame_SRCTextureIdKey"
-#define TUICore_TUIBeautyService_ProcessVideoFrame_SRCFrameWidthKey @"TUICore_TUIBeautyService_ProcessVideoFrame_SRCFrameWidthKey"
-#define TUICore_TUIBeautyService_ProcessVideoFrame_SRCFrameHeightKey @"TUICore_TUIBeautyService_ProcessVideoFrame_SRCFrameHeightKey"
+#pragma mark - TDeskCore_TUIBeautyService
+#define TDeskCore_TUIBeautyService @"TDeskCore_TUIBeautyService"
+#define TDeskCore_TUIBeautyService_SetLicense @"TDeskCore_TUIBeautyService_SetLicense"
+#define TDeskCore_TUIBeautyService_ProcessVideoFrame @"TDeskCore_TUIBeautyService_ProcessVideoFrame"
+#define TDeskCore_TUIBeautyService_ProcessVideoFrame_SRCTextureIdKey @"TDeskCore_TUIBeautyService_ProcessVideoFrame_SRCTextureIdKey"
+#define TDeskCore_TUIBeautyService_ProcessVideoFrame_SRCFrameWidthKey @"TDeskCore_TUIBeautyService_ProcessVideoFrame_SRCFrameWidthKey"
+#define TDeskCore_TUIBeautyService_ProcessVideoFrame_SRCFrameHeightKey @"TDeskCore_TUIBeautyService_ProcessVideoFrame_SRCFrameHeightKey"
 
-#pragma mark - TUICore_TUIAudioEffectViewExtension
-#define TUICore_TUIAudioEffectViewExtension_AudioEffectView @"TUICore_TUIAudioEffectViewExtension_AudioEffectView"
-#define TUICore_TUIAudioEffectViewExtension_Extension @"TUICore_TUIAudioEffectViewExtension_Extension"
+#pragma mark - TDeskCore_TUIAudioEffectViewExtension
+#define TDeskCore_TUIAudioEffectViewExtension_AudioEffectView @"TDeskCore_TUIAudioEffectViewExtension_AudioEffectView"
+#define TDeskCore_TUIAudioEffectViewExtension_Extension @"TDeskCore_TUIAudioEffectViewExtension_Extension"
 
-#define TUICore_TUIAudioEffectViewExtension_AudioEffectView_View @"TUICore_TUIAudioEffectViewExtension_AudioEffectView_View"
-#define TUICore_TUIAudioEffectViewExtension_Extension_View @"TUICore_TUIAudioEffectViewExtension_Extension_View"
+#define TDeskCore_TUIAudioEffectViewExtension_AudioEffectView_View @"TDeskCore_TUIAudioEffectViewExtension_AudioEffectView_View"
+#define TDeskCore_TUIAudioEffectViewExtension_Extension_View @"TDeskCore_TUIAudioEffectViewExtension_Extension_View"
 
-#define TUICore_TUIAudioEffectViewExtension_AudioEffectView_AudioEffectManager @"TUICore_TUIAudioEffectViewExtension_AudioEffectView_AudioEffectManager"
+#define TDeskCore_TUIAudioEffectViewExtension_AudioEffectView_AudioEffectManager @"TDeskCore_TUIAudioEffectViewExtension_AudioEffectView_AudioEffectManager"
 
-#pragma mark - TUICore_NetworkConnection_EVENT
-#define TUICore_NetworkConnection_EVENT_CONNECTION_STATE_CHANGED @"eventConnectionStateChanged"
-#define TUICore_NetworkConnection_EVENT_SUB_KEY_CONNECTING @"eventSubKeyConnecting"
-#define TUICore_NetworkConnection_EVENT_SUB_KEY_CONNECT_SUCCESS @"eventSubKeyConnectSuccess"
-#define TUICore_NetworkConnection_EVENT_SUB_KEY_CONNECT_FAILED @"eventSubKeyConnectFailed"
+#pragma mark - TDeskCore_NetworkConnection_EVENT
+#define TDeskCore_NetworkConnection_EVENT_CONNECTION_STATE_CHANGED @"eventConnectionStateChanged"
+#define TDeskCore_NetworkConnection_EVENT_SUB_KEY_CONNECTING @"eventSubKeyConnecting"
+#define TDeskCore_NetworkConnection_EVENT_SUB_KEY_CONNECT_SUCCESS @"eventSubKeyConnectSuccess"
+#define TDeskCore_NetworkConnection_EVENT_SUB_KEY_CONNECT_FAILED @"eventSubKeyConnectFailed"
 
-#pragma mark - TUICore_TUIRoomImAccessService
-#define TUICore_TUIRoomImAccessService @"TUICore_TUIRoomImAccessService"
-#define TUICore_TUIRoomImAccessService_EnableFloatWindowMethod @"TUICore_TUIRoomImAccessService_EnableFloatWindowMethod"
-#define TUICore_TUIRoomImAccessService_EnableFloatWindowMethod_EnableFloatWindow @"TUICore_TUIRoomImAccessService_EnableFloatWindowMethod_EnableFloatWindow"
+#pragma mark - TDeskCore_TUIRoomImAccessService
+#define TDeskCore_TUIRoomImAccessService @"TDeskCore_TUIRoomImAccessService"
+#define TDeskCore_TUIRoomImAccessService_EnableFloatWindowMethod @"TDeskCore_TUIRoomImAccessService_EnableFloatWindowMethod"
+#define TDeskCore_TUIRoomImAccessService_EnableFloatWindowMethod_EnableFloatWindow @"TDeskCore_TUIRoomImAccessService_EnableFloatWindowMethod_EnableFloatWindow"
 
-#pragma mark - TUICore_TUIRoomImAccessFactory
-#define TUICore_TUIRoomImAccessFactory @"TUICore_TUIRoomImAccessFactory"
-#define TUICore_TUIRoomImAccessFactory_GetRoomMessageViewMethod @"TUICore_TUIRoomImAccessFactory_GetRoomMessageViewMethod"
-#define TUICore_TUIRoomImAccessFactory_GetRoomMessageViewMethod_Message @"TUICore_TUIRoomImAccessFactory_GetRoomMessageViewMethod_Message"
+#pragma mark - TDeskCore_TUIRoomImAccessFactory
+#define TDeskCore_TUIRoomImAccessFactory @"TDeskCore_TUIRoomImAccessFactory"
+#define TDeskCore_TUIRoomImAccessFactory_GetRoomMessageViewMethod @"TDeskCore_TUIRoomImAccessFactory_GetRoomMessageViewMethod"
+#define TDeskCore_TUIRoomImAccessFactory_GetRoomMessageViewMethod_Message @"TDeskCore_TUIRoomImAccessFactory_GetRoomMessageViewMethod_Message"
 
-#pragma mark - TUICore_PrivacyService_ScreenShareAntifraudReminderService
-#define TUICore_PrivacyService @"TUICore_PrivacyService"
-#define TUICore_PrivacyService_ScreenShareAntifraudReminderMethod @"TUICore_PrivacyService_ScreenShareAntifraudReminderMethod"
-#define TUICore_PrivacyService_EnableScreenShareAntifraudReminderMethod_Cancel -1
-#define TUICore_PrivacyService_EnableScreenShareAntifraudReminderMethod_Continue 0
+#pragma mark - TDeskCore_PrivacyService_ScreenShareAntifraudReminderService
+#define TDeskCore_PrivacyService @"TDeskCore_PrivacyService"
+#define TDeskCore_PrivacyService_ScreenShareAntifraudReminderMethod @"TDeskCore_PrivacyService_ScreenShareAntifraudReminderMethod"
+#define TDeskCore_PrivacyService_EnableScreenShareAntifraudReminderMethod_Cancel -1
+#define TDeskCore_PrivacyService_EnableScreenShareAntifraudReminderMethod_Continue 0
 
-#define TUICore_PrivacyService_CallKitAntifraudReminderMethod @"TUICore_PrivacyService_CallKitAntifraudReminderMethod"
+#define TDeskCore_PrivacyService_CallKitAntifraudReminderMethod @"TDeskCore_PrivacyService_CallKitAntifraudReminderMethod"
 
-#pragma mark - TUICore_PrivacyService_COMMUNICATION_EVENT
-#define TUICore_PrivacyService_ROOM_STATE_EVENT_CHANGED @"eventRoomStateChanged"
-#define TUICore_PrivacyService_ROOM_STATE_EVENT_SUB_KEY_START @"eventSubKeyStart"
-#define TUICore_PrivacyService_ROOM_STATE_EVENT_SUB_KEY_END @"eventSubKeyEnd"
+#pragma mark - TDeskCore_PrivacyService_COMMUNICATION_EVENT
+#define TDeskCore_PrivacyService_ROOM_STATE_EVENT_CHANGED @"eventRoomStateChanged"
+#define TDeskCore_PrivacyService_ROOM_STATE_EVENT_SUB_KEY_START @"eventSubKeyStart"
+#define TDeskCore_PrivacyService_ROOM_STATE_EVENT_SUB_KEY_END @"eventSubKeyEnd"
 
-#pragma mark - TUICore_TUICallKitVoIPExtension_Notify
-#define TUICore_TUICallKitVoIPExtensionNotify @"TUICore_TUICallKitVoIPExtension_Notify"
-#define TUICore_TUICore_TUICallKitVoIPExtensionNotify_OpenMicrophoneSubKey @"TUICore_TUICore_TUICallKitVoIPExtensionNotify_OpenMicrophoneSubKey"
-#define TUICore_TUICore_TUICallKitVoIPExtensionNotify_CloseMicrophoneSubKey @"TUICore_TUICore_TUICallKitVoIPExtensionNotify_CloseMicrophoneSubKey"
+#pragma mark - TDeskCore_TUICallKitVoIPExtension_Notify
+#define TDeskCore_TUICallKitVoIPExtensionNotify @"TDeskCore_TUICallKitVoIPExtension_Notify"
+#define TDeskCore_TUICore_TUICallKitVoIPExtensionNotify_OpenMicrophoneSubKey @"TDeskCore_TUICore_TUICallKitVoIPExtensionNotify_OpenMicrophoneSubKey"
+#define TDeskCore_TUICore_TUICallKitVoIPExtensionNotify_CloseMicrophoneSubKey @"TDeskCore_TUICore_TUICallKitVoIPExtensionNotify_CloseMicrophoneSubKey"
 
 /////////////////////////////////////////////////////////////////////////////////
 //
-//            TUIOfflinePush
+//            TDeskOfflinePush
 //
 /////////////////////////////////////////////////////////////////////////////////
 
 /**
  * Set certificate IDs for VoIP
  */
-#define TUIOfflinePushCertificateIDForVoIP(value) \
+#define TDeskOfflinePushCertificateIDForVoIP(value) \
     -(int)push_certificateIDForVoIP {             \
         return value;                             \
     }
@@ -1261,7 +1261,7 @@ static inline NSBundle *getTDeskGetLocalizable(NSString *bundleName) {
 /**
  * Set certificate IDs for APNs
  */
-#define TUIOfflinePushCertificateIDForAPNS(value) \
+#define TDeskOfflinePushCertificateIDForAPNS(value) \
     -(int)push_certificateIDForAPNS {             \
         return value;                             \
     }
@@ -1269,7 +1269,7 @@ static inline NSBundle *getTDeskGetLocalizable(NSString *bundleName) {
 /**
  * Set TPNS configuration information
  */
-#define TUIOfflinePushConfigForTPNS(access_id, access_key, tpn_domain)                                       \
+#define TDeskOfflinePushConfigForTPNS(access_id, access_key, tpn_domain)                                       \
     -(void)push_accessID : (int *)accessID accessKey : (NSString **)accessKey domain : (NSString **)domain { \
         *accessID = access_id;                                                                               \
         *accessKey = access_key;                                                                             \

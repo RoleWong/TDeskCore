@@ -227,7 +227,7 @@ static char gFirstLetterArray[HANZI_COUNT] = "ydkqsxnwzssxjbymgcczqpssqbycdscdql
                                             "whxgzxwznnqzjzjjqjccchykxbzszcnjtllcqxynjnckycynccqnxyewyczdcjycchyjlbtzyycqwlpgpyllgktltlgkgqbgychj"
                                             "xy";
 
-char tui_pinyinFirstLetter(unsigned short hanzi) {
+char tdesk_pinyinFirstLetter(unsigned short hanzi) {
     int index = hanzi - HANZI_START;
     if (index >= 0 && index <= HANZI_COUNT) {
         return gFirstLetterArray[index];
@@ -264,7 +264,7 @@ char tui_pinyinFirstLetter(unsigned short hanzi) {
     unichar ch = [self characterAtIndex:0];
     char firstPinYin = ch;
     if (ch < 'A' || ch > 'z' || (ch > 'Z' && ch < 'a')) {
-        firstPinYin = tui_pinyinFirstLetter(ch);
+        firstPinYin = tdesk_pinyinFirstLetter(ch);
     }
 
     return [NSString stringWithFormat:@"%c", firstPinYin];
@@ -327,11 +327,11 @@ char tui_pinyinFirstLetter(unsigned short hanzi) {
            ([self rangeOfString:str options:(compareOptions | NSBackwardsSearch)].location == ([self length] - [str length]));
 }
 
-- (BOOL)tui_containsString:(NSString *)str {
-    return [self tui_containsString:str Options:NSCaseInsensitiveSearch];
+- (BOOL)tdesk_containsString:(NSString *)str {
+    return [self tdesk_containsString:str Options:NSCaseInsensitiveSearch];
 }
 
-- (BOOL)tui_containsString:(NSString *)str Options:(NSStringCompareOptions)compareOptions {
+- (BOOL)tdesk_containsString:(NSString *)str Options:(NSStringCompareOptions)compareOptions {
     return (str != nil) && ([str length] > 0) && ([self length] >= [str length]) && ([self rangeOfString:str options:compareOptions].location != NSNotFound);
 }
 
