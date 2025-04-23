@@ -59,6 +59,7 @@
 #define BussinessID_Src_CustomerService_Card @"22"
 #define BussinessID_Src_CustomerService_EvaluationRule @"23"
 #define BussinessID_Src_CustomerService_EvaluationTrigger @"24"
+#define BussinessID_Src_CustomerService_Agent_Status @"26"
 #define BussinessID_Src_CustomerService_Bot_Welcome_Clarify @"29" // Supported in 8.1 and later
 #define BussinessID_Src_CustomerService_Bot_Rich_Text @"30" // Supported in 8.1 and later
 #define BussinessID_Src_CustomerService_Bot_Stream_Text @"31" // Supported in 8.1 and later
