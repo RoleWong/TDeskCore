@@ -66,6 +66,7 @@
 #define BussinessID_Src_CustomerService_TASK_BRANCH @"32"
 #define BussinessID_Src_CustomerService_TASK_INFORMATION_COLLECTOR @"33"
 #define BussinessID_Src_CustomerService_THINKING @"35"
+#define BussinessID_Src_CustomerService_CLIENT_TIPS @"37"
 #define GetCustomerServiceBussinessID(src) [NSString stringWithFormat:@"%@%@",BussinessID_CustomerService, src]
 
 /**
