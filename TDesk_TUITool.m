@@ -427,10 +427,10 @@ static NSMutableDictionary * gIMErrorMsgMap = nil;
 }
 
 + (void)asyncDecodeImage:(NSString *)path complete:(TAsyncImageComplete)complete {
-    static dispatch_queue_t queue;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-      queue = dispatch_queue_create("com.tuikit.asyncDecodeImage", DISPATCH_QUEUE_SERIAL);
+    static dispatch_queue_t deskQueue;
+    static dispatch_once_t deskOnceToken;
+    dispatch_once(&deskOnceToken, ^{
+      deskQueue = dispatch_queue_create("com.tuikit.desk.asyncDecodeImage", DISPATCH_QUEUE_SERIAL);
     });
 
     // callback on main thread
@@ -448,7 +448,7 @@ static NSMutableDictionary * gIMErrorMsgMap = nil;
         return;
     }
 
-    dispatch_async(queue, ^{
+    dispatch_async(deskQueue, ^{
       // The path ends with gif:
       if ([path tdesk_containsString:@".gif"]) {
           UIImage *image = [UIImage sd_imageWithGIFData:[NSData dataWithContentsOfFile:path]];
@@ -457,7 +457,7 @@ static NSMutableDictionary * gIMErrorMsgMap = nil;
       }
 
       // load origin image
-      UIImage *image = [UIImage imageNamed:path];
+      UIImage *image = [UIImage imageNamed:@"/xxx/xxx"];
       if (image == nil) {
           image = [UIImage imageWithContentsOfFile:path];
       }
