@@ -4,7 +4,7 @@
 **This repo is archived. New versions are now hosted on Tencent CNB Git.**
 
 **新地址 / New Location:**  
-[https://cnb.cool/tencent/cloud/tccc/TDeskChat](https://cnb.cool/tencent/cloud/tccc/TDeskCore)
+[https://cnb.cool/tencent/cloud/tccc/TDeskCore](https://cnb.cool/tencent/cloud/tccc/TDeskCore)
 
 **访问说明：** 腾讯云 CNB Git 仓库用法与 GitHub 基本一致，请前往获取最新代码。  
 **Access:** Tencent Git operates similarly to GitHub. Visit for latest code.
